@@ -1,0 +1,18 @@
+.category {
+  margin: 20px auto;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  font-size: 1.2rem;
+  text-align: right;
+  color: #303030;
+  margin-bottom: 30px;
+}
+.list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

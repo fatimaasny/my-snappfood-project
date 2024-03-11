@@ -1,0 +1,13 @@
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.icon img {
+  width: 40px;
+}
+.icon p {
+  font-size: 0.8rem;
+  margin-top: 8px;
+}

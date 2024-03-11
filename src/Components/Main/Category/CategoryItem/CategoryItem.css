@@ -1,0 +1,35 @@
+.item {
+  width: 180px;
+  height: 100px;
+  display: flex;
+  margin: 10px;
+  border-radius: 12px;
+  /* box-shadow: 5px 5px 5px #fff, -5px -5px 5px #fff; */
+  border: 4px solid #fff;
+  position: relative;
+}
+.item div {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 5px;
+  padding: 0 10px;
+  height: 35px;
+  cursor: pointer;
+}
+.item div p {
+  color: #000;
+  font-size: 1rem;
+}
+.item div img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.item div:hover img {
+  padding-right: 4px;
+}

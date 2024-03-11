@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  direction: rtl;
+}
+
+.header-up {
+  display: flex;
+  padding: 0px 30px;
+  position: sticky;
+}
+.header-up img {
+  width: 70px;
+}
+.header-up .right {
+  width: 82%;
+  display: flex;
+  align-items: center;
+}
+.header-up .right .logo-snapp {
+  width: 10%;
+}
+.header-up .right .logo-snapp img {
+  width: 100px;
+  height: 80px;
+}
+.header-up .right .map {
+  width: 25%;
+  margin-right: 40px;
+}
+.header-up .right .map {
+  text-decoration: none;
+  display: flex;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.header-up .right .map img {
+  width: 20px;
+  /* color: #edecec; */
+}
+.header-up .right .map div {
+  margin-right: 15px;
+}
+.header-up .right .map #address-map {
+  color: #9c9a9a;
+  font-size: 0.65rem;
+  margin-top: 3px;
+  font-weight: 400;
+}
+.header-up .right .search-box {
+  /* width: 400px; */
+  width: 35%;
+  border-radius: 10px;
+  background: #edecec;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+.header-up .right .search-box img {
+  width: 25px;
+  font-weight: 400;
+}
+.header-up .right .search-box input {
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.header-up .left {
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-up .left a {
+  text-decoration: none;
+  display: flex;
+  font-size: 0.9rem;
+  color: #303030;
+  align-items: center;
+}
+.header-up .left a img {
+  width: 30px;
+}
+.header-up .left a p {
+  margin-right: 5px;
+}
+.header-up .left button {
+  border: none;
+  background: none;
+  padding: 14px 10px;
+  border-radius: 10px;
+  background: #ff00b3;
+}
+.header-up .left button span {
+  color: #fff;
+  font-size: 1rem;
+  padding-left: 3px;
+  font-weight: 600;
+}
+.header-up .left button .second-span {
+  font-weight: 400;
+}
+
+/* حالتی هست که کاربر وارد شده است */
+/* .header-up .left {
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-up .left .search img {
+  width: 25px;
+  display: none;
+  font-weight: 400;
+}
+.header-up .left a {
+  text-decoration: none;
+}
+.header-up .left .profile-icon {
+}
+.header-up .left .profile-icon img {
+  width: 30px;
+}
+.header-up .left .order-icon {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.header-up .left .order-icon img {
+  width: 30px;
+}
+.header-up .left .order-icon p {
+  font-size: 0.9rem;
+  color: #000;
+  font-weight: 700;
+  margin-right: 5px;
+} */
