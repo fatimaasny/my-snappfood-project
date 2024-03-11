@@ -1,7 +1,12 @@
 .header-down {
   position: sticky;
+  top: 100px;
   display: flex;
   justify-content: space-around;
   padding: 20px 10px;
   border-bottom: 1px solid #eee;
+  /* خواستیم زیر هدر هرچی اومد نشون داده نشه
+  البته این شیشه ایش میکنه */
+  /* background-color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px); */
 }
