@@ -5,11 +5,13 @@ import HeaderUp from "./Components/Header/HeaderUp/HeaderUp";
 import "./Components/Header/HeaderUp/HeaderUp.css";
 import HeaderDown from "./Components/Header/HeaderDown/HeaderDown";
 import Main from "./Components/Main/Main";
+import Footer from "./Components/Footer/Footer";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HeaderUp />
     <HeaderDown />
     <Main />
+    <Footer />
   </React.StrictMode>
 );

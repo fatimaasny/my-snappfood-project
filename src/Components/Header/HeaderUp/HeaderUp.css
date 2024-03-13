@@ -4,10 +4,12 @@
 }
 
 .header-up {
+  background: #fff;
   display: flex;
   padding: 0px 30px;
   position: sticky;
   top: 0;
+  /* z-index: 999; */
 }
 .header-up img {
   width: 70px;
@@ -52,7 +54,7 @@
   /* width: 400px; */
   width: 35%;
   border-radius: 10px;
-  background: #edecec;
+  background: rgb(235, 237, 240);
   padding: 10px 14px;
   display: flex;
   align-items: center;
@@ -67,6 +69,7 @@
   background: none;
   font-size: 1.2rem;
   outline: none;
+  color: rgb(166, 170, 173);
 }
 
 .header-up .left {
