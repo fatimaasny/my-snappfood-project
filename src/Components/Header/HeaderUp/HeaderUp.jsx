@@ -2,7 +2,7 @@ import snaplogo from "../../../Images/Header/HeaderUp/snappfood.svg";
 import location from "../../../Images/Header/HeaderUp/location.svg";
 import searchicon from "../../../Images/Header/HeaderUp/search.svg";
 import store from "../../../Images/Header/HeaderUp/store.svg";
-
+import "./HeaderUp.css";
 export default function HeaderUp() {
   return (
     <header className="header-up">

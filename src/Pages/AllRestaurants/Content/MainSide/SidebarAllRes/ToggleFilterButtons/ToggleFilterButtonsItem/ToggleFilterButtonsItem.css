@@ -1,0 +1,12 @@
+.toggle-filter-buttons-item-component {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid silver;
+  padding: 15px 10px;
+}
+.toggle-filter-buttons-item-component p {
+  font-size: 0.9rem;
+}
+.toggle-filter-buttons-item-component .toggle-btn {
+  background: pink;
+}

@@ -1,0 +1,26 @@
+.sort-selected {
+  display: flex;
+  /* text-align: left; */
+  justify-content: end;
+}
+.sort-selected div {
+  border: 1px solid silver;
+  padding: 15px 10px;
+  border-radius: 10px;
+  display: flex;
+  margin-left: 5px;
+}
+.sort-selected input {
+  border: none;
+  background: none;
+  outline: none;
+  color: #eee;
+  font-size: 1.2rem;
+  border-left: 1px solid silver;
+  width: 150px;
+}
+
+.sort-selected img {
+  width: 12px;
+  margin-right: 5px;
+}

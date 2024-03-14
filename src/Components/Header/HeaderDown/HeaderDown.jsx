@@ -69,7 +69,6 @@ export default function HeaderDown() {
       {menuListIcon.map((i, index) => (
         <IconMenu key={index} title={i.title} source={i.source} alt={i.alt} />
       ))}
-
     </header>
   );
 }

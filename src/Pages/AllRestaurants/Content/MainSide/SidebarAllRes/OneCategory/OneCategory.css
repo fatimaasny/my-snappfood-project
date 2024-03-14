@@ -1,0 +1,28 @@
+.onecategory-component {
+  box-shadow: 1px 1px 4px #eee, -1px -1px 4px #eee;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.onecategory-component .back {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+.onecategory-component .back img {
+  width: 17px;
+}
+.onecategory-component .back p {
+  font-size: 1rem;
+  margin-right: 10px;
+  margin-bottom: 7px;
+}
+.onecategory-component h4 {
+  background: rgb(232, 233, 234);
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px 20px 15px 0;
+}
+.onecategory-component .list-of-one-category {
+}

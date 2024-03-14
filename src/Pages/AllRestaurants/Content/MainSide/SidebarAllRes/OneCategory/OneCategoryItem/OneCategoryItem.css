@@ -1,0 +1,14 @@
+.one-category-item {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.one-category-item img {
+  width: 40px;
+  border-radius: 50%;
+}
+.one-category-item p {
+  font-size: 0.9rem;
+  margin-right: 10px;
+}
