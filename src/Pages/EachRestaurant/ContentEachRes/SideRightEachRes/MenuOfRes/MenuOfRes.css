@@ -1,0 +1,19 @@
+.menu-of-res-components {
+  text-align: left;
+  margin-top: 30px;
+}
+.menu-of-res-components div {
+  margin-top: 15px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #7b7b7b;
+  padding-left: 10px;
+}
+.menu-of-res-components .kopen {
+  display: flex;
+  justify-content: end;
+}
+.menu-of-res-components .kopen img {
+  margin-left: 5px;
+  width: 18px;
+}

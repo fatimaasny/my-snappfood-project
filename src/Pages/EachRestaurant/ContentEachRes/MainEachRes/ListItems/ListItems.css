@@ -1,0 +1,44 @@
+.list-items-kopen-component {
+  margin-top: 5px;
+}
+
+.list-items-kopen-component h4 {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #575656;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.list-items-component h4 {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #575656;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.list-items-kopen-component .list-of-kopen {
+  display: flex;
+  justify-content: start;
+}
+.list-items-kopen-component .list-of-kopen .kopen-item {
+  border-radius: 5px;
+  background: #f6f5f5;
+  color: #a5a3a3;
+  padding: 10px;
+  margin-right: 10px;
+}
+.list-items-kopen-component .list-of-kopen .kopen-item .first {
+  font-size: 0.9rem;
+}
+.list-items-kopen-component .list-of-kopen .kopen-item .second {
+  font-size: 0.7rem;
+  margin-top: 5px;
+}
+.list-items-component {
+  margin-top: 5px;
+}
+.list-items-component .list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

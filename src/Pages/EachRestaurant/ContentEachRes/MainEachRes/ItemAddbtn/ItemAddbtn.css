@@ -1,0 +1,63 @@
+.item-addbtn-component {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.item-addbtn-component:hover {
+  background: #f0f0f0;
+}
+.item-addbtn-component:hover .add-btn a {
+  background: #ff00ff;
+  color: #fff;
+}
+.item-addbtn-component .content-right {
+  display: flex;
+}
+
+.item-addbtn-component .content-right .all-price {
+  display: flex;
+  flex-direction: column;
+}
+.item-addbtn-component .content-right .all-price .title {
+  font-size: 0.75rem;
+  color: #303030;
+}
+.item-addbtn-component .content-right .all-price .box-price {
+  display: flex;
+  align-items: center;
+}
+.item-addbtn-component .content-right .all-price .discount {
+}
+.item-addbtn-component .content-right .all-price .discount p {
+  background: #f3e0f3;
+  color: #ff00ff;
+  border-radius: 5px;
+  padding: 5px;
+}
+.item-addbtn-component .content-right .all-price .prices {
+  padding-right: 5px;
+}
+.item-addbtn-component .content-right .all-price .prices #old-price {
+  font-size: 0.7rem;
+  color: #979696;
+  text-decoration: line-through;
+}
+.item-addbtn-component .content-right .all-price .prices #new-price {
+  font-size: 0.85rem;
+  color: #303030;
+  font-weight: 500;
+}
+.item-addbtn-component .add-btn {
+}
+.item-addbtn-component .add-btn a {
+  color: #ff00ff;
+  border-radius: 20px;
+  text-align: center;
+  background: #fff;
+  padding: 5px 25px 10px;
+  box-shadow: 1px 1px 1px #eeeeee, -1px -1px 1px #eeeeee;
+  text-decoration: none;
+  font-size: 0.93rem;
+}

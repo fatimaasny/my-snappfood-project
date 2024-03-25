@@ -1,0 +1,24 @@
+.side-Right-each-res-component {
+  width: 22%;
+}
+
+.side-Right-each-res-component .comments {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px #c8c7c7, -1px -1px 2px #e9e7e7;
+  margin-top: 30px;
+  padding: 10px 0;
+  border-radius: 25px;
+}
+.side-Right-each-res-component .comments img {
+  width: 20px;
+}
+.side-Right-each-res-component .comments p {
+  margin-right: 5px;
+  color: #05cb05;
+  font-size: 0.95rem;
+}
+.side-Right-each-res-component .comments:hover p {
+  color: #049a04;
+}
