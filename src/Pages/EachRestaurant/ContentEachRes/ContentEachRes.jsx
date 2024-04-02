@@ -4,14 +4,18 @@ import MainEachRes from "./MainEachRes/MainEachRes";
 import SideLeftEachRes from "./SideLeftEachRes/SideLeftEachRes";
 import { useState } from "react";
 export default function ContentEachRes() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  function HandleIsScrolled() {
-    setIsScrolled(true);
+  const listOfTitles = ["کوپن‌ها", "پرطرفدارها", "سوخاری"];
+  const [isScrolled, setIsScrolled] = useState("");
+  function HandleIsScrolled(title) {
+    setIsScrolled(title);
   }
   return (
     <div className="content-each-res-component">
-      <SideRightEachRes isScrolled={isScrolled} />
-      <MainEachRes HandleIsScrolled={HandleIsScrolled} />
+      <SideRightEachRes isScrolled={isScrolled} listOfTitles={listOfTitles} />
+      <MainEachRes
+        HandleIsScrolled={HandleIsScrolled}
+        listOfTitles={listOfTitles}
+      />
       <SideLeftEachRes />
     </div>
   );

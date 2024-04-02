@@ -1,7 +1,7 @@
 import "./MenuOfRes.css";
 import giftImg from "../../../../../Images/EachRestaurant/gift.svg";
-export default function MenuOfRes({ isScrolled }) {
-  const list = ["کوپن‌ها", "پرطرفدارها", "سوخاری"];
+export default function MenuOfRes({ isScrolled, listOfTitles }) {
+  // const list = ["کوپن‌ها", "پرطرفدارها", "سوخاری"];
 
   return (
     <div className="menu-of-res-components">
@@ -13,10 +13,10 @@ export default function MenuOfRes({ isScrolled }) {
         <div key={index}>{item}</div>
       ))} */}
 
-      {list.map((item, index) => {
+      {listOfTitles.map((item, index) => {
         if (item === "کوپن‌ها") {
           {
-            return isScrolled ? (
+            return isScrolled === item ? (
               <div
                 className="kopen"
                 key={index}
@@ -34,7 +34,7 @@ export default function MenuOfRes({ isScrolled }) {
           }
         } else {
           {
-            return isScrolled ? (
+            return isScrolled === item ? (
               <div key={index} style={{ borderLeft: "1px solid red" }}>
                 {item}
               </div>

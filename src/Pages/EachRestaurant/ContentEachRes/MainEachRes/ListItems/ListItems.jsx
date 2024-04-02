@@ -9,7 +9,10 @@ export default function ListItems({
 }) {
   if (title === "کوپن‌ها") {
     return (
-      <div className="list-items-kopen-component" onScroll={HandleIsScrolled}>
+      <div
+        className="list-items-kopen-component"
+        onScroll={HandleIsScrolled(title)}
+      >
         <h4>{title}</h4>
         <div className="list-of-kopen">
           {listOfKopen.map((i, index) => (
@@ -23,7 +26,7 @@ export default function ListItems({
     );
   }
   return (
-    <div className="list-items-component" onScroll={HandleIsScrolled}>
+    <div className="list-items-component" onScroll={HandleIsScrolled(title)}>
       <h4>{title}</h4>
       <div className="list">
         {

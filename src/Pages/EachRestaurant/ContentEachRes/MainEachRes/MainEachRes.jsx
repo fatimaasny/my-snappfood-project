@@ -1,8 +1,8 @@
 import ListItems from "./ListItems/ListItems";
 import "./MainEachRes.css";
 import foodImg from "../../../../Images/EachRestaurant/foodiii.jpg";
-export default function MainEachRes({ HandleIsScrolled }) {
-  const listOfTitles = ["کوپن‌ها", "پرطرفدارها", "سوخاری"];
+export default function MainEachRes({ HandleIsScrolled, listOfTitles }) {
+  // const listOfTitles = ["کوپن‌ها", "پرطرفدارها", "سوخاری"];
   const listOfKopen = [
     ["ماست موسیر خامه ای رایگان", "مخصوص سفارش اول"],
     ["نوشابه خانواده اسپرایت رایگان", "با خرید از دسته ی سینی کباب"],
