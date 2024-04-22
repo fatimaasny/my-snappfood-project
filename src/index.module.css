@@ -1,0 +1,10 @@
+@import url("./fonts/fonts.css");
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: Vazir;
+}
+body {
+  margin: 0;
+}

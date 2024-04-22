@@ -8,7 +8,7 @@ import meat from "../../../Images/Header/HeaderDown/meat.png";
 import iceCream from "../../../Images/Header/HeaderDown/icecream.png";
 import nut from "../../../Images/Header/HeaderDown/nut.png";
 import other from "../../../Images/Header/HeaderDown/other.png";
-import "./HeaderDown.css";
+import styles from "./HeaderDown.module.css";
 import IconMenu from "./IconMenu/IconMenu";
 
 export default function HeaderDown() {
@@ -65,7 +65,7 @@ export default function HeaderDown() {
     },
   ];
   return (
-    <header className="header-down">
+    <header className={styles["header-down"]}>
       {menuListIcon.map((i, index) => (
         <IconMenu key={index} title={i.title} source={i.source} alt={i.alt} />
       ))}

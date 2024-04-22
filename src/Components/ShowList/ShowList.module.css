@@ -1,0 +1,6 @@
+.showList {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}

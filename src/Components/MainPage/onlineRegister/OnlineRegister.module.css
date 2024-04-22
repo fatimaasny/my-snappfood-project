@@ -1,0 +1,46 @@
+.onlineReg {
+  display: flex;
+  justify-content: space-between;
+  padding: 4rem 2.5rem;
+  background-color: rgb(249, 250, 251);
+  border-radius: 2rem;
+  margin-top: 10rem;
+  margin-bottom: 4rem;
+}
+.onlineReg .content {
+}
+.onlineReg .content h3 {
+  font-size: 2.5rem;
+}
+.onlineReg .content p {
+  font-size: 1.3rem;
+  color: #626262;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.onlineReg .content .link {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 7px;
+  background: #ff00b3;
+  width: fit-content;
+  padding: 8px;
+}
+.onlineReg .content .link img {
+  width: 30px;
+}
+.onlineReg .content .link p {
+  color: #fff;
+  margin-right: 5px;
+  font-size: 1.1rem;
+  margin-bottom: 7px;
+}
+.onlineReg .image {
+  position: relative;
+}
+.onlineReg .image img {
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+}

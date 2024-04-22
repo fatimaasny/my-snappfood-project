@@ -1,7 +1,7 @@
-import "./IconMenu.css";
+import styles from "./IconMenu.module.css";
 export default function IconMenu({ source, title, alt }) {
   return (
-    <div className="icon">
+    <div className={styles.icon}>
       <img src={source} alt={alt} />
       <p>{title}</p>
     </div>

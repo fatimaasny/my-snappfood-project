@@ -1,0 +1,10 @@
+.icon {
+  border-radius: 50%;
+  background: #fff;
+  padding: 10px 11px 8px;
+  margin-left: 10px;
+  box-shadow: 1px 1px 1px #eee, -1px -1px 1px #eee;
+}
+.image {
+  width: 18px;
+}

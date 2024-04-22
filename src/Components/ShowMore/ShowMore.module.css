@@ -1,0 +1,12 @@
+.show-more {
+  display: flex;
+  align-items: center;
+}
+.show-more p {
+  font-size: 1.1rem;
+  color: #06b106;
+  padding-top: 12px;
+}
+.show-more img {
+  width: 20px;
+}

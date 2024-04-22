@@ -2,36 +2,43 @@ import snaplogo from "../../../Images/Header/HeaderUp/snappfood.svg";
 import location from "../../../Images/Header/HeaderUp/location.svg";
 import searchicon from "../../../Images/Header/HeaderUp/search.svg";
 import store from "../../../Images/Header/HeaderUp/store.svg";
-import "./HeaderUp.css";
+import styles from "./HeaderUp.module.css";
+import Button from "../../Button/Button";
 export default function HeaderUp() {
   return (
-    <header className="header-up">
-      <div className="right">
-        <a href="#" className="logo-snapp">
+    <header className={styles["header-up"]}>
+      <div className={styles.right}>
+        <a href="#" className={styles["logo-snapp"]}>
           <img src={snaplogo} alt="snapfood-logo" />
         </a>
-        <div className="map">
+        <div className={styles.map}>
           <img src={location} alt="location.svg" />
           <div>
             <p>آدرس انتخابی</p>
             <p id="address-map"> گچساران، پانصد دستگاه سمت راست خیابان ششم </p>
           </div>
         </div>
-        <div className="search-box">
+        <div className={styles["search-box"]}>
           <img src={searchicon} alt="searchicon" />
           <input type="text" placeholder="جست‌و‌جو در اسنپ‌فود" />
         </div>
       </div>
-      <div className="left">
-        <a href="#" className="costumers-register">
+      <div className={styles.left}>
+        <Button
+          title={"ثبت‌نام فروشندگان"}
+          image={store}
+          class={"noBackground"}
+        />
+        {/* <a href="#" className={styles["costumers-register"]}>
           <img src={store} alt="store.svg" />
           <p>ثبت‌نام فروشندگان</p>
-        </a>
-        <button className="login-button">
+        </a> */}
+        {/* <button className={styles["login-button"]}>
           <span>ورود</span>
-          <span className="second-span">یا</span>
+          <span className={styles["second-span"]}>یا</span>
           <span>عضویت</span>
-        </button>
+        </button> */}
+        <Button title={"ورود یا عضویت"} />
       </div>
 
       {/* حالت وقتی هست که طرف وارد شده  */}
