@@ -1,5 +1,5 @@
 import down from "../../../Images/public/down.svg";
-import "./SortSelected.css";
+import styles from "./SortSelected.module.css";
 export default function SortSelected() {
   return (
     <div className={styles["sort-selected"]}>

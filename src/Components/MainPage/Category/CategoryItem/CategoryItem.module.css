@@ -2,10 +2,6 @@
   width: 180px;
   height: 100px;
   display: flex;
-  margin: 10px;
-  border-radius: 12px;
-  /* box-shadow: 5px 5px 5px #fff, -5px -5px 5px #fff; */
-  border: 4px solid #fff;
   position: relative;
 }
 .item div {
@@ -16,8 +12,8 @@
   bottom: 0;
   right: 0;
   border-top-left-radius: 12px;
-  border-bottom-right-radius: 5px;
   padding: 0 10px;
+  width: fit-content;
   height: 35px;
   cursor: pointer;
 }

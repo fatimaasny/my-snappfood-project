@@ -1,3 +1,14 @@
 .round {
   border-radius: 10px;
+  overflow: hidden;
+  background: pink;
+}
+.round.shadow {
+  box-shadow: 0 1px 3px #ededed;
+}
+.round.shadow:hover {
+  box-shadow: 0 10px 15px #ededed;
+}
+.round.margin {
+  margin: 10px;
 }

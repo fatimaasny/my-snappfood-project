@@ -24,62 +24,67 @@ export default function RestaurantItem({
   postPriceLastS,
 }) {
   return (
-    <Card>
-      <div className={styles.Ritem}>
-        <div
-          className={styles.up}
-          style={{ background: `url(${backCoverUp})`, backgroundSize: "cover" }}
-        >
-          {freeSendingP && (
-            <div className={styles["free-sending"]}>
-              <GiftBar source={gift} alt={"gift.svg"} title={freeSendingP} />
-              {/* <img src={gift} alt="gift.svg" />
+    <div className={styles.container}>
+      <Card class={"shadow"}>
+        <div className={styles.Ritem}>
+          <div
+            className={styles.up}
+            style={{
+              background: `url(${backCoverUp})`,
+              backgroundSize: "cover",
+            }}
+          >
+            {freeSendingP && (
+              <div className={styles["free-sending"]}>
+                <GiftBar source={gift} alt={"gift.svg"} title={freeSendingP} />
+                {/* <img src={gift} alt="gift.svg" />
             <p>{freeSendingP}</p> */}
-            </div>
-          )}
+              </div>
+            )}
 
-          {discountP && (
-            <div className={styles.discount}>
-              <p>{discountP}</p>
-            </div>
-          )}
+            {discountP && (
+              <div className={styles.discount}>
+                <p>{discountP}</p>
+              </div>
+            )}
 
-          <div className={styles["center-image"]}>
-            <img src={centerImage} alt="image.jpg" />
+            <div className={styles["center-image"]}>
+              <img src={centerImage} alt="image.jpg" />
+            </div>
+          </div>
+          <div className={styles.down}>
+            <h4>{titleH}</h4>
+            <div className={styles.score}>
+              <img src={star} alt="start.svg" />
+              {scorePFirst && <p>{scorePFirst}</p>}
+              {scorePLast && <p>{scorePLast}</p>}
+            </div>
+            {typeFoodP && <p className={styles["types-food"]}>{typeFoodP}</p>}
+
+            {requestText && (
+              <div className={styles["pre-request"]}>
+                <img src={timePost} alt="time-post.svg" />
+                <span>{preRequestSpan}</span>
+              </div>
+            )}
+
+            {expressText && (
+              <div class={styles["post-price"]}>
+                <img src={expressPost} alt="postman.svg" />
+                <span>{postPriceFirstS}</span>
+                <span>{postPriceLastS}</span>
+              </div>
+            )}
+            {salerText && (
+              <div class={styles["post-price"]}>
+                <img src={userPost} alt="postman.svg" />
+                <span>{postPriceFirstS}</span>
+                <span>{postPriceLastS}</span>
+              </div>
+            )}
           </div>
         </div>
-        <div className={styles.down}>
-          <h4>{titleH}</h4>
-          <div className={styles.score}>
-            <img src={star} alt="start.svg" />
-            {scorePFirst && <p>{scorePFirst}</p>}
-            {scorePLast && <p>{scorePLast}</p>}
-          </div>
-          {typeFoodP && <p className={styles["types-food"]}>{typeFoodP}</p>}
-
-          {requestText && (
-            <div className={styles["pre-request"]}>
-              <img src={timePost} alt="time-post.svg" />
-              <span>{preRequestSpan}</span>
-            </div>
-          )}
-
-          {expressText && (
-            <div class={styles["post-price"]}>
-              <img src={expressPost} alt="postman.svg" />
-              <span>{postPriceFirstS}</span>
-              <span>{postPriceLastS}</span>
-            </div>
-          )}
-          {salerText && (
-            <div class={styles["post-price"]}>
-              <img src={userPost} alt="postman.svg" />
-              <span>{postPriceFirstS}</span>
-              <span>{postPriceLastS}</span>
-            </div>
-          )}
-        </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 }

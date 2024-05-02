@@ -10,6 +10,8 @@ export default function Item({ pName, spanTag, image, list }) {
           <p className={styles.name}>{pName}</p>
           <span>{spanTag}</span>
         </div>
+        {/* <img src={image} alt="image.png" /> */}
+
         <Card>
           <img src={image} alt="image.png" />
         </Card>
