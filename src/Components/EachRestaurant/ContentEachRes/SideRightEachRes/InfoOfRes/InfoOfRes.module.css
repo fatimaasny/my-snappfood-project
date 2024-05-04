@@ -6,8 +6,9 @@
 .info-of-res-component .image-res {
   width: 80px;
   height: 80px;
-  /* border-radius: 10px; */
   border: 1px solid #eae7e7;
+  display: block;
+  /* این رو دادم به این علت که کارد یه ارتفاع اضافه ای میگرفت */
 }
 .info-of-res-component .info {
   display: flex;

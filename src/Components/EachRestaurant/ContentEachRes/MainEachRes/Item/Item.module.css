@@ -8,12 +8,13 @@
 .item-component .up-content {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 }
 .item-component .up-content div {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
+  /* display: flex;
+  flex-direction: column; */
+
+  display: block;
+  /* padding: 10px; */
 }
 .item-component .up-content div .name {
   font-size: 1.1rem;
@@ -29,7 +30,7 @@
 .item-component .up-content img {
   width: 110px;
   height: 110px;
-  /* border-radius: 10px; */
+  display: block;
 }
 .item-component .down-content {
   display: flex;

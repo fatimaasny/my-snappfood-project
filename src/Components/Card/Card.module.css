@@ -1,6 +1,6 @@
 .round {
   border-radius: 10px;
-  overflow: hidden;
+  overflow: clip;
   background: pink;
 }
 .round.shadow {
