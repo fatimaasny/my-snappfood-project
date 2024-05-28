@@ -25,7 +25,7 @@ export default function RestaurantItem({
 }) {
   return (
     <div className={styles.container}>
-      <Card class={"shadow"}>
+      <Card className={"shadow"}>
         <div className={styles.Ritem}>
           <div
             className={styles.up}

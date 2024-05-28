@@ -12,7 +12,7 @@ export default function MainEachRes({ HandleIsScrolled, listOfTitles }) {
     {
       title: "ممتاز یک سیخ 250 گرمی",
       discount: "10% ",
-      oldPrice: "130,000 تومان",
+      oldPrice: "130,000",
       newPrice: "117,000 تومان",
     },
     {
@@ -41,7 +41,7 @@ export default function MainEachRes({ HandleIsScrolled, listOfTitles }) {
     {
       title: false,
       discount: "20% ",
-      oldPrice: "200,000 تومان",
+      oldPrice: "200,000",
       newPrice: "160,000 تومان",
     },
   ];

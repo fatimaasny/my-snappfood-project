@@ -2,7 +2,7 @@
   position: sticky;
   top: 100px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 20px 10px;
   border-bottom: 1px solid #eee;
   background: #fff;

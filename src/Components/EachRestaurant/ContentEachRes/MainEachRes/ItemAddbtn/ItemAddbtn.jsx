@@ -14,13 +14,13 @@ export default function ItemAddbtn({ title, discount, oldPrice, newPrice }) {
 
             {oldPrice && newPrice && (
               <div className={styles.prices}>
-                <span id="old-price">{oldPrice}</span>
-                <p id="new-price">{newPrice}</p>
+                <span id={styles["old-price"]}>{oldPrice}</span>
+                <p id={styles["new-price"]}>{newPrice}</p>
               </div>
             )}
             {!oldPrice && newPrice && (
               <div className={styles.prices}>
-                <p id="new-price">{newPrice}</p>
+                <p id={styles["new-price"]}>{newPrice}</p>
               </div>
             )}
           </div>

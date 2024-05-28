@@ -1,7 +1,9 @@
 .round {
   border-radius: 10px;
   overflow: clip;
-  background: pink;
+  flex-shrink: 0;
+  /* اون قسمتی بود که این دیو کوچک میشد و نصف عکس معلوم میشد و بقیه میزد بیرون */
+  /* این میگه یعنی هیچ کس اجازه نداره بزنه بیرون و به اندازه اش فضا لحاظ بشه براش  */
 }
 .round.shadow {
   box-shadow: 0 1px 3px #ededed;

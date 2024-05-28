@@ -59,6 +59,16 @@ export default function HeaderDown() {
       title: "آجیل",
     },
     {
+      source: iceCream,
+      alt: "iceCream.svg",
+      title: "آبمیوه بستنی",
+    },
+    {
+      source: nut,
+      alt: "nut.svg",
+      title: "آجیل",
+    },
+    {
       source: other,
       alt: "other.svg",
       title: "سایر",
