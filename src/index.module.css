@@ -1,5 +1,6 @@
 @import url("./fonts/fonts.css");
-* {
+
+*{
   box-sizing: border-box;
 }
 html {

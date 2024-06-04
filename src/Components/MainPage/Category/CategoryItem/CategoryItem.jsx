@@ -3,7 +3,7 @@ import angelLeft from "../../../../Images/public/angelleft.svg";
 import Card from "../../../Card/Card";
 export default function CategoryItem({ source, title, alt }) {
   return (
-    <Card className={"margin"}>
+    <Card className={styles.margin}>
       <div
         className={styles.item}
         style={{ background: `url(${source})`, backgroundSize: "cover" }}

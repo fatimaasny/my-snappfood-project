@@ -1,0 +1,11 @@
+.order {
+  background: #eee;
+  color: #666;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin: 0 5px;
+}
+.order p {
+  font-size: 0.7rem;
+}

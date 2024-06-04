@@ -1,16 +1,51 @@
 import styles from "./SideRightEachRes.module.css";
 import InfoOfRes from "./InfoOfRes/InfoOfRes";
-import exclamationImg from "../../../../Images/EachRestaurant/exclamation.svg";
 import MenuOfRes from "./MenuOfRes/MenuOfRes";
+
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { useState } from "react";
+import ModalComments from "../../../Modal/ModalComments/ModalComments";
+import ModalSpecialMap from "../../../Modal/ModalSpecialMap/ModalSpecialMap";
+
 export default function SideRightEachRes({ isScrolled, listOfTitles }) {
+  const [isShowModalComments, setIsShowModalComments] = useState();
+  const [isShowModalSpecialMap, setIsShowModalSpecialMap] = useState();
+
+  const showModalComments = () => {
+    setIsShowModalComments(1);
+  };
+  const hideModalComments = () => {
+    setIsShowModalComments(0);
+  };
+
+  const showModalSpecialMap = () => {
+    setIsShowModalSpecialMap(1);
+  };
+  const hideModalSpecialMap = () => {
+    setIsShowModalSpecialMap(0);
+  };
   return (
-    <div className={styles["side-Right-each-res-component"]}>
-      <InfoOfRes />
-      <a className={styles.comments}>
-        <img src={exclamationImg} alt="exclamation.svg" />
-        <p> اطلاعات و نظرات</p>
-      </a>
-      <MenuOfRes isScrolled={isScrolled} listOfTitles={listOfTitles} />
-    </div>
+    <>
+      {isShowModalComments === 1 && (
+        <ModalComments
+          hideModalComments={hideModalComments}
+          showModalSpecialMap={showModalSpecialMap}
+        />
+      )}
+      {isShowModalSpecialMap === 1 && (
+        <ModalSpecialMap
+          title={"آش و حلیم ولیعصر"}
+          hideModalSpecialMap={hideModalSpecialMap}
+        />
+      )}
+      <div className={styles["side-Right-each-res-component"]}>
+        <InfoOfRes />
+        <div className={styles.comments} onClick={showModalComments}>
+          <AiOutlineExclamationCircle color="#05cb05" fontSize="1.2rem" />
+          <p> اطلاعات و نظرات</p>
+        </div>
+        <MenuOfRes isScrolled={isScrolled} listOfTitles={listOfTitles} />
+      </div>
+    </>
   );
 }

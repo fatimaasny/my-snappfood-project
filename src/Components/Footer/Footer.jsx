@@ -41,43 +41,15 @@ export default function Footer() {
           <h4>اسنپ‌فود</h4>
           <p>تجربه سفارش غذا، از زودفود تا اسنپ‌فود</p>
           <div className={styles.icons}>
-            {ListSocialIcon.map((i) => (
-              <SocialIcon source={i.source} alt={i.alt} />
+            {ListSocialIcon.map((i, index) => (
+              <SocialIcon key={index} source={i.source} alt={i.alt} />
             ))}
-            {/* <a href="#">
-              <img src={twitterIcon} alt="twitter-icon.svg" />
-            </a>
-            <a href="#">
-              <img src={telegramIcon} alt="telegram-icon.svg" />
-            </a>{" "}
-            <a href="#">
-              <img src={linkedInIcon} alt="linkedin-icon.svg" />
-            </a>{" "}
-            <a href="#">
-              <img src={instagramIcon} alt="instagram-icon.svg" />
-            </a>
-            <a href="#">
-              <img src={aparatIcon} alt="aparat-icon.svg" />
-            </a> */}
           </div>
         </div>
       </div>
       <ShowList list={LinkList1} class={"column"} />
       <ShowList list={LinkList2} class={"column"} />
-      {/* <div className={styles.links}>
-        <a href="#">درباره اسنپ‌فود</a>
-        <a href="#">فرصت های شغلی</a>
-        <a href="#">وبلاگ</a>
-        <a href="#">قوانین سایت</a>
-        <a href="#">حریم خصوصی</a>
-        <a href="#">ثبت نام فروشندگان</a>
-      </div>
-      <div className={styles.links}>
-        <a href="#">تماس با اسنپ‌فود</a>
-        <a href="#">پرسش‌های متداول</a>
-        <a href="#">ثبت شکایات</a>
-        <a href="#">اپلیکیشن موبایل</a>
-      </div> */}
+
       <div className={styles.image}>
         <img src={senfImg} alt="senfimg.png" />
       </div>

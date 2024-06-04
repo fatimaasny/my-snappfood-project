@@ -5,6 +5,9 @@
 
 .header-up {
   background: #fff;
+  /* اینجا واسه بردار پایین یک شادو زدیم فقط */
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 3px 8px -5px #eee;
   display: flex;
   padding: 0px 30px;
   position: sticky;
@@ -15,7 +18,7 @@
   width: 70px;
 }
 .header-up .right {
-  width: 82%;
+  width: 80%;
   display: flex;
   align-items: center;
 }
@@ -29,116 +32,70 @@
 .header-up .right .map {
   width: 25%;
   margin-right: 40px;
+  cursor: pointer;
 }
-.header-up .right .map {
-  text-decoration: none;
+.right .map {
   display: flex;
-  color: #000;
-  font-size: 0.8rem;
-  font-weight: 700;
+  align-items: center;
 }
-.header-up .right .map img {
-  width: 20px;
-  /* color: #edecec; */
-}
-.header-up .right .map div {
+
+.right .map .addresstext {
   margin-right: 15px;
 }
-.header-up .right .map #address-map {
+.map .addresstext p:first-child {
+  color: black;
+  font-size: 0.9rem;
+  font-family: Vazir-bold;
+}
+.right .addresstext .text {
+  display: flex;
+  align-items: center;
+}
+.right .map #address-map {
   color: #9c9a9a;
   font-size: 0.65rem;
-  margin-top: 3px;
   font-weight: 400;
+  margin-left: 10px;
 }
-.header-up .right .search-box {
+.right .search-box {
   /* width: 400px; */
   width: 35%;
   border-radius: 10px;
-  background: rgb(235, 237, 240);
+  background: #ebedf0;
   padding: 10px 14px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-right: 40px;
 }
-.header-up .right .search-box img {
-  width: 25px;
-  font-weight: 400;
+.search-box.active {
+  background: #fff;
+  border: 1px solid black;
+  /* position: fixed;
+  z-index: 100; */
 }
+
 .header-up .right .search-box input {
+  width: 92%;
   border: none;
   background: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   outline: none;
-  color: rgb(166, 170, 173);
+  color: #a9a7a7;
+  font-family: Vazir;
 }
 
 .header-up .left {
-  width: 18%;
+  width: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header-up .left a {
-  text-decoration: none;
-  display: flex;
-  font-size: 0.9rem;
-  color: #303030;
-  align-items: center;
-}
-.header-up .left a img {
-  width: 30px;
-}
-.header-up .left a p {
-  margin-right: 5px;
-}
-.header-up .left button {
-  border: none;
-  background: none;
-  padding: 14px 10px;
-  border-radius: 10px;
+.background {
+  color: #fff;
   background: #ff00b3;
 }
-.header-up .left button span {
-  color: #fff;
-  font-size: 1rem;
-  padding-left: 3px;
-  font-weight: 600;
+.no-background {
+  background: #fff;
+  color: gray;
 }
-.header-up .left button .second-span {
-  font-weight: 400;
-}
-
-/* حالتی هست که کاربر وارد شده است */
-/* .header-up .left {
-  width: 18%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header-up .left .search img {
-  width: 25px;
-  display: none;
-  font-weight: 400;
-}
-.header-up .left a {
-  text-decoration: none;
-}
-.header-up .left .profile-icon {
-}
-.header-up .left .profile-icon img {
-  width: 30px;
-}
-.header-up .left .order-icon {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}
-.header-up .left .order-icon img {
-  width: 30px;
-}
-.header-up .left .order-icon p {
-  font-size: 0.9rem;
-  color: #000;
-  font-weight: 700;
-  margin-right: 5px;
-} */

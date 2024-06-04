@@ -29,3 +29,6 @@
 .item div:hover img {
   padding-right: 4px;
 }
+.margin {
+  margin: 10px;
+}

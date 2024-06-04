@@ -1,0 +1,117 @@
+.backdrop {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+.modalconfirm {
+  width: 32%;
+  height: 70vh;
+  position: fixed;
+  z-index: 100;
+  top: 21%;
+  left: 36%;
+  background: #fff;
+  padding: 1rem;
+}
+.modalconfirm h3 {
+  font-size: 1.5rem;
+  color: #3a3939;
+  margin-top: 8px;
+  font-family: Vazir-bold;
+}
+.recieve {
+  font-size: 1.2rem;
+  color: #545353;
+  margin-top: 1rem;
+}
+.recieve span {
+  font-family: Vazir-bold;
+  margin: 0 5px;
+}
+.edit {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.edit span {
+  margin-right: 5px;
+  font-size: 0.9rem;
+  color: #08c208;
+  font-family: Vazir-bold;
+  cursor: pointer;
+}
+.modalconfirm input {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #d7d7d7;
+  border-radius: 7px;
+  margin-top: 1.5rem;
+}
+.modalconfirm input:focus {
+  border: 1px solid gray;
+  outline: none;
+}
+.invalid {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+.invalid span {
+  margin-right: 5px;
+  font-size: 0.8rem;
+  color: red;
+}
+
+.waiting {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #a09e9e;
+}
+.waiting span {
+  margin-right: 5px;
+}
+
+.send-again {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+.send-again p {
+  font-size: 0.8rem;
+  color: #a09e9e;
+}
+.send-again span {
+  font-size: 0.9rem;
+  color: #08c208;
+  margin-top: 1.5rem;
+  font-family: Vazir-bold;
+}
+.rules {
+  font-size: 0.9rem;
+  color: #808080;
+  padding: 1.4rem;
+  font-family: Vazir-bold;
+}
+.rules span {
+  color: #08c208;
+}
+.button {
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  color: #b5b5b5;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #ededed;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.button.active {
+  color: #fff;
+  background-color: #ff00b3;
+}

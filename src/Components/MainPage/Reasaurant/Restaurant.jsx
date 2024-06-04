@@ -149,14 +149,11 @@ export default function Restaurant({ title, index }) {
       <div className={styles.title}>
         <p>{title}</p>
         <ShowMore />
-        {/* <div className={styles["show-more"]}>
-          <p>مشاهده همه</p>
-          <img src={leftangel} alt="leftangel.svg" />
-        </div> */}
       </div>
       <div className={styles.Ritems}>
         {list.map((i, index) => (
           <RestaurantItem
+            key={index}
             backCoverUp={i.backCoverUp}
             freeSendingP={i.freeSendingP}
             discountP={i.discountP}

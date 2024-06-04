@@ -22,7 +22,7 @@ export default function DownloadApp() {
           <div className={styles["receive-link"]}>
             <input type="text" placeholder="09*********" />
             {/* <a href="#">دریافت لینک</a> */}
-            <Button title={"دریافت لینک"} />
+            <Button title={"دریافت لینک"} className={styles.background} />
           </div>
         </div>
         <div className={styles["list-app"]}>

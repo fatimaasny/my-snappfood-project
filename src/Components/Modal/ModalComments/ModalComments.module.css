@@ -1,0 +1,182 @@
+.backdrop {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+.modalcomments {
+  width: 50%;
+  height: 90vh;
+  background: #fff;
+  position: fixed;
+  z-index: 100;
+  top: 5%;
+  left: 25%;
+}
+.header {
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+}
+.btn-close-icons {
+  margin: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.middle-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.middle-content .shadow {
+  box-shadow: 0 0 20px 5px #eee;
+}
+.imgres {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #eee;
+  display: block;
+}
+.info {
+}
+.info h4 {
+  color: #444;
+  font-size: 1.5rem;
+}
+.info .content {
+  margin-top: 5px;
+  color: #666;
+  font-size: 0.9rem;
+}
+.info .address {
+  font-size: 0.7rem;
+  margin-top: 5px;
+}
+
+.map {
+  overflow: hidden;
+  width: 180px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.map button {
+  background: #fff;
+  border-radius: 20px;
+  border: none;
+  font-size: 1rem;
+  color: #14dc14;
+  padding: 10px;
+  font-family: Vazir-bold;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.map button:hover {
+  color: #0d990d;
+}
+.details-list {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+.content-scrolled {
+  overflow-y: scroll;
+  padding: 1rem;
+  height: 60%;
+}
+.scores {
+  display: flex;
+  justify-content: space-between;
+  height: 14vh;
+}
+.scores .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding-right: 1rem;
+}
+.right .star {
+}
+.right .star button {
+  background: none;
+  border: none;
+}
+.right .star span {
+  font-size: 1.4rem;
+  font-family: Vazir-bold;
+  color: #444;
+}
+.right .text {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+.right .text span {
+  font-size: 0.8rem;
+  color: #444;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-family: Vazir-bold;
+}
+.middle {
+  direction: ltr;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+}
+.left span {
+  display: inline-block;
+  width: 400px;
+  height: 3px;
+  background: #eee;
+  margin-top: 1.4rem;
+}
+.left span:first-child {
+  margin-top: 8px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.title h4 {
+  color: #444;
+}
+.title .leftcontent {
+  display: flex;
+  align-items: center;
+}
+.title .leftcontent span {
+  font-family: Vazir-medium;
+  font-size: 0.85rem;
+  color: #444;
+}
+.togglebtn {
+  background: #eee;
+  border-radius: 10px;
+  padding: 2px;
+  margin-right: 1rem;
+}
+
+.button {
+  border: none;
+  background: none;
+  padding: 0.5rem 2.5rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+}
+.button.toggle {
+  color: #0d990d;
+  background: #fff;
+  transition: all 0.2s ease-in;
+}

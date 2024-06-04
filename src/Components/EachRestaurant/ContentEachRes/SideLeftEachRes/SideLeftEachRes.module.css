@@ -9,14 +9,12 @@
   border-radius: 10px;
   border: 1px solid #ebeaea;
 }
-.side-left-each-res-component .select-recieve .time {
-}
+
 .side-left-each-res-component .select-recieve p {
   color: #636363;
   font-size: 0.8rem;
 }
-.side-left-each-res-component .select-recieve .angel-down {
-}
+
 .side-left-each-res-component .send-price {
   display: flex;
   padding: 12px 10px;
@@ -38,8 +36,7 @@
   padding-top: 50px;
   color: #b7b6b6;
 }
-.side-left-each-res-component .product-box img {
-}
+
 .side-left-each-res-component .product-box p {
   margin-top: 10px;
 }

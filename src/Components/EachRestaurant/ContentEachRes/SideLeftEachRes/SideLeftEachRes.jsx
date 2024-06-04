@@ -1,27 +1,24 @@
 import styles from "./SideLeftEachRes.module.css";
-import userPost from "../../../../Images/RestaurantItem/userPost.svg";
-import productBox from "../../../../Images/EachRestaurant/productBox.svg";
-import downAngel from "../../../../Images/EachRestaurant/downthin.svg";
-import clock from "../../../../Images/EachRestaurant/clock.svg";
+
+import { AiOutlineFieldTime } from "react-icons/ai";
+import { FaAngleDown } from "react-icons/fa";
+import { GrUserWorker } from "react-icons/gr";
+import { LuShoppingBag } from "react-icons/lu";
 
 export default function SideLeftEachRes() {
   return (
     <div className={styles["side-left-each-res-component"]}>
       <div className={styles["select-recieve"]}>
-        <img className={styles.time} src={clock} alt="clock.svg" />
+        <AiOutlineFieldTime fontSize="1.4rem" />
         <p>دریافت در سریع ترین زمان ممکن</p>
-        <img
-          className={styles["angel-down"]}
-          src={downAngel}
-          alt="down-angel.svg"
-        />
+        <FaAngleDown fontSize="1.1rem" color="#46934c" />
       </div>
       <div className={styles["send-price"]}>
-        <img src={userPost} alt="userpost.svg" />
+        <GrUserWorker fontSize="1.4rem" />
         <p>پیک فروشنده 15,000 تومان</p>
       </div>
       <div className={styles["product-box"]}>
-        <img src={productBox} alt="product-box.svg" />
+        <LuShoppingBag fontSize="1.4rem" color="#aaa" />
         <p>سبد خرید شما خالی است!</p>
       </div>
     </div>

@@ -2,15 +2,7 @@
   border-radius: 10px;
   overflow: clip;
   flex-shrink: 0;
+  /* background: yellow; */
   /* اون قسمتی بود که این دیو کوچک میشد و نصف عکس معلوم میشد و بقیه میزد بیرون */
   /* این میگه یعنی هیچ کس اجازه نداره بزنه بیرون و به اندازه اش فضا لحاظ بشه براش  */
-}
-.round.shadow {
-  box-shadow: 0 1px 3px #ededed;
-}
-.round.shadow:hover {
-  box-shadow: 0 10px 15px #ededed;
-}
-.round.margin {
-  margin: 10px;
 }

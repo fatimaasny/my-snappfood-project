@@ -1,0 +1,69 @@
+.comments {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  margin-top: 1rem;
+  padding: 1rem 0;
+}
+.comments .right {
+  width: 30%;
+}
+.right h4 {
+  color: #444;
+}
+.right p {
+  color: #666;
+  margin-top: 5px;
+  font-size: 0.85rem;
+}
+.right .starbtn {
+  background: none;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 3px 6px;
+  margin-top: 5px;
+}
+.right .starbtn span {
+  margin-right: 3px;
+}
+.comments .left {
+  width: 70%;
+}
+.left .description {
+  color: #666;
+  font-size: 0.9rem;
+}
+.left .extra {
+}
+.left .extra p:first-child {
+  color: #666;
+  font-size: 0.7rem;
+  margin-top: 10px;
+}
+.left .extra p:last-child {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ordernames {
+  display: flex;
+  margin-top: 10px;
+}
+.ressponse {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin: 15px 0 0;
+  padding: 10px;
+}
+.ressponse h5 {
+  color: #ff00b3;
+  font-size: 0.75rem;
+  font-family: Vazir-medium;
+}
+.ressponse p {
+  color: #666;
+  font-size: 0.8rem;
+}

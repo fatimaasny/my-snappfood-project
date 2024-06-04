@@ -1,7 +1,9 @@
 import styles from "./InfoOfRes.module.css";
 import imgageRes from "../../../../../Images/EachRestaurant/image-res1.jpg";
-import starSvg from "../../../../../Images/RestaurantItem/star.svg";
 import Card from "../../../../Card/Card";
+
+import { IoMdStar } from "react-icons/io";
+
 export default function InfoOfRes() {
   return (
     <div className={styles["info-of-res-component"]}>
@@ -10,7 +12,7 @@ export default function InfoOfRes() {
       </Card>
       <div className={styles.info}>
         <div className={styles.score}>
-          <img src={starSvg} alt="star.svg" />
+          <IoMdStar color="#e9e615" fontSize="1rem" />
           <span>4.4</span>
           <p>(17,632 امتیاز)</p>
         </div>

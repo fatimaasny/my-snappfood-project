@@ -1,0 +1,21 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.details button {
+  border: none;
+  background: none;
+}
+.details .title {
+  color: #606060;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+.details .text {
+  font-size: 0.8rem;
+  color: #404040;
+  font-family: Vazir-medium;
+  margin-top: 2px;
+}

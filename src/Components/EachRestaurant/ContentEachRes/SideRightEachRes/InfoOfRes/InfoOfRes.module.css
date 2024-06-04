@@ -17,9 +17,7 @@
 .info-of-res-component .info .score {
   display: flex;
 }
-.info-of-res-component .info .score img {
-  width: 14px;
-}
+
 .info-of-res-component .info .score span {
   margin-right: 5px;
   font-size: 0.8rem;

@@ -8,6 +8,12 @@
   /* box-shadow: 0 15px 15px silver; */
 }
 
+.shadow {
+  box-shadow: 0 1px 3px #ededed;
+}
+.shadow:hover {
+  box-shadow: 0 10px 15px #ededed;
+}
 .Ritem {
   width: 290px;
   height: 350px;

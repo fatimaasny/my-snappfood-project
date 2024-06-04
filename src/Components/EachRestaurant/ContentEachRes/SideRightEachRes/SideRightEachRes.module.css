@@ -10,10 +10,9 @@
   margin-top: 30px;
   padding: 10px 0;
   border-radius: 25px;
+  cursor: pointer;
 }
-.side-Right-each-res-component .comments img {
-  width: 20px;
-}
+
 .side-Right-each-res-component .comments p {
   margin-right: 5px;
   color: #05cb05;

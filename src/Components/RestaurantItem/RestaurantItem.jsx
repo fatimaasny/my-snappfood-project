@@ -25,7 +25,7 @@ export default function RestaurantItem({
 }) {
   return (
     <div className={styles.container}>
-      <Card className={"shadow"}>
+      <Card className={styles.shadow}>
         <div className={styles.Ritem}>
           <div
             className={styles.up}
@@ -69,14 +69,14 @@ export default function RestaurantItem({
             )}
 
             {expressText && (
-              <div class={styles["post-price"]}>
+              <div className={styles["post-price"]}>
                 <img src={expressPost} alt="postman.svg" />
                 <span>{postPriceFirstS}</span>
                 <span>{postPriceLastS}</span>
               </div>
             )}
             {salerText && (
-              <div class={styles["post-price"]}>
+              <div className={styles["post-price"]}>
                 <img src={userPost} alt="postman.svg" />
                 <span>{postPriceFirstS}</span>
                 <span>{postPriceLastS}</span>
