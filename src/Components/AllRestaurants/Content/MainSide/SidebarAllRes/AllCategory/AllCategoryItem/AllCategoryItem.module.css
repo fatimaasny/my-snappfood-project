@@ -19,3 +19,7 @@
 .all-category-item-component .icon {
   width: 20px;
 }
+.all-category-item-component button {
+  border: none;
+  background: none;
+}

@@ -52,27 +52,20 @@
   align-items: center;
 }
 .right .map #address-map {
-  color: #9c9a9a;
+  color: #999;
   font-size: 0.65rem;
   font-weight: 400;
   margin-left: 10px;
 }
 .right .search-box {
-  /* width: 400px; */
   width: 35%;
   border-radius: 10px;
-  background: #ebedf0;
+  background: #eee;
   padding: 10px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-right: 40px;
-}
-.search-box.active {
-  background: #fff;
-  border: 1px solid black;
-  /* position: fixed;
-  z-index: 100; */
 }
 
 .header-up .right .search-box input {
@@ -81,14 +74,14 @@
   background: none;
   font-size: 1rem;
   outline: none;
-  color: #a9a7a7;
+  color: #aaa;
   font-family: Vazir;
 }
 
 .header-up .left {
   width: 20%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .background {
@@ -97,5 +90,5 @@
 }
 .no-background {
   background: #fff;
-  color: gray;
+  color: #666;
 }

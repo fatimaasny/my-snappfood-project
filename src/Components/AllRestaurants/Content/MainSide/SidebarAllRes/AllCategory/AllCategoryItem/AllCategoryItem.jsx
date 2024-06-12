@@ -1,5 +1,7 @@
 import styles from "./AllCategoryItem.module.css";
-import leftAngel from "../../../../../../../Images/public/angelleft.svg";
+
+import { FaAngleLeft } from "react-icons/fa6";
+
 export default function AllCategoryItem({ source, title, icon }) {
   return (
     <div className={styles["all-category-item-component"]}>
@@ -7,7 +9,11 @@ export default function AllCategoryItem({ source, title, icon }) {
         <img src={source} alt="" />
         <p>{title}</p>
       </div>
-      {icon && <img className={styles.icon} src={leftAngel} alt="left-angel" />}
+      {icon && (
+        <button>
+          <FaAngleLeft fontSize="1.2rem" color="#444" />
+        </button>
+      )}
     </div>
   );
 }

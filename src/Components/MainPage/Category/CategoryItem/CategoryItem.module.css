@@ -4,7 +4,7 @@
   display: flex;
   position: relative;
 }
-.item div {
+.item .text {
   background: #fff;
   display: flex;
   align-items: center;
@@ -17,17 +17,17 @@
   height: 35px;
   cursor: pointer;
 }
-.item div p {
-  color: #000;
+.text p {
+  color: #666;
   font-size: 1rem;
 }
-.item div img {
-  width: 20px;
-  margin-right: 5px;
+.text button {
+  border: none;
+  background: none;
 }
 
-.item div:hover img {
-  padding-right: 4px;
+.text:hover button {
+  margin-right: 6px;
 }
 .margin {
   margin: 10px;

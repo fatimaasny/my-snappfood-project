@@ -7,7 +7,7 @@ import { useState } from "react";
 import ModalComments from "../../../Modal/ModalComments/ModalComments";
 import ModalSpecialMap from "../../../Modal/ModalSpecialMap/ModalSpecialMap";
 
-export default function SideRightEachRes({ isScrolled, listOfTitles }) {
+export default function SideRightEachRes({ listOfTitles, listComments }) {
   const [isShowModalComments, setIsShowModalComments] = useState();
   const [isShowModalSpecialMap, setIsShowModalSpecialMap] = useState();
 
@@ -30,6 +30,7 @@ export default function SideRightEachRes({ isScrolled, listOfTitles }) {
         <ModalComments
           hideModalComments={hideModalComments}
           showModalSpecialMap={showModalSpecialMap}
+          listComments={listComments}
         />
       )}
       {isShowModalSpecialMap === 1 && (
@@ -41,10 +42,10 @@ export default function SideRightEachRes({ isScrolled, listOfTitles }) {
       <div className={styles["side-Right-each-res-component"]}>
         <InfoOfRes />
         <div className={styles.comments} onClick={showModalComments}>
-          <AiOutlineExclamationCircle color="#05cb05" fontSize="1.2rem" />
+          <AiOutlineExclamationCircle color="#26d354" fontSize="1rem" />
           <p> اطلاعات و نظرات</p>
         </div>
-        <MenuOfRes isScrolled={isScrolled} listOfTitles={listOfTitles} />
+        <MenuOfRes listOfTitles={listOfTitles} />
       </div>
     </>
   );

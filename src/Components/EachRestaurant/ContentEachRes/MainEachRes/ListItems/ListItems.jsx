@@ -5,14 +5,11 @@ export default function ListItems({
   listOfKopen,
   listItem,
   listItemAddbtn,
-  HandleIsScrolled,
+  listComments,
 }) {
   if (title === "کوپن‌ها") {
     return (
-      <div
-        className={styles["list-items-kopen-component"]}
-        onScroll={HandleIsScrolled(title)}
-      >
+      <div className={styles["list-items-kopen-component"]}>
         <h4>{title}</h4>
         <div className={styles["list-of-kopen"]}>
           {listOfKopen.map((i, index) => (
@@ -26,24 +23,19 @@ export default function ListItems({
     );
   }
   return (
-    <div
-      className={styles["list-items-component"]}
-      onScroll={HandleIsScrolled(title)}
-    >
+    <div className={styles["list-items-component"]}>
       <h4>{title}</h4>
       <div className={styles.list}>
-        {
-          //  { pName, spanTag, image, listofaddbtn }
-          // مپ بزنیم روی ایتم و به صورت پراپس براش بفرستیم
-          listItem.map((i, index) => (
-            <Item
-              pName={i.pName}
-              spanTag={i.spanTag}
-              image={i.image}
-              list={listItemAddbtn}
-            />
-          ))
-        }
+        {listItem.map((i, index) => (
+          <Item
+            key={index}
+            pName={i.pName}
+            spanTag={i.spanTag}
+            image={i.image}
+            list={listItemAddbtn}
+            listComments={listComments}
+          />
+        ))}
       </div>
     </div>
   );

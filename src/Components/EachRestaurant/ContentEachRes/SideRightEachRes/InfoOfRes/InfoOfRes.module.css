@@ -6,13 +6,18 @@
 .info-of-res-component .image-res {
   width: 80px;
   height: 80px;
-  border: 1px solid #eae7e7;
+  border: 1px solid #eee;
   display: block;
   /* این رو دادم به این علت که کارد یه ارتفاع اضافه ای میگرفت */
 }
 .info-of-res-component .info {
   display: flex;
   flex-direction: column;
+}
+.info-of-res-component .info .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .info-of-res-component .info .score {
   display: flex;
@@ -23,13 +28,20 @@
   font-size: 0.8rem;
 }
 .info-of-res-component .info .score p {
-  color: #a7a7a7;
+  color: #aaa;
   margin-right: 5px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  font-family: Vazir-medium;
 }
 
 .info-of-res-component .info h4 {
   font-size: 1.1rem;
   margin-top: 8px;
-  color: #434141;
+  color: #444;
+}
+.info-of-res-component .discount {
+  background: #fff;
+  padding: 3px 10px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 3px #eee, -1px -1px 3px #eee;
 }

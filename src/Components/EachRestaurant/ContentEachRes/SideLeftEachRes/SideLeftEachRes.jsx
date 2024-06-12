@@ -11,7 +11,7 @@ export default function SideLeftEachRes() {
       <div className={styles["select-recieve"]}>
         <AiOutlineFieldTime fontSize="1.4rem" />
         <p>دریافت در سریع ترین زمان ممکن</p>
-        <FaAngleDown fontSize="1.1rem" color="#46934c" />
+        <FaAngleDown fontSize="1.1rem" color="#418a47" />
       </div>
       <div className={styles["send-price"]}>
         <GrUserWorker fontSize="1.4rem" />

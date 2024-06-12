@@ -1,5 +1,5 @@
 import styles from "./Category.module.css";
-import angelLeft from "../../../Images/public/angelleft.svg";
+
 import irani from "../../../Images/Main/Category/irani.jpg";
 import fastFood from "../../../Images/Main/Category/fastFood.jpg";
 import kabab from "../../../Images/Main/Category/kabab.jpg";
@@ -13,6 +13,7 @@ import seaFood from "../../../Images/Main/Category/seafood.jpg";
 import asian from "../../../Images/Main/Category/asian.jpg";
 import gilani from "../../../Images/Main/Category/gilani.jpg";
 import CategoryItem from "./CategoryItem/CategoryItem";
+
 export default function Category({ title }) {
   const foodList = [
     {
@@ -82,7 +83,6 @@ export default function Category({ title }) {
       <h3>{title}</h3>
       <div className={styles.list}>
         {foodList.map((item, index) => (
-          
           <CategoryItem
             key={index}
             source={item.source}

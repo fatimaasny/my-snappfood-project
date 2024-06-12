@@ -1,8 +1,9 @@
 import styles from "./GiftBar.module.css";
+
 export default function GiftBar(props) {
   return (
     <div className={styles["free-sending"]}>
-      <img src={props.source} alt={props.alt} />
+      {props.icon}
       <p>{props.title}</p>
     </div>
   );

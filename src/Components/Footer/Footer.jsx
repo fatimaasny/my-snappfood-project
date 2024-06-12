@@ -1,15 +1,16 @@
 import styles from "./Footer.module.css";
 
-import snappFood from "../../Images/Footer/snappfood.png";
-import telegramIcon from "../../Images/Footer/telegram.svg";
-import linkedInIcon from "../../Images/Footer/linkedin.svg";
-import instagramIcon from "../../Images/Footer/instagram.svg";
-import aparatIcon from "../../Images/Footer/aparat.svg";
-import twitterIcon from "../../Images/Footer/twitter.svg";
-import senfImg from "../../Images/Footer/senf.png";
 import ShowList from "../ShowList/ShowList";
 import SocialIcon from "../SocialIcon/SocialIcon";
-// import RoundedImage from "../UI/RoundedImage/RoundedImage";
+
+import snappFood from "../../Images/Footer/snappfood.png";
+import senfImg from "../../Images/Footer/senf.png";
+
+import { FaTwitter } from "react-icons/fa";
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { SiAparat } from "react-icons/si";
 
 export default function Footer() {
   const LinkList1 = [
@@ -26,13 +27,15 @@ export default function Footer() {
     "ثبت شکایات",
     "اپلیکیشن موبایل",
   ];
+
   const ListSocialIcon = [
-    { source: twitterIcon, alt: "twitter-icon.svg" },
-    { source: telegramIcon, alt: "telegram-icon.svg" },
-    { source: linkedInIcon, alt: "linkedin-icon.svg" },
-    { source: instagramIcon, alt: "instagram-icon.svg" },
-    { source: aparatIcon, alt: "aparat-icon.svg" },
+    { icon: <FaTwitter color="#666" fontSize="1.2rem" /> },
+    { icon: <FaTelegramPlane color="#666" fontSize="1.2rem" /> },
+    { icon: <FaLinkedin color="#666" fontSize="1.2rem" /> },
+    { icon: <FaInstagram color="#666" fontSize="1.2rem" /> },
+    { icon: <SiAparat color="#666" fontSize="1.2rem" /> },
   ];
+
   return (
     <footer>
       <div className={styles["first-part"]}>
@@ -42,7 +45,7 @@ export default function Footer() {
           <p>تجربه سفارش غذا، از زودفود تا اسنپ‌فود</p>
           <div className={styles.icons}>
             {ListSocialIcon.map((i, index) => (
-              <SocialIcon key={index} source={i.source} alt={i.alt} />
+              <SocialIcon icon={i.icon} />
             ))}
           </div>
         </div>

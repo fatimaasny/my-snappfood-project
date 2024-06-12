@@ -1,3 +1,7 @@
+import styles from "./Restaurant.module.css";
+
+import ShowMore from "../../ShowMore/ShowMore";
+
 import tazeImg1 from "../../../Images/Main/Restaurant/tazeha/1.jpg";
 import tazeImg11 from "../../../Images/Main/Restaurant/tazeha/1-1.jpg";
 
@@ -18,9 +22,7 @@ import bartarImg21 from "../../../Images/Main/Restaurant/bartarin ha/1-1.jpg";
 import bartarImg3 from "../../../Images/Main/Restaurant/bartarin ha/3.jpg";
 import bartarImg31 from "../../../Images/Main/Restaurant/bartarin ha/3-1.jpg";
 import RestaurantItem from "../../../Components/RestaurantItem/RestaurantItem";
-import styles from "./Restaurant.module.css";
-import leftangel from "../../../Images/public/angelleft.svg";
-import ShowMore from "../../ShowMore/ShowMore";
+
 export default function Restaurant({ title, index }) {
   let list = [];
   const tazehaList = [
@@ -31,14 +33,14 @@ export default function Restaurant({ title, index }) {
       centerImage: tazeImg11,
       titleH: "آش و حلیم کرمانشاهی آوین",
       scorePFirst: "جدید",
-      scorePLast: "(9)",
+      scorePLast: "(9امتیاز)",
       typeFoodP: "سنتی، آش و حلیم",
       preRequestSpan: false,
       RequestText: false,
       expressText: "اکسپرس",
       salerText: false,
       postPriceFirstS: "ارسال اکسپرس",
-      postPriceLastS: "10,500 تومان",
+      postPriceLastS: "10,500",
     },
     {
       backCoverUp: tazeImg2,
@@ -47,7 +49,7 @@ export default function Restaurant({ title, index }) {
       centerImage: tazeImg11,
       titleH: "مجتمع سنگک",
       scorePFirst: "جدید",
-      scorePLast: "(340)",
+      scorePLast: "(340 امتیاز)",
       typeFoodP: false,
       preRequestSpan: "پیش سفارش",
       requestText: "پیش سفارش",
@@ -63,14 +65,14 @@ export default function Restaurant({ title, index }) {
       centerImage: tazeImg31,
       titleH: "آشکده چوبین (فلسطین)",
       scorePFirst: false,
-      scorePLast: "(100)",
+      scorePLast: "(100امتیاز)",
       typeFoodP: "آش و حلیم، آش، حلیم",
       preRequestSpan: false,
       requestText: false,
       expressText: false,
       salerText: "فروشنده",
       postPriceFirstS: "پیک فروشنده",
-      postPriceLastS: "19,000 تومان",
+      postPriceLastS: "19,000",
     },
     {
       backCoverUp: tazeImg4,
@@ -97,7 +99,7 @@ export default function Restaurant({ title, index }) {
       centerImage: bartarImg11,
       titleH: "طباخی سنتی نشاط",
       scorePFirst: "3.8",
-      scorePLast: "(2,501)",
+      scorePLast: "(2,501 امتیاز)",
       typeFoodP: "ایرانی، سنتی، کله پاچه",
       preRequestSpan: "پیش سفارش",
       requestText: "پیش سفارش",
@@ -113,14 +115,14 @@ export default function Restaurant({ title, index }) {
       centerImage: bartarImg21,
       titleH: "فینگل بریک رویا",
       scorePFirst: "4.4",
-      scorePLast: "(5,697)",
+      scorePLast: "(5,697 امتیاز)",
       typeFoodP: "صبحانه و میان‌وعده، صبحانه، ساندویچ",
       preRequestSpan: false,
       requestText: false,
       expressText: false,
       salerText: "فروشنده",
       postPriceFirstS: "پیک فروشنده",
-      postPriceLastS: "35,000 تومان",
+      postPriceLastS: "35,000",
     },
     {
       backCoverUp: bartarImg3,
@@ -136,7 +138,7 @@ export default function Restaurant({ title, index }) {
       expressText: "اکسپرس",
       salerText: false,
       postPriceFirstS: "ارسال اکسپرس",
-      postPriceLastS: "41,000 تومان",
+      postPriceLastS: "41,000",
     },
   ];
   if (index === 1) {
@@ -147,8 +149,8 @@ export default function Restaurant({ title, index }) {
   return (
     <div className={styles.content}>
       <div className={styles.title}>
-        <p>{title}</p>
-        <ShowMore />
+        <h4>{title}</h4>
+        <ShowMore class="big" />
       </div>
       <div className={styles.Ritems}>
         {list.map((i, index) => (

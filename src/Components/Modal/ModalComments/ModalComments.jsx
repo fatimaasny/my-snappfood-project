@@ -1,7 +1,10 @@
-import Card from "../../Card/Card";
 import styles from "./ModalComments.module.css";
+import { useState } from "react";
+
+import Card from "../../Card/Card";
 import Details from "../../EachRestaurant/ContentEachRes/SideRightEachRes/Details/Details";
 import Comment from "../../EachRestaurant/ContentEachRes/SideRightEachRes/Comment/Comment";
+import Lineer from "../../EachRestaurant/ContentEachRes/SideRightEachRes/Lineer/Lineer";
 
 import imgRes from "../../../Images/EachRestaurant/image-res1.jpg";
 import imgmap from "../../../Images/Modal/map11.jpg";
@@ -13,62 +16,12 @@ import { IoMdTime } from "react-icons/io";
 import { LiaHandLizard } from "react-icons/lia";
 import { SlBasketLoaded } from "react-icons/sl";
 import { IoMdStar } from "react-icons/io";
-import { useState } from "react";
 
 function ModalComments(props) {
   const [isToggleBtn, setIsToggleBtn] = useState("new");
   const ToggleHandler = (value) => {
     setIsToggleBtn(value);
   };
-
-  // const starsShapeHandle = () => {
-  //   for (let i = 1; i <= 5; i++) {
-  //     for (let j = 1; j <= i; j++) {}
-  //   }
-  // };
-
-  const listComments = [
-    {
-      name: "رها",
-      date: "2 خرداد 1403",
-      starscore: true,
-      rate: 3,
-      description:
-        "این چه وضعی هست برای خودم متاسفم جای کباب برای من دیزی آوردند.",
-      extracomment: true,
-      extratext:
-        "بسیار بی کیفیت بود لطفا بررسی کنید تا اینقدر به مشتری توهین نشود.",
-      listOrderName: ["حلیم", "آش کوچک", "غذای سنتی ایرانی"],
-      ressponse: true,
-      ressponsetext:
-        "بسیار پوزش میطلبم ، حتما بررسی میکنیم و پیگیر هستیم. ممنون از اطلاع رسانی شما.",
-    },
-    {
-      name: "شادان",
-      date: "20 اردیبهشت 1403 ",
-      starscore: true,
-      rate: 4,
-      description: "همه چی خوب بود و راضی بودم از کیفیت زرشک پلو",
-      extracomment: false,
-      extratext: "",
-      listOrderName: ["زرشک پلو", "غذای ایرانی"],
-      ressponse: false,
-      ressponsetext: "",
-    },
-    {
-      name: "فرهاد",
-      date: "1 فروردین 1403",
-      starscore: false,
-      rate: "",
-      description:
-        "کیفیت مثل همیشه نبود، پیک هم دیر به دستم رساند و سرد شده بود.",
-      extracomment: false,
-      extratext: "",
-      listOrderName: ["فست‌فود", "پیتزا"],
-      ressponse: false,
-      ressponsetext: "",
-    },
-  ];
 
   return (
     <>
@@ -91,7 +44,7 @@ function ModalComments(props) {
                 آش و حلیم، آش، غذای سنتی، سوپ، نوشیدنی
               </p>
               <p className={styles.address}>
-                <FaLocationDot fontSize="1rem" color="#a9a7a7" />
+                <FaLocationDot fontSize="1rem" color="#aaa" />
                 ولیعصر، بعد از انقلاب اسلامی، کوچه مدنی، سمت راست، ساختمان پنجم
                 طبقه ششم
               </p>
@@ -102,23 +55,23 @@ function ModalComments(props) {
             >
               <button onClick={props.showModalSpecialMap}>
                 مشاهده روی نقشه
-                <FaAngleLeft color="#14dc14" />
+                <FaAngleLeft color="#26d354" />
               </button>
             </div>
           </div>
           <div className={styles["details-list"]}>
             <Details
-              icon={<IoMdTime color="#606060" fontSize="1.3rem" />}
+              icon={<IoMdTime color="#666" fontSize="1.3rem" />}
               title={"ساعت کاری"}
               text={"باز امروز از ساعت 7 تا 23"}
             />
             <Details
-              icon={<LiaHandLizard color="#606060" fontSize="1.3rem" />}
+              icon={<LiaHandLizard color="#666" fontSize="1.3rem" />}
               title={"شیوه های پرداخت"}
               text={"آنلاین، اعتبار جایزه خرید"}
             />
             <Details
-              icon={<SlBasketLoaded color="#606060" fontSize="1.3rem" />}
+              icon={<SlBasketLoaded color="#666" fontSize="1.3rem" />}
               title={"حداقل سبد خرید"}
               text={"40000 تومان"}
             />
@@ -129,7 +82,7 @@ function ModalComments(props) {
             <div className={styles.right}>
               <p className={styles.star}>
                 <button>
-                  <IoMdStar fontSize="1.5rem" color="#e9e615" />
+                  <IoMdStar fontSize="1.5rem" color="#f8d527" />
                 </button>
                 <span>4.2</span>
               </p>
@@ -141,19 +94,42 @@ function ModalComments(props) {
               </p>
             </div>
             <div className={styles.middle}>
-              * * * * * <br />
-              * * * * <br />
-              * * *<br />
-              * *<br />
-              *<br />
+              <div>
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+              </div>
+              <div>
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+              </div>
+              <div>
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+              </div>
+              <div>
+                <IoMdStar color="#eee" />
+                <IoMdStar color="#eee" />
+              </div>
+              <div>
+                <IoMdStar color="#eee" />
+              </div>
             </div>
 
-            <div className={styles.left}>
+            {/* <div className={styles.left}>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
+            </div> */}
+            <div className={styles.lineer}>
+              <Lineer />
             </div>
           </div>
           <div className={styles.title}>
@@ -181,7 +157,7 @@ function ModalComments(props) {
             </div>
           </div>
           <div className={styles.comments}>
-            {listComments.map((i, index) => (
+            {props.listComments.map((i, index) => (
               <Comment
                 key={index}
                 name={i.name}

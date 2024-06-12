@@ -18,7 +18,7 @@
 .dlApp-content .content p {
   font-size: 1rem;
   padding-left: 60px;
-  color: #6d6c6c;
+  color: #666;
   margin-top: 20px;
 }
 .dlApp-content .enter-phone {
@@ -28,7 +28,7 @@
 }
 .dlApp-content .enter-phone p {
   font-size: 0.9rem;
-  color: #000;
+  color: black;
 }
 .dlApp-content .receive-link {
   display: flex;
@@ -65,11 +65,10 @@
   grid-template-columns: repeat(4, 150px);
   gap: 0px;
 }
-.dlApp-content .list-app div {
-}
-.dlApp-content .list-app div img {
+.dlApp-content .list-app img {
   width: 140px;
 }
+
 .dlApp-content .image {
   width: 35%;
   position: relative;

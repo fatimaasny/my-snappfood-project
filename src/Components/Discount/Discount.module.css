@@ -1,0 +1,10 @@
+.discount {
+  background: #faedf5;
+  font-size: 0.85rem;
+  font-family: vazir-bold;
+  color: #ff00b3;
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+.discount p {
+}

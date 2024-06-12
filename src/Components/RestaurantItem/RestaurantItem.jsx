@@ -1,11 +1,13 @@
 import styles from "./RestaurantItem.module.css";
-import gift from "../../Images/RestaurantItem/gift.svg";
-import expressPost from "../../Images/RestaurantItem/express.svg";
-import userPost from "../../Images/RestaurantItem/userPost.svg";
-import star from "../../Images/RestaurantItem/star.svg";
-import timePost from "../../Images/RestaurantItem/time-post.svg";
-import GiftBar from "../GiftBar/GiftBar";
+
 import Card from "../../Components/Card/Card";
+import GiftBar from "../GiftBar/GiftBar";
+
+import { AiFillTags } from "react-icons/ai";
+import { GiFullMotorcycleHelmet } from "react-icons/gi";
+import { BsPersonUp } from "react-icons/bs";
+import { IoMdStar } from "react-icons/io";
+import { IoMdTime } from "react-icons/io";
 
 export default function RestaurantItem({
   backCoverUp,
@@ -36,9 +38,11 @@ export default function RestaurantItem({
           >
             {freeSendingP && (
               <div className={styles["free-sending"]}>
-                <GiftBar source={gift} alt={"gift.svg"} title={freeSendingP} />
-                {/* <img src={gift} alt="gift.svg" />
-            <p>{freeSendingP}</p> */}
+                <GiftBar
+                  icon={<AiFillTags color="#26d354" fontSize="1rem" />}
+                  alt={"gift.svg"}
+                  title={freeSendingP}
+                />
               </div>
             )}
 
@@ -55,31 +59,37 @@ export default function RestaurantItem({
           <div className={styles.down}>
             <h4>{titleH}</h4>
             <div className={styles.score}>
-              <img src={star} alt="start.svg" />
+              <IoMdStar fontSize="1rem" color="#f8d527" />
               {scorePFirst && <p>{scorePFirst}</p>}
               {scorePLast && <p>{scorePLast}</p>}
             </div>
             {typeFoodP && <p className={styles["types-food"]}>{typeFoodP}</p>}
 
             {requestText && (
-              <div className={styles["pre-request"]}>
-                <img src={timePost} alt="time-post.svg" />
+              <div
+                className={`${styles["pre-request"]} ${
+                  typeFoodP ? styles.quarter : styles.half
+                }`}
+              >
+                <IoMdTime color="#666" fontSize="1.4rem" />
                 <span>{preRequestSpan}</span>
               </div>
             )}
 
             {expressText && (
               <div className={styles["post-price"]}>
-                <img src={expressPost} alt="postman.svg" />
+                <GiFullMotorcycleHelmet color="#666" fontSize="1.4rem" />
                 <span>{postPriceFirstS}</span>
                 <span>{postPriceLastS}</span>
+                <span>تومان</span>
               </div>
             )}
             {salerText && (
               <div className={styles["post-price"]}>
-                <img src={userPost} alt="postman.svg" />
+                <BsPersonUp color="#666" fontSize="1.4rem" />
                 <span>{postPriceFirstS}</span>
                 <span>{postPriceLastS}</span>
+                <span>تومان</span>
               </div>
             )}
           </div>

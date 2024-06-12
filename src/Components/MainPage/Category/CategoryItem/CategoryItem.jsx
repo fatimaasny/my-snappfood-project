@@ -1,6 +1,9 @@
 import styles from "./CategoryItem.module.css";
-import angelLeft from "../../../../Images/public/angelleft.svg";
+
 import Card from "../../../Card/Card";
+
+import { FaAngleLeft } from "react-icons/fa";
+
 export default function CategoryItem({ source, title, alt }) {
   return (
     <Card className={styles.margin}>
@@ -8,9 +11,11 @@ export default function CategoryItem({ source, title, alt }) {
         className={styles.item}
         style={{ background: `url(${source})`, backgroundSize: "cover" }}
       >
-        <div>
+        <div className={styles.text}>
           <p>{title}</p>
-          <img src={angelLeft} alt="angelLeft.svg" />
+          <button>
+            <FaAngleLeft color="#ff00b3" fontSize="1rem" />
+          </button>
         </div>
       </div>
     </Card>

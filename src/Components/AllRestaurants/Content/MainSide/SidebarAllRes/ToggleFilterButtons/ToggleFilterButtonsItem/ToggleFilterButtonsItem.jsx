@@ -1,4 +1,5 @@
 import styles from "./ToggleFilterButtonsItem.module.css";
+
 export default function ToggleFilterButtonsItem({ title }) {
   return (
     <div className={styles["toggle-filter-buttons-item-component"]}>

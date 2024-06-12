@@ -70,7 +70,7 @@ export default function HeaderUp() {
 
   return (
     <>
-      {isShowModal && (
+      {isShowModal === 1 && (
         <ModalLogin
           onConfirm={hideModalHandler}
           mobile={mobile}
@@ -79,7 +79,7 @@ export default function HeaderUp() {
           showModalConfirmHandler={showModalConfirmHandler}
         />
       )}
-      {isShowModalConfirm && (
+      {isShowModalConfirm === 1 && (
         <ModalConfirmLogin
           mobile={mobile}
           showModalHandler={showModalHandler}
@@ -88,10 +88,10 @@ export default function HeaderUp() {
           setActive={setActive}
         />
       )}
-      {isShowModalSearch && (
+      {isShowModalSearch === 1 && (
         <ModalSearch hideModalSearchHandler={hideModalSearchHandler} />
       )}
-      {isShowModalMap && (
+      {isShowModalMap === 1 && (
         <ModalMap
           hideModalMapHandler={hideModalMapHandler}
           inputCity={inputCity}
@@ -112,14 +112,12 @@ export default function HeaderUp() {
                 <p id={styles["address-map"]}>
                   گچساران، پانصد دستگاه سمت راست خیابان ششم
                 </p>
-                <FaAngleDown color="#f70df7" fontSize="1rem" />
+                <FaAngleDown color="#ff00b3" fontSize="1rem" />
               </div>
             </div>
           </div>
           <div
-            className={`${styles["search-box"]} ${
-              isShowModalSearch ? styles.active : ""
-            }`}
+            className={styles["search-box"]}
             onClick={() => {
               showModalSearchHandler();
               setSearchBox("");
@@ -127,7 +125,7 @@ export default function HeaderUp() {
           >
             <FiSearch
               fontSize="1.2rem"
-              color={isShowModalSearch ? "black" : "#a9a7a7"}
+              color={isShowModalSearch ? "black" : "#aaa"}
             />
             <input
               type="text"
@@ -135,20 +133,13 @@ export default function HeaderUp() {
               onChange={(e) => {
                 setSearchBox(e.target.value);
               }}
-              // placeholder="جست‌و‌جو در اسنپ‌فود"
             />
           </div>
         </div>
         <div className={styles.left}>
           <Button
             title={"ثبت‌نام فروشندگان"}
-            icon={
-              <IoStorefrontOutline
-                fontSize="1.4rem"
-                fontWeight="600"
-                color="black"
-              />
-            }
+            icon={<IoStorefrontOutline fontSize="1.3rem" color="#666" />}
             className={styles["no-background"]}
           />
           <Button

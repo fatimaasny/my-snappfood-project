@@ -5,7 +5,7 @@
 .list-items-kopen-component h4 {
   text-align: center;
   font-size: 0.8rem;
-  color: #575656;
+  color: #666;
   margin-top: 30px;
   margin-bottom: 15px;
 }
@@ -13,7 +13,7 @@
 .list-items-component h4 {
   text-align: center;
   font-size: 0.8rem;
-  color: #575656;
+  color: #666;
   margin-top: 30px;
   margin-bottom: 15px;
 }
@@ -23,13 +23,14 @@
 }
 .list-items-kopen-component .list-of-kopen .kopen-item {
   border-radius: 5px;
-  background: #f6f5f5;
-  color: #a5a3a3;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  color: #aaa;
   padding: 10px;
   margin-right: 10px;
 }
 .list-items-kopen-component .list-of-kopen .kopen-item .first {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 .list-items-kopen-component .list-of-kopen .kopen-item .second {
   font-size: 0.7rem;

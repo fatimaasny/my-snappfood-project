@@ -1,17 +1,13 @@
 .free-sending {
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 5px 10px;
   background: #fff;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
-.free-sending img {
-  width: 20px;
-}
+
 .free-sending p {
-  font-size: 0.8rem;
-  padding-right: 5px;
-  color: #01b001;
+  font-size: 0.75rem;
+  color: #26d354;
 }

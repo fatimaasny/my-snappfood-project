@@ -1,0 +1,49 @@
+.search-product {
+  padding: 1.5rem 1.5rem 0.5rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+.up {
+  display: flex;
+}
+.up img {
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+.up .text {
+  margin-right: 1rem;
+}
+.up .text p:first-child {
+  font-size: 0.8rem;
+  font-family: Vazir-bold;
+  color: #444;
+}
+.up .text p:last-child {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+.prices {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.prices .pfirst {
+  font-size: 0.75rem;
+  color: #666;
+}
+.prices .pfirst span:last-child {
+  margin: 0 5px;
+}
+.prices .psecond {
+  font-size: 0.75rem;
+  color: #666;
+}
+.prices .psecond span {
+  font-family: Vazir-bold;
+  font-size: 0.9rem;
+  color: #444;
+  margin-left: 5px;
+}

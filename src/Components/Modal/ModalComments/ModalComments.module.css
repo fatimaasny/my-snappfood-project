@@ -71,7 +71,7 @@
   border-radius: 20px;
   border: none;
   font-size: 1rem;
-  color: #14dc14;
+  color: #26d354;
   padding: 10px;
   font-family: Vazir-bold;
   display: flex;
@@ -79,7 +79,7 @@
   cursor: pointer;
 }
 .map button:hover {
-  color: #0d990d;
+  color: #418a47;
 }
 .details-list {
   display: flex;
@@ -88,7 +88,7 @@
 }
 .content-scrolled {
   overflow-y: scroll;
-  padding: 1rem;
+  /* padding: 1rem; */
   height: 60%;
 }
 .scores {
@@ -124,20 +124,24 @@
   margin-left: 5px;
   font-family: Vazir-bold;
 }
-.middle {
+
+.middle div {
   direction: ltr;
 }
-.left {
+.lineer {
+  width: 60%;
+}
+/* .left {
   display: flex;
   flex-direction: column;
 }
 .left span {
   display: inline-block;
-  width: 400px;
+  width: 370px;
   height: 3px;
   background: #eee;
-  margin-top: 1.4rem;
-}
+  margin-top: 1.3rem;
+} */
 .left span:first-child {
   margin-top: 8px;
 }
@@ -146,6 +150,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  padding: 1rem;
 }
 .title h4 {
   color: #444;
@@ -176,7 +181,6 @@
   cursor: pointer;
 }
 .button.toggle {
-  color: #0d990d;
+  color: #26d354;
   background: #fff;
-  transition: all 0.2s ease-in;
 }

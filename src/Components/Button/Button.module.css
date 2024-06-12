@@ -1,26 +1,15 @@
 .button {
-  /* color: white; */
   width: fit-content;
   border: none;
-  padding: 12px 15px;
+  padding: 12px 5px;
   border-radius: 6px;
-  /* background: #ff00b3; */
-  /* font-size: 1.2rem; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
 }
-/* .button.noBackground {
-  background: white;
-  color: gray;
-} */
-.button img {
-  width: 22px;
-  margin-left: 4px;
-}
 .button span {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-family: Vazir-medium;
   margin-right: 5px;
 }

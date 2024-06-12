@@ -110,7 +110,7 @@ function ModalMap(props) {
           <button className={styles["btn-close-icon"]}>
             <IoCloseOutline
               fontSize="1.7rem"
-              color="#636161"
+              color="#666"
               cursor="pointer"
               onClick={props.hideModalMapHandler}
             />

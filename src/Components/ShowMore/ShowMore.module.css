@@ -1,12 +1,17 @@
 .show-more {
   display: flex;
   align-items: center;
+  color: #26d354;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
-.show-more p {
-  font-size: 1.1rem;
-  color: #06b106;
-  padding-top: 12px;
+
+.show-more .text {
+  color: #26d354;
 }
-.show-more img {
-  width: 20px;
+.show-more span {
+  margin: 0 5px;
+}
+.show-more.big p{
+  font-size: 1.4rem;
 }

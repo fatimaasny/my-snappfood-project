@@ -1,6 +1,8 @@
 import styles from "./OneCategory.module.css";
+
+import { FaAngleRight } from "react-icons/fa6";
+
 import OneCategoryItem from "./OneCategoryItem/OneCategoryItem";
-import rightNgel from "../../../../../../Images/AllRestaurants/OneCategory/RightNgel.svg";
 import kababImg from "../../../../../../Images/AllRestaurants/OneCategory/OneCategory-kebab.png";
 import sonatiImg from "../../../../../../Images/AllRestaurants/OneCategory/OneCategory-sonnati.png";
 import poloIraniImg from "../../../../../../Images/AllRestaurants/OneCategory/OneCategory-polo-irani.png";
@@ -37,7 +39,9 @@ export default function OneCategory({ title }) {
   return (
     <div className={styles["onecategory-component"]}>
       <div className={styles.back}>
-        <img src={rightNgel} alt="right-angel" />
+        <button>
+          <FaAngleRight color="#444" fontSize="1rem" />
+        </button>
         <p>بازگشت</p>
       </div>
       <h4>{title}</h4>

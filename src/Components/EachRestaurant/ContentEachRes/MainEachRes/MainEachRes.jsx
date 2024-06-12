@@ -1,7 +1,7 @@
 import ListItems from "./ListItems/ListItems";
 import styles from "./MainEachRes.module.css";
 import foodImg from "../../../../Images/EachRestaurant/foodiii.jpg";
-export default function MainEachRes({ HandleIsScrolled, listOfTitles }) {
+export default function MainEachRes({ listOfTitles, listComments }) {
   // const listOfTitles = ["کوپن‌ها", "پرطرفدارها", "سوخاری"];
   const listOfKopen = [
     ["ماست موسیر خامه ای رایگان", "مخصوص سفارش اول"],
@@ -87,21 +87,21 @@ export default function MainEachRes({ HandleIsScrolled, listOfTitles }) {
         listOfKopen={listOfKopen}
         listItem={listItem1}
         listItemAddbtn={false}
-        HandleIsScrolled={HandleIsScrolled}
+        listComments={listComments}
       />
       <ListItems
         title={listOfTitles[1]}
         listOfKopen={false}
         listItem={listItem1}
         listItemAddbtn={listItemAddbtn1}
-        HandleIsScrolled={HandleIsScrolled}
+        listComments={listComments}
       />
       <ListItems
         title={listOfTitles[2]}
         listOfKopen={false}
         listItem={listItem2}
         listItemAddbtn={listItemAddbtn2}
-        HandleIsScrolled={HandleIsScrolled}
+        listComments={listComments}
       />
     </div>
   );

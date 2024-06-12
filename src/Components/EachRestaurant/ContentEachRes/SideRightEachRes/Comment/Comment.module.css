@@ -7,8 +7,9 @@
 }
 .comments .right {
   width: 30%;
+  padding-right: 1rem;
 }
-.right h4 {
+.right h5 {
   color: #444;
 }
 .right p {
@@ -22,7 +23,7 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
-  padding: 3px 6px;
+  padding: 4px 8px;
   margin-top: 5px;
 }
 .right .starbtn span {
@@ -30,6 +31,7 @@
 }
 .comments .left {
   width: 70%;
+  padding-left: 1rem;
 }
 .left .description {
   color: #666;

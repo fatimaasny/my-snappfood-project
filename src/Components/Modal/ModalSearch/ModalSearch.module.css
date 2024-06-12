@@ -5,20 +5,85 @@
   z-index: 10;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
 }
-.modal-serach {
-  width: 410px;
+/* ######################################## card 1 ################# */
+
+.modal-serach-input {
+  width: 450px;
+  height: 55px;
+  line-height: 55px;
+  position: fixed;
+  z-index: 100;
+  top: 2%;
+  left: 37%;
+  background: #fff;
+  padding-right: 10px;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+.modal-serach-input input {
+  width: 80%;
+  height: 35px;
+  line-height: 35px;
+  font-size: 1.2rem;
+  color: #666;
+  border: none;
+}
+.modal-serach-input input:focus {
+  outline: none;
+}
+
+/* ######################################## card 2 ################# */
+.modal-serach-text {
+  width: 450px;
   height: 55px;
   line-height: 55px;
   position: fixed;
   z-index: 100;
   top: 9%;
-  left: 39%;
+  left: 37%;
   background: #fff;
   padding-right: 10px;
 }
-.modal-serach p {
-  color: #4c4c4c;
+.modal-serach-text .typing {
+  display: flex;
+  align-items: center;
   font-size: 0.9rem;
+  color: #666;
+}
+.modal-serach-text .typing span {
+  margin-left: 5px;
+}
+.modal-serach-text .typing p {
+  width: 77%;
+  font-family: Vazir-bold;
+}
+
+.modal-serach-text p {
+  color: #444;
+  font-size: 0.9rem;
+}
+/* ######################################## card 3 ################# */
+.category {
+  width: 450px;
+  height: 80%;
+  overflow-y: scroll;
+  position: fixed;
+  z-index: 100;
+  top: 16%;
+  left: 37%;
+  background: #fff;
+}
+.category .header {
+  border-bottom: 1px solid #eee;
+}
+.category .stores {
+  border-bottom: 1px solid #eee;
 }

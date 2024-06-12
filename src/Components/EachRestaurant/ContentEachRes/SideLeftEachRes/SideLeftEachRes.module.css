@@ -7,12 +7,12 @@
   padding: 12px 10px;
   background: #fff;
   border-radius: 10px;
-  border: 1px solid #ebeaea;
+  border: 1px solid #eee;
 }
 
 .side-left-each-res-component .select-recieve p {
-  color: #636363;
-  font-size: 0.8rem;
+  color: #666;
+  font-size: 0.75rem;
 }
 
 .side-left-each-res-component .send-price {
@@ -20,23 +20,23 @@
   padding: 12px 10px;
   background: #fff;
   border-radius: 10px;
-  border: 1px solid #ebeaea;
+  border: 1px solid #eee;
   margin-top: 10px;
 }
 .side-left-each-res-component .send-price img {
   width: 20px;
 }
 .side-left-each-res-component .send-price p {
-  color: #959494;
-  font-size: 0.8rem;
+  color: #666;
+  font-size: 0.75rem;
   margin-right: 30px;
 }
 .side-left-each-res-component .product-box {
   text-align: center;
   padding-top: 50px;
-  color: #b7b6b6;
+  color: #aaa;
 }
-
 .side-left-each-res-component .product-box p {
   margin-top: 10px;
+  font-size: 0.9rem;
 }

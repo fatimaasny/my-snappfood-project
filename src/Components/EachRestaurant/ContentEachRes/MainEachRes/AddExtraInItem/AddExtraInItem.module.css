@@ -1,0 +1,36 @@
+.content {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+.content .title {
+  font-family: Vazir-bold;
+  font-size: 0.8rem;
+}
+.content .order {
+  display: flex;
+  margin-top: 1rem;
+}
+.order input {
+  /* border: 2px solid #eee; */
+  margin-left: 10px;
+  width: 20px;
+  color: green;
+}
+.order .item {
+  width: 80%;
+  font-size: 0.95rem;
+}
+.order .price {
+  font-size: 0.9rem;
+}
+.order .price span:first-child {
+  font-family: Vazir-bold;
+  color: #444;
+}
+.order .price span:last-child {
+  margin-right: 5px;
+  font-size: 0.8rem;
+}

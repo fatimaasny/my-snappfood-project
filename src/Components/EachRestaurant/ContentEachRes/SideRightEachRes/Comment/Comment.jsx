@@ -7,11 +7,11 @@ function Comment(props) {
   return (
     <div className={styles.comments}>
       <div className={styles.right}>
-        <h4>{props.name}</h4>
+        <h5>{props.name}</h5>
         <p>{props.date}</p>
         {props.starscore && (
           <button className={styles.starbtn}>
-            <IoMdStar fontSize="0.9rem" color="#e9e615" />
+            <IoMdStar fontSize="0.9rem" color="#f8d527" />
             <span>{props.rate}</span>
           </button>
         )}
