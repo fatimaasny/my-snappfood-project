@@ -4,12 +4,12 @@
   padding: 15px;
   margin-bottom: 20px;
 }
-.all-category-component p {
-  /* background: rgb(223, 222, 222); */
-  background: rgb(229, 230, 230);
+.all-category-component .title {
+  background: #eee;
+  color: #444;
+  font-family: Vazir-bold;
   border-radius: 10px;
-  font-size: 1.1rem;
-  padding: 10px 15px 15px 0px;
-}
-.all-category-component .list-of-all-category-item {
+  font-size: 0.95rem;
+  padding: 12px 10px;
+  cursor: pointer;
 }

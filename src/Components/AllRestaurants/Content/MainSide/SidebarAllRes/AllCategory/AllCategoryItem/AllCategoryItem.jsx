@@ -11,7 +11,7 @@ export default function AllCategoryItem({ source, title, icon }) {
       </div>
       {icon && (
         <button>
-          <FaAngleLeft fontSize="1.2rem" color="#444" />
+          <FaAngleLeft fontSize="1rem" color="#eee" />
         </button>
       )}
     </div>

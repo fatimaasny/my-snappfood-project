@@ -13,12 +13,11 @@
 }
 .all-category-item-component .img-title p {
   font-size: 0.9rem;
-  margin-right: 2px;
+  color: #666;
+  margin-right: 10px;
   background: none;
 }
-.all-category-item-component .icon {
-  width: 20px;
-}
+
 .all-category-item-component button {
   border: none;
   background: none;

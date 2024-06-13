@@ -41,7 +41,7 @@ export default function AllCategory() {
   ];
   return (
     <div className={styles["all-category-component"]}>
-      <p>همه دسته‌بندی‌ها</p>
+      <p className={styles.title}>همه دسته‌بندی‌ها</p>
       <div className={styles["list-of-all-category-item"]}>
         {list.map((item, index) => (
           <AllCategoryItem

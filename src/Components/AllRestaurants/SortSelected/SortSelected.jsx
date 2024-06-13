@@ -1,6 +1,6 @@
 import styles from "./SortSelected.module.css";
 
-import { FaAngleDown } from "react-icons/fa6";
+import { GoTriangleDown } from "react-icons/go";
 
 export default function SortSelected() {
   return (
@@ -8,7 +8,7 @@ export default function SortSelected() {
       <div>
         <input type="text" placeholder="به ترتیب پیش‌فرض" />
         <button>
-          <FaAngleDown fontSize="1rem" color="#444" />
+          <GoTriangleDown fontSize="1rem" color="#666" />
         </button>
       </div>
     </div>

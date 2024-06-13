@@ -1,13 +1,47 @@
 import styles from "./FilterPrice.module.css";
+import { useState } from "react";
+
 export default function FilterPrice() {
+  const [filterPrice, setFilterPrice] = useState("همه");
+  const filterHandler = (value) => {
+    setFilterPrice(value);
+  };
   return (
     <div className={styles["filter-price-component"]}>
-      <h4>کلاس قیمتی</h4>
-      <div className={styles["list-filter-price-component"]}>
-        <div className={styles["item-filter-price-component"]}>همه</div>
-        <div className={styles["item-filter-price-component"]}>اقتصادی</div>
-        <div className={styles["item-filter-price-component"]}>متوسط</div>
-        <div className={styles["item-filter-price-component"]}>گران</div>
+      <p>کلاس قیمتی</p>
+      <div className={styles["list"]}>
+        <button
+          className={`${styles.item} ${
+            filterPrice === "همه" ? styles.filter : ""
+          }`}
+          onClick={() => filterHandler("همه")}
+        >
+          همه
+        </button>
+        <button
+          className={`${styles.item} ${
+            filterPrice === "اقتصادی" ? styles.filter : ""
+          }`}
+          onClick={() => filterHandler("اقتصادی")}
+        >
+          اقتصادی
+        </button>
+        <button
+          className={`${styles.item} ${
+            filterPrice === "متوسط" ? styles.filter : ""
+          }`}
+          onClick={() => filterHandler("متوسط")}
+        >
+          متوسط
+        </button>
+        <button
+          className={`${styles.item} ${
+            filterPrice === "گران" ? styles.filter : ""
+          }`}
+          onClick={() => filterHandler("گران")}
+        >
+          گران
+        </button>
       </div>
     </div>
   );

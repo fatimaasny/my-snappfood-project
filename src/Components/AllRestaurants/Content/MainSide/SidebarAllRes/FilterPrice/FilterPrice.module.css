@@ -4,22 +4,26 @@
   margin-bottom: 10px;
   border-radius: 10px;
 }
-.filter-price-component h4 {
-  font-size: 0.8rem;
+.filter-price-component p {
+  font-size: 0.7rem;
+  color: #444;
 }
-.filter-price-component .list-filter-price-component {
+.filter-price-component .list {
   display: flex;
   border-radius: 10px;
-  padding: 5px;
-  background: rgb(229, 230, 230);
-  justify-content: space-around;
+  padding: 2px;
+  background: #eee;
+  justify-content: space-between;
   margin-top: 25px;
 }
-.filter-price-component .item-filter-price-component {
-  padding: 10px;
+.filter-price-component .item {
+  cursor: pointer;
+  padding: 8px 10px;
   border-radius: 10px;
+  font-size: 0.95rem;
+  color: #666;
 }
-.filter-price-component .item-filter-price-component:hover {
-  color: rgb(7, 195, 7);
+.item.filter {
+  color: #26d354;
   background: #fff;
 }

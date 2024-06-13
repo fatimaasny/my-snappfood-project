@@ -2,7 +2,7 @@ import styles from "./ToggleFilterButtonsItem.module.css";
 
 export default function ToggleFilterButtonsItem({ title }) {
   return (
-    <div className={styles["toggle-filter-buttons-item-component"]}>
+    <div className={styles["toggle-filter"]}>
       <p>{title}</p>
       <div className={styles["toggle-btn"]}>
         <label className={styles.switch}>

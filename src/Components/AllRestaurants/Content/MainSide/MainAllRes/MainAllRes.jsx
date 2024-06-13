@@ -27,7 +27,7 @@ export default function MainAllRes() {
       expressText: "اکسپرس",
       salerText: false,
       postPriceFirstS: "ارسال اکسپرس",
-      postPriceLastS: "10,500 تومان",
+      postPriceLastS: "10,500",
     },
     {
       backCoverUp: tazeImg2,
@@ -38,8 +38,8 @@ export default function MainAllRes() {
       scorePFirst: "جدید",
       scorePLast: "(340)",
       typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
+      preRequestSpan: "پیش‌سفارش",
+      requestText: "پیش‌سفارش",
       expressText: false,
       salerText: false,
       postPriceFirstS: false,
@@ -59,7 +59,7 @@ export default function MainAllRes() {
       expressText: false,
       salerText: "فروشنده",
       postPriceFirstS: "پیک فروشنده",
-      postPriceLastS: "19,000 تومان",
+      postPriceLastS: "19,000",
     },
     {
       backCoverUp: tazeImg4,
@@ -70,8 +70,8 @@ export default function MainAllRes() {
       scorePFirst: "جدید",
       scorePLast: false,
       typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
+      preRequestSpan: "پیش‌سفارش",
+      requestText: "پیش‌سفارش",
       expressText: false,
       salerText: false,
       postPriceFirstS: false,
@@ -91,7 +91,7 @@ export default function MainAllRes() {
       expressText: "اکسپرس",
       salerText: false,
       postPriceFirstS: "ارسال اکسپرس",
-      postPriceLastS: "10,500 تومان",
+      postPriceLastS: "10,500",
     },
     {
       backCoverUp: tazeImg2,
@@ -102,8 +102,8 @@ export default function MainAllRes() {
       scorePFirst: "جدید",
       scorePLast: "(340)",
       typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
+      preRequestSpan: "پیش‌سفارش",
+      requestText: "پیش‌سفارش",
       expressText: false,
       salerText: false,
       postPriceFirstS: false,
@@ -123,7 +123,7 @@ export default function MainAllRes() {
       expressText: false,
       salerText: "فروشنده",
       postPriceFirstS: "پیک فروشنده",
-      postPriceLastS: "19,000 تومان",
+      postPriceLastS: "19,000",
     },
     {
       backCoverUp: tazeImg4,
@@ -134,8 +134,8 @@ export default function MainAllRes() {
       scorePFirst: "جدید",
       scorePLast: false,
       typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
+      preRequestSpan: "پیش‌سفارش",
+      requestText: "پیش‌سفارش",
       expressText: false,
       salerText: false,
       postPriceFirstS: false,
@@ -155,7 +155,7 @@ export default function MainAllRes() {
       expressText: "اکسپرس",
       salerText: false,
       postPriceFirstS: "ارسال اکسپرس",
-      postPriceLastS: "10,500 تومان",
+      postPriceLastS: "10,500",
     },
     {
       backCoverUp: tazeImg2,
@@ -166,8 +166,8 @@ export default function MainAllRes() {
       scorePFirst: "جدید",
       scorePLast: "(340)",
       typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
+      preRequestSpan: "پیش‌سفارش",
+      requestText: "پیش‌سفارش",
       expressText: false,
       salerText: false,
       postPriceFirstS: false,
@@ -187,7 +187,7 @@ export default function MainAllRes() {
       expressText: false,
       salerText: "فروشنده",
       postPriceFirstS: "پیک فروشنده",
-      postPriceLastS: "19,000 تومان",
+      postPriceLastS: "19,000",
     },
     {
       backCoverUp: tazeImg4,
@@ -198,8 +198,8 @@ export default function MainAllRes() {
       scorePFirst: "جدید",
       scorePLast: false,
       typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
+      preRequestSpan: "پیش‌سفارش",
+      requestText: "پیش‌سفارش",
       expressText: false,
       salerText: false,
       postPriceFirstS: false,
@@ -219,7 +219,7 @@ export default function MainAllRes() {
       expressText: "اکسپرس",
       salerText: false,
       postPriceFirstS: "ارسال اکسپرس",
-      postPriceLastS: "10,500 تومان",
+      postPriceLastS: "10,500",
     },
     {
       backCoverUp: tazeImg2,
@@ -230,8 +230,8 @@ export default function MainAllRes() {
       scorePFirst: "جدید",
       scorePLast: "(340)",
       typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
+      preRequestSpan: "پیش‌سفارش",
+      requestText: "پیش‌سفارش",
       expressText: false,
       salerText: false,
       postPriceFirstS: false,
@@ -251,7 +251,7 @@ export default function MainAllRes() {
       expressText: false,
       salerText: "فروشنده",
       postPriceFirstS: "پیک فروشنده",
-      postPriceLastS: "19,000 تومان",
+      postPriceLastS: "19,000",
     },
     {
       backCoverUp: tazeImg4,
@@ -262,8 +262,8 @@ export default function MainAllRes() {
       scorePFirst: "جدید",
       scorePLast: false,
       typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
+      preRequestSpan: "پیش‌سفارش",
+      requestText: "پیش‌سفارش",
       expressText: false,
       salerText: false,
       postPriceFirstS: false,
@@ -283,7 +283,7 @@ export default function MainAllRes() {
           scorePLast={i.scorePLast}
           typeFoodP={i.typeFoodP}
           preRequestSpan={i.preRequestSpan}
-          requestText={i.requestText === "پیش سفارش"}
+          requestText={i.requestText === "پیش‌سفارش"}
           expressText={i.expressText === "اکسپرس"}
           salerText={i.salerText === "فروشنده"}
           postPriceFirstS={i.postPriceFirstS}
