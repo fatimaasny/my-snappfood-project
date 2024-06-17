@@ -1,42 +1,102 @@
 .side-left-each-res-component {
   width: 22%;
 }
-.side-left-each-res-component .select-recieve {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 10px;
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid #eee;
-}
 
-.side-left-each-res-component .select-recieve p {
-  color: #666;
-  font-size: 0.75rem;
+.basket {
+  margin-top: 1rem;
 }
-
-.side-left-each-res-component .send-price {
-  display: flex;
-  padding: 12px 10px;
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid #eee;
-  margin-top: 10px;
-}
-.side-left-each-res-component .send-price img {
-  width: 20px;
-}
-.side-left-each-res-component .send-price p {
-  color: #666;
-  font-size: 0.75rem;
-  margin-right: 30px;
-}
-.side-left-each-res-component .product-box {
+.basket .empty {
   text-align: center;
   padding-top: 50px;
   color: #aaa;
 }
-.side-left-each-res-component .product-box p {
+.empty p {
   margin-top: 10px;
   font-size: 0.9rem;
+}
+.basket .full {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+.full .title {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin-bottom: 1rem;
+}
+.title p {
+  color: #666;
+}
+.title p span:first-child {
+  font-size: 0.9rem;
+  font-family: Vazir-bold;
+}
+.title p span:last-child {
+  font-size: 0.9rem;
+  margin-right: 5px;
+}
+
+.title .btntrash {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+}
+.title .btntrash:hover {
+  background: #faedf5;
+}
+
+.full .prices {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem;
+}
+.prices p span:first-child {
+  margin-left: 5px;
+}
+.prices p span:last-child {
+  font-size: 0.75rem;
+}
+.full .prices-with-discount {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.prices-with-discount p:first-child {
+  font-family: Vazir-bold;
+  color: #444;
+}
+.prices-with-discount p span:first-child {
+  font-family: Vazir-bold;
+  margin-left: 5px;
+  color: #444;
+}
+.prices-with-discount p span:last-child {
+  font-size: 0.75rem;
+}
+.full .btnuser {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+  background: #ff00b3;
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+  font-family: Vazir-bold;
+}
+.full .btntrash:hover {
+  opacity: 0.5;
 }

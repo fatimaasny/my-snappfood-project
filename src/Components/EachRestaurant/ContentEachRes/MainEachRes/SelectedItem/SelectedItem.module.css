@@ -1,0 +1,67 @@
+.selected-item {
+  display: flex;
+  justify-content: space-between;
+}
+/* .selected-item:hover {
+  background: #eee;
+} */
+.right {
+  width: 60%;
+}
+.discount {
+  display: flex;
+  align-items: center;
+}
+.discount .bolder {
+  font-weight: 700;
+  margin-left: 5px;
+}
+.discount .allprices {
+  display: flex;
+  flex-direction: column;
+}
+.discount .allprices .oldprice {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+.price span:first-child {
+  margin-left: 5px;
+  color: #444;
+  font-family: Vazir-bold;
+  font-size: 0.85rem;
+}
+.price span:last-child {
+  color: #666;
+  font-size: 0.8rem;
+}
+.selected-item .left {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 1px 1px 3px #eee, -1px -1px 3px #eee;
+}
+.left .btntrash:hover {
+  background: #ddd;
+}
+
+.left span {
+  font-size: 0.8rem;
+  color: #444;
+  font-family: Vazir-bold;
+}
+
+/* .selected-item:hover .btnplus {
+  background-color: #ff00b3;
+  color: #fff;
+} */

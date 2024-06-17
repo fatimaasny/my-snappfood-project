@@ -1,0 +1,11 @@
+.basket-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0.5rem;
+}
+.basket-item h4 {
+  font-size: 0.9rem;
+  color: #444;
+  font-family: Vazir-bold;
+  margin-bottom: 1rem;
+}

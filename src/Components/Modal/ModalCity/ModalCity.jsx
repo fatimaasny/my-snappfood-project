@@ -52,10 +52,7 @@ function ModalCity(props) {
           }}
           placeholder="جستجوی نام شهر..."
         />
-        {/* !!listCity.length
-        واسه تبدیل به بولین اومدیم و دوتا !! گذاشتیم تا توی صفحه هم نشون داده نشه ،
-        چون بولین توی صفحه نشون داده نمیشه اگه نمیذاشتیم صفر نشون میداد توی صفحه
-        */}
+
         {!!listCity.length && (
           <div>
             {listCity.map((city, index) => (

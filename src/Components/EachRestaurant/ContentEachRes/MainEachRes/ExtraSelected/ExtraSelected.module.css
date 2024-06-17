@@ -1,0 +1,16 @@
+.extra {
+  display: flex;
+  justify-content: space-between;
+  color: #444;
+  margin: 1rem 0;
+}
+.extra .name {
+  font-size: 0.75rem;
+}
+.extra .price {
+  font-size: 0.85rem;
+}
+.extra .price span {
+  margin-right: 5px;
+  font-size: 0.75rem;
+}

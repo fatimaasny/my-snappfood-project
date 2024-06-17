@@ -1,0 +1,20 @@
+.sending {
+  display: flex;
+  padding: 12px 10px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  margin-bottom: 1rem;
+}
+.sending button {
+  cursor: default;
+}
+.sending .btn2 {
+  cursor: pointer;
+}
+.sending .title {
+  color: #666;
+  font-size: 0.75rem;
+  width: 80%;
+  margin-right: 0.5rem;
+}

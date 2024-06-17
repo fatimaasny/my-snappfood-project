@@ -1,0 +1,33 @@
+.backdrop {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+}
+.select-time {
+  width: 19.5%;
+  height: 13vh;
+  position: fixed;
+  z-index: 250;
+  top: 54%;
+  left: 35.7%;
+  background: #fff;
+  overflow-y: scroll;
+  box-shadow: 1px 1px 2px #eee, -1px -1px 10px #eee;
+}
+.select-time p {
+  font-size: 0.9rem;
+  color: #444;
+  padding: 0.5rem;
+  margin-top: 2px;
+}
+
+.select-time p:hover {
+  background: #75bdf7;
+  color: #fff;
+}
+.select-time span {
+  margin: 0 0.5rem;
+}

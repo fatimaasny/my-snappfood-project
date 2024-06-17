@@ -1,0 +1,30 @@
+.backdrop {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+}
+.select-day {
+  width: 9%;
+  height: 10vh;
+  position: fixed;
+  z-index: 250;
+  top: 54%;
+  left: 56.5%;
+  background: #fff;
+  box-shadow: 1px 1px 2px #eee, -1px -1px 10px #eee;
+}
+.select-day p {
+  font-size: 0.9rem;
+  color: #444;
+  padding: 0.5rem;
+  margin-top: 2px;
+  cursor: default;
+}
+.select-day p:hover {
+  /* background: #2196f3; */
+  background: #75bdf7;
+  color: #fff;
+}
