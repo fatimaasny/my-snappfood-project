@@ -7,6 +7,15 @@ import { useState } from "react";
 import ModalComments from "../../../Modal/ModalComments/ModalComments";
 import ModalSpecialMap from "../../../Modal/ModalSpecialMap/ModalSpecialMap";
 
+function CommentInfo(props) {
+  return (
+    <div className={styles.comments} onClick={props.showModalComments}>
+      <AiOutlineExclamationCircle color="#26d354" fontSize="1rem" />
+      <p> اطلاعات و نظرات</p>
+    </div>
+  );
+}
+
 export default function SideRightEachRes({ listOfTitles, listComments }) {
   const [isShowModalComments, setIsShowModalComments] = useState();
   const [isShowModalSpecialMap, setIsShowModalSpecialMap] = useState();
@@ -41,10 +50,7 @@ export default function SideRightEachRes({ listOfTitles, listComments }) {
       )}
       <div className={styles["side-Right-each-res-component"]}>
         <InfoOfRes />
-        <div className={styles.comments} onClick={showModalComments}>
-          <AiOutlineExclamationCircle color="#26d354" fontSize="1rem" />
-          <p> اطلاعات و نظرات</p>
-        </div>
+        <CommentInfo showModalComments={showModalComments} />
         <MenuOfRes listOfTitles={listOfTitles} />
       </div>
     </>

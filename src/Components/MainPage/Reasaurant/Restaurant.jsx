@@ -23,6 +23,40 @@ import bartarImg3 from "../../../Images/Main/Restaurant/bartarin ha/3.jpg";
 import bartarImg31 from "../../../Images/Main/Restaurant/bartarin ha/3-1.jpg";
 import RestaurantItem from "../../../Components/RestaurantItem/RestaurantItem";
 
+function Title(props) {
+  return (
+    <div className={styles.title}>
+      <h4>{props.title}</h4>
+      <ShowMore class="big" />
+    </div>
+  );
+}
+function Items(props) {
+  return (
+    <div className={styles.Ritems}>
+      {props.list.map((i, index) => (
+        <RestaurantItem
+          key={index}
+          backCoverUp={i.backCoverUp}
+          freeSendingP={i.freeSendingP}
+          discountP={i.discountP}
+          centerImage={i.centerImage}
+          titleH={i.titleH}
+          scorePFirst={i.scorePFirst}
+          scorePLast={i.scorePLast}
+          typeFoodP={i.typeFoodP}
+          preRequestSpan={i.preRequestSpan}
+          requestText={i.requestText === "پیش سفارش"}
+          expressText={i.expressText === "اکسپرس"}
+          salerText={i.salerText === "فروشنده"}
+          postPriceFirstS={i.postPriceFirstS}
+          postPriceLastS={i.postPriceLastS}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Restaurant({ title, index }) {
   let list = [];
   const tazehaList = [
@@ -148,31 +182,8 @@ export default function Restaurant({ title, index }) {
   }
   return (
     <div className={styles.content}>
-      <div className={styles.title}>
-        <h4>{title}</h4>
-        <ShowMore class="big" />
-      </div>
-      <div className={styles.Ritems}>
-        {list.map((i, index) => (
-          <RestaurantItem
-            key={index}
-            backCoverUp={i.backCoverUp}
-            freeSendingP={i.freeSendingP}
-            discountP={i.discountP}
-            centerImage={i.centerImage}
-            titleH={i.titleH}
-            scorePFirst={i.scorePFirst}
-            scorePLast={i.scorePLast}
-            typeFoodP={i.typeFoodP}
-            preRequestSpan={i.preRequestSpan}
-            requestText={i.requestText === "پیش سفارش"}
-            expressText={i.expressText === "اکسپرس"}
-            salerText={i.salerText === "فروشنده"}
-            postPriceFirstS={i.postPriceFirstS}
-            postPriceLastS={i.postPriceLastS}
-          />
-        ))}
-      </div>
+      <Title title={title} />
+      <Items list={list} />
     </div>
   );
 }

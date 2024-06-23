@@ -1,9 +1,18 @@
 .side-left-each-res-component {
   width: 22%;
+  position: relative;
 }
-
+/* .show {
+  display: block;
+  background: pink;
+} */
 .basket {
   margin-top: 1rem;
+}
+.basket button {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 .basket .empty {
   text-align: center;
@@ -38,7 +47,7 @@
   margin-right: 5px;
 }
 
-.title .btntrash {
+/* .title .btntrash {
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -49,6 +58,21 @@
 }
 .title .btntrash:hover {
   background: #faedf5;
+} */
+
+.title .btntrash {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  color: red;
+}
+.title .btntrash:hover {
+  background: #faedf5;
+  color: red;
 }
 
 .full .prices {

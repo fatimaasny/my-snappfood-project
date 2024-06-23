@@ -14,6 +14,24 @@ import asian from "../../../Images/Main/Category/asian.jpg";
 import gilani from "../../../Images/Main/Category/gilani.jpg";
 import CategoryItem from "./CategoryItem/CategoryItem";
 
+function Title(props) {
+  return <h3>{props.title}</h3>;
+}
+function List(props) {
+  return (
+    <div className={styles.list}>
+      {props.foodList.map((item, index) => (
+        <CategoryItem
+          key={index}
+          source={item.source}
+          title={item.title}
+          alt={item.alt}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Category({ title }) {
   const foodList = [
     {
@@ -80,17 +98,8 @@ export default function Category({ title }) {
 
   return (
     <section className={styles.category}>
-      <h3>{title}</h3>
-      <div className={styles.list}>
-        {foodList.map((item, index) => (
-          <CategoryItem
-            key={index}
-            source={item.source}
-            title={item.title}
-            alt={item.alt}
-          />
-        ))}
-      </div>
+      <Title title={title} />
+      <List foodList={foodList} />
     </section>
   );
 }

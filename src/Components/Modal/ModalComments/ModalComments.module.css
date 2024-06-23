@@ -131,26 +131,14 @@
 .lineer {
   width: 60%;
 }
-/* .left {
-  display: flex;
-  flex-direction: column;
-}
-.left span {
-  display: inline-block;
-  width: 370px;
-  height: 3px;
-  background: #eee;
-  margin-top: 1.3rem;
-} */
 .left span:first-child {
   margin-top: 8px;
 }
-
 .title {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 .title h4 {
   color: #444;
@@ -176,7 +164,7 @@
   background: none;
   padding: 0.5rem 2.5rem;
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #666;
   cursor: pointer;
 }

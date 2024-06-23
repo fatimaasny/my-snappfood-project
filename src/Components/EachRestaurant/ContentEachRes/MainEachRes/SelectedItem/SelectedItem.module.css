@@ -23,6 +23,7 @@
 .discount .allprices .oldprice {
   font-size: 0.75rem;
   color: #aaa;
+  text-decoration: line-through;
 }
 .price span:first-child {
   margin-left: 5px;

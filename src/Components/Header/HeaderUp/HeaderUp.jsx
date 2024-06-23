@@ -14,6 +14,83 @@ import { IoStorefrontOutline } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
 import { FaAngleDown } from "react-icons/fa";
 
+function Logo(props) {
+  return (
+    <a href="#" className={styles["logo-snapp"]}>
+      <img src={snaplogo} alt="snapfood-logo" />
+    </a>
+  );
+}
+function Map(props) {
+  return (
+    <div className={styles.map} onClick={props.showModalMapHandler}>
+      <TbCurrentLocation fontSize="1.4rem" color="#a9a7a7" />
+      <div className={styles.addresstext}>
+        <p>آدرس انتخابی</p>
+        <div className={styles.text}>
+          <p id={styles["address-map"]}>
+            گچساران، پانصد دستگاه سمت راست خیابان ششم
+          </p>
+          <FaAngleDown color="#ff00b3" fontSize="1rem" />
+        </div>
+      </div>
+    </div>
+  );
+}
+function Search(props) {
+  return (
+    <div
+      className={styles["search-box"]}
+      onClick={() => {
+        props.showModalSearchHandler();
+        props.setSearchBox("");
+      }}
+    >
+      <FiSearch
+        fontSize="1.2rem"
+        color={props.isShowModalSearch ? "black" : "#aaa"}
+      />
+      <input
+        type="text"
+        value={props.searchBox}
+        onChange={(e) => {
+          props.setSearchBox(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
+function RightContent(props) {
+  return (
+    <div className={styles.right}>
+      <Logo />
+      <Map showModalMapHandler={props.showModalMapHandler} />
+      <Search
+        isShowModalSearch={props.isShowModalSearch}
+        showModalSearchHandler={props.showModalSearchHandler}
+        searchBox={props.searchBox}
+        setSearchBox={props.setSearchBox}
+      />
+    </div>
+  );
+}
+function LeftContent(props) {
+  return (
+    <div className={styles.left}>
+      <Button
+        title={"ثبت‌نام فروشندگان"}
+        icon={<IoStorefrontOutline fontSize="1.3rem" color="#666" />}
+        className={styles["no-background"]}
+      />
+      <Button
+        title={"ورود یا عضویت"}
+        onClick={props.showModalHandler}
+        className={styles.background}
+      />
+    </div>
+  );
+}
+
 export default function HeaderUp() {
   const [mobile, setMobile] = useState("");
   const [searchBox, setSearchBox] = useState("جست‌و‌جو در اسنپ‌فود");
@@ -100,54 +177,14 @@ export default function HeaderUp() {
         />
       )}
       <header className={styles["header-up"]}>
-        <div className={styles.right}>
-          <a href="#" className={styles["logo-snapp"]}>
-            <img src={snaplogo} alt="snapfood-logo" />
-          </a>
-          <div className={styles.map} onClick={showModalMapHandler}>
-            <TbCurrentLocation fontSize="1.4rem" color="#a9a7a7" />
-            <div className={styles.addresstext}>
-              <p>آدرس انتخابی</p>
-              <div className={styles.text}>
-                <p id={styles["address-map"]}>
-                  گچساران، پانصد دستگاه سمت راست خیابان ششم
-                </p>
-                <FaAngleDown color="#ff00b3" fontSize="1rem" />
-              </div>
-            </div>
-          </div>
-          <div
-            className={styles["search-box"]}
-            onClick={() => {
-              showModalSearchHandler();
-              setSearchBox("");
-            }}
-          >
-            <FiSearch
-              fontSize="1.2rem"
-              color={isShowModalSearch ? "black" : "#aaa"}
-            />
-            <input
-              type="text"
-              value={searchBox}
-              onChange={(e) => {
-                setSearchBox(e.target.value);
-              }}
-            />
-          </div>
-        </div>
-        <div className={styles.left}>
-          <Button
-            title={"ثبت‌نام فروشندگان"}
-            icon={<IoStorefrontOutline fontSize="1.3rem" color="#666" />}
-            className={styles["no-background"]}
-          />
-          <Button
-            title={"ورود یا عضویت"}
-            onClick={showModalHandler}
-            className={styles.background}
-          />
-        </div>
+        <RightContent
+          showModalMapHandler={showModalMapHandler}
+          isShowModalSearch={isShowModalSearch}
+          showModalSearchHandler={showModalSearchHandler}
+          searchBox={searchBox}
+          setSearchBox={setSearchBox}
+        />
+        <LeftContent showModalHandler={showModalHandler} />
       </header>
     </>
   );

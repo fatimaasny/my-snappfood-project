@@ -6,7 +6,10 @@ function Sendingway(props) {
       <button className={styles.btn1}>{props.firstIcon}</button>
       <p className={styles.title}>{props.title}</p>
       {props.secondIcon && (
-        <button className={styles.btn2} onClick={props.showModalSendingWay}>
+        <button
+          className={styles.btn2}
+          onClick={props.showMultiSendingWayHandler}
+        >
           {props.secondIcon}
         </button>
       )}

@@ -8,6 +8,41 @@ import img2 from "../../../../../Images/EachRestaurant/image-item-2.jpg";
 import img3 from "../../../../../Images/EachRestaurant/image-item-3.jpg";
 import img4 from "../../../../../Images/EachRestaurant/image-item-4.jpg";
 
+function UpContent(props) {
+  return (
+    <div
+      className={styles["up-content"]}
+      onClick={() => {
+        props.showModalSpecialItem();
+      }}
+    >
+      <div>
+        <p className={styles.name}>{props.pName}</p>
+        <span>{props.spanTag}</span>
+      </div>
+      <Card>
+        <img src={props.image} alt="image.png" />
+      </Card>
+    </div>
+  );
+}
+function DownContent(props) {
+  return (
+    <div className={styles["down-content"]}>
+      {props.list.map((i, index) => (
+        <ItemAddbtn
+          key={index}
+          title={i.title}
+          discount={i.discount}
+          oldPrice={i.oldPrice}
+          newPrice={i.newPrice}
+          name={props.pName}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Item({ pName, spanTag, image, list, listComments }) {
   const [isModalSpecialItem, setIsModalSpecialItem] = useState(false);
   const listImages = [img1, img2, img3, img4];
@@ -18,6 +53,7 @@ export default function Item({ pName, spanTag, image, list, listComments }) {
   const hideModalSpecialItem = () => {
     setIsModalSpecialItem(false);
   };
+
   return (
     <>
       {isModalSpecialItem && (
@@ -32,7 +68,14 @@ export default function Item({ pName, spanTag, image, list, listComments }) {
         />
       )}
       <div className={styles["item-component"]}>
-        <div
+        <UpContent
+          showModalSpecialItem={showModalSpecialItem}
+          pName={pName}
+          spanTag={spanTag}
+          image={image}
+        />
+        <DownContent list={list} pName={pName} />
+        {/* <div
           className={styles["up-content"]}
           onClick={() => {
             showModalSpecialItem();
@@ -45,8 +88,8 @@ export default function Item({ pName, spanTag, image, list, listComments }) {
           <Card>
             <img src={image} alt="image.png" />
           </Card>
-        </div>
-        <div className={styles["down-content"]}>
+        </div> */}
+        {/* <div className={styles["down-content"]}>
           {list.map((i, index) => (
             <ItemAddbtn
               key={index}
@@ -57,7 +100,7 @@ export default function Item({ pName, spanTag, image, list, listComments }) {
               name={pName}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </>
   );

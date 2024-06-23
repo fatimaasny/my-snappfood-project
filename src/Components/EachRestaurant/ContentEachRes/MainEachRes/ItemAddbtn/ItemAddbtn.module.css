@@ -9,7 +9,7 @@
 .item-addbtn-component:hover {
   background: #fafafa;
 }
-.item-addbtn-component:hover .add-btn a {
+.item-addbtn-component:hover .add-btn {
   background: #ff00b3;
   color: #fff;
 }
@@ -43,16 +43,15 @@
   color: #444;
   font-family: Vazir-medium;
 }
+
 .item-addbtn-component .add-btn {
   display: flex;
   align-items: center;
-}
-.item-addbtn-component .add-btn a {
+  border: none;
   color: #ff00b3;
   border-radius: 20px;
   background: #fff;
   padding: 5px 30px;
   box-shadow: 1px 1px 1px #faedf5, -1px -1px 1px #faedf5;
-  text-decoration: none;
   font-size: 0.9rem;
 }

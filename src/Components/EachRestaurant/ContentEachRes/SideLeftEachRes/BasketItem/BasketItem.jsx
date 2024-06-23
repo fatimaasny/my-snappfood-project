@@ -2,10 +2,13 @@ import ExtraSelected from "../../MainEachRes/ExtraSelected/ExtraSelected";
 import SelectedItem from "../../MainEachRes/SelectedItem/SelectedItem";
 import styles from "./BasketItem.module.css";
 
+function Title(props) {
+  return <h4>{props.name}</h4>;
+}
 function BasketItem(props) {
   return (
     <div className={styles["basket-item"]}>
-      <h4>{props.name}</h4>
+      <Title name={props.name} />
       <ExtraSelected name="قاشق چنگال" price="2,500" />
       <ExtraSelected name="ظرف ماکروویو" price="8,000" />
       <SelectedItem

@@ -12,6 +12,30 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { SiAparat } from "react-icons/si";
 
+function Content(props) {
+  return (
+    <div className={styles["first-part"]}>
+      <img src={snappFood} alt="snapp-food.png" />
+      <div>
+        <h4>اسنپ‌فود</h4>
+        <p>تجربه سفارش غذا، از زودفود تا اسنپ‌فود</p>
+        <div className={styles.icons}>
+          {props.ListSocialIcon.map((i, index) => (
+            <SocialIcon icon={i.icon} key={index} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Image() {
+  return (
+    <div className={styles.image}>
+      <img src={senfImg} alt="senfimg.png" />
+    </div>
+  );
+}
 export default function Footer() {
   const LinkList1 = [
     "درباره اسنپ‌فود",
@@ -37,25 +61,11 @@ export default function Footer() {
   ];
 
   return (
-    <footer>
-      <div className={styles["first-part"]}>
-        <img src={snappFood} alt="snapp-food.png" />
-        <div>
-          <h4>اسنپ‌فود</h4>
-          <p>تجربه سفارش غذا، از زودفود تا اسنپ‌فود</p>
-          <div className={styles.icons}>
-            {ListSocialIcon.map((i, index) => (
-              <SocialIcon icon={i.icon} />
-            ))}
-          </div>
-        </div>
-      </div>
+    <footer className={styles.footer}>
+      <Content ListSocialIcon={ListSocialIcon} />
       <ShowList list={LinkList1} class={"column"} />
       <ShowList list={LinkList2} class={"column"} />
-
-      <div className={styles.image}>
-        <img src={senfImg} alt="senfimg.png" />
-      </div>
+      <Image />
     </footer>
   );
 }

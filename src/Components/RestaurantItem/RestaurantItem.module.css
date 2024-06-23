@@ -1,21 +1,14 @@
-.container {
+.card {
   margin: 20px;
   cursor: pointer;
-}
-.container:hover {
-  /* box-shadow: 0 15px 15px silver; */
-}
-
-.shadow {
   box-shadow: 0 1px 3px #eee;
-}
-.shadow:hover {
-  box-shadow: 0 10px 15px #eee;
-}
-.Ritem {
   width: 290px;
   height: 350px;
 }
+.card:hover {
+  box-shadow: 0 10px 15px #eee;
+}
+
 .up {
   height: 45%;
   position: relative;
@@ -120,6 +113,7 @@
   color: #666;
 }
 .post-price {
+  color: #666;
   display: flex;
   margin-top: 25px;
   align-items: center;

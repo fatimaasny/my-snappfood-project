@@ -28,7 +28,7 @@
 }
 .up {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 0.5rem;
 }
 .up .right-list-image .img {
@@ -49,6 +49,7 @@
   cursor: pointer;
 }
 .up .left {
+  width: 55%;
   margin-right: 1rem;
   padding-left: 1rem;
 }

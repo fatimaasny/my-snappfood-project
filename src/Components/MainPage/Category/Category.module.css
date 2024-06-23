@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-h3 {
+.category h3 {
   font-size: 1.2rem;
   text-align: right;
   color: #444;

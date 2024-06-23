@@ -1,9 +1,0 @@
-.search-title {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-.search-title p {
-  color: #666;
-  font-size: 0.9rem;
-}

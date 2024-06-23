@@ -8,6 +8,8 @@
 }
 .sending button {
   cursor: default;
+  border: none;
+  background: none;
 }
 .sending .btn2 {
   cursor: pointer;

@@ -7,7 +7,91 @@
   left: 0;
   background: rgba(0, 0, 0, 0.3);
 }
-/* ######################################## card 1 ################# */
+/* ************************** search-product************* */
+
+.search-product {
+  padding: 1.5rem 1.5rem 0.5rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+.search-product .up {
+  display: flex;
+}
+.search-product .up img {
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+.search-product .up .text {
+  margin-right: 1rem;
+}
+.search-product .up .text p:first-child {
+  font-size: 0.8rem;
+  font-family: Vazir-bold;
+  color: #444;
+}
+.search-product .up .text p:last-child {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+.search-product .prices {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.search-product .prices .pfirst {
+  font-size: 0.75rem;
+  color: #666;
+}
+.search-product .prices .pfirst span:last-child {
+  margin: 0 5px;
+}
+.search-product .prices .psecond {
+  font-size: 0.75rem;
+  color: #666;
+}
+.search-product .prices .psecond span {
+  font-family: Vazir-bold;
+  font-size: 0.9rem;
+  color: #444;
+  margin-left: 5px;
+}
+
+/* ***************************** search-store ******************** */
+.search-store {
+  display: flex;
+  padding: 15px;
+  cursor: pointer;
+}
+.search-store button {
+  background: none;
+  border: none;
+}
+.search-store p {
+  font-size: 0.9rem;
+  color: #444;
+  margin: 0 0.5rem;
+}
+.search-store span {
+  font-family: Vazir-bold;
+  font-size: 0.9rem;
+  color: #444;
+}
+/* ************************* search-title************** */
+
+.search-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.search-title p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ######################################## search-input ################# */
 
 .modal-serach-input {
   width: 450px;
@@ -21,7 +105,7 @@
   padding-right: 10px;
 }
 
-button {
+.modal-serach-input button {
   border: none;
   background: none;
   cursor: pointer;
@@ -40,7 +124,7 @@ button {
   outline: none;
 }
 
-/* ######################################## card 2 ################# */
+/* ######################################## search-text ################# */
 .modal-serach-text {
   width: 450px;
   height: 55px;
@@ -65,12 +149,16 @@ button {
   width: 77%;
   font-family: Vazir-bold;
 }
+.typing button {
+  background: none;
+  border: none;
+}
 
 .modal-serach-text p {
   color: #444;
   font-size: 0.9rem;
 }
-/* ######################################## card 3 ################# */
+/* ######################################## category ################# */
 .category {
   width: 450px;
   height: 80%;

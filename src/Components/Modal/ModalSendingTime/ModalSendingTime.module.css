@@ -17,6 +17,10 @@
   background: #fff;
   padding: 1.5rem;
 }
+.sending-time .btnclose {
+  border: none;
+  background: none;
+}
 .sending-time h4 {
   font-size: 1.5rem;
   color: #444;
@@ -26,6 +30,7 @@
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
+  position: relative;
 }
 .day {
   display: flex;
@@ -37,12 +42,39 @@
   border: 1px solid #666;
   padding: 0 0.5rem;
   color: #666;
+  background: none;
 }
 .day:hover {
   border: 1px solid #aaa;
 }
 .day span {
   font-size: 1rem;
+}
+.overlay-day {
+  display: none;
+  width: 30%;
+  height: 10vh;
+  position: absolute;
+  z-index: 170;
+  right: 0;
+  top: 55px;
+  background: #fff;
+  box-shadow: 1px 1px 2px #eee, -1px -1px 10px #eee;
+}
+.overlay-day.show {
+  display: block;
+}
+.overlay-day p {
+  font-size: 0.9rem;
+  color: #444;
+  padding: 0.5rem;
+  margin-top: 2px;
+  cursor: default;
+}
+.overlay-day p:hover {
+  /* background: #2196f3; */
+  background: #75bdf7;
+  color: #fff;
 }
 .time {
   display: flex;
@@ -54,6 +86,7 @@
   border: 1px solid #666;
   padding: 0 0.5rem;
   color: #666;
+  background: none;
 }
 .time:hover {
   border: 1px solid #aaa;
@@ -64,6 +97,37 @@
 .time p span {
   margin: 0 0.5rem;
 }
+
+.overlay-time {
+  display: none;
+  width: 65%;
+  height: 13vh;
+  position: absolute;
+  z-index: 170;
+  top: 55px;
+  left: 0%;
+  background: #fff;
+  overflow-y: scroll;
+  box-shadow: 1px 1px 2px #eee, -1px -1px 10px #eee;
+}
+.overlay-time.show {
+  display: block;
+}
+.overlay-time p {
+  font-size: 0.9rem;
+  color: #444;
+  padding: 0.5rem;
+  margin-top: 2px;
+}
+
+.overlay-time p:hover {
+  background: #75bdf7;
+  color: #fff;
+}
+.overlay-time span {
+  margin: 0 0.5rem;
+}
+
 .text-timing {
   font-size: 0.75rem;
   color: #666;
@@ -81,4 +145,6 @@
   font-family: Vazir-bold;
   border-radius: 5px;
   margin: 1rem 0;
+  border: none;
+  cursor: pointer;
 }
