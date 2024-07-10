@@ -29,15 +29,35 @@ function Lineer() {
       className={styles.parent}
       style={{ display: "flex", flexDirection: "column", gap: "5px" }}
     >
-      <BorderLinearProgress variant="determinate" value={50} />
+      <BorderLinearProgress
+        variant="determinate"
+        value={50}
+        sx={{ direction: "rtl" }}
+      />
 
-      <BorderLinearProgress variant="determinate" value={30} />
+      <BorderLinearProgress
+        variant="determinate"
+        value={30}
+        sx={{ direction: "rtl" }}
+      />
 
-      <BorderLinearProgress variant="determinate" value={20} />
+      <BorderLinearProgress
+        variant="determinate"
+        value={20}
+        sx={{ direction: "rtl" }}
+      />
 
-      <BorderLinearProgress variant="determinate" value={5} />
+      <BorderLinearProgress
+        variant="determinate"
+        value={5}
+        sx={{ direction: "rtl" }}
+      />
 
-      <BorderLinearProgress variant="determinate" value={10} />
+      <BorderLinearProgress
+        variant="determinate"
+        value={10}
+        sx={{ direction: "rtl" }}
+      />
     </div>
   );
 }

@@ -1,11 +1,18 @@
 @import url("./fonts/fonts.css");
 
-*{
+/* * {
   box-sizing: border-box;
-}
-html {
+} */
+/* html {
   font-family: Vazir;
 }
 body {
   margin: 0;
+} */
+* {
+  font-family: Vazir;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
 }

@@ -1,8 +1,12 @@
 .main-MainAllRes {
   width: 77%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
   border: 1px solid #eee;
   box-shadow: 1px 1px 2px #eee, -1px -1px 2px #eee;
   border-radius: 20px;
+}
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

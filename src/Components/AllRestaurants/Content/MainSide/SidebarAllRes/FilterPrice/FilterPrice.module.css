@@ -18,6 +18,7 @@
 }
 .filter-price-component .item {
   cursor: pointer;
+  border: none;
   padding: 8px 10px;
   border-radius: 10px;
   font-size: 0.95rem;
