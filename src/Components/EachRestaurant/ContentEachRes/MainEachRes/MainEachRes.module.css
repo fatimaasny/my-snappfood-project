@@ -1,7 +1,23 @@
 .main-each-res-component {
-  width: 48%;
+  /* width: 48%; */
+  width: 70%;
   background: #fff;
   border: 1px solid #ecebeb;
   border-radius: 10px;
 }
 
+@media (max-width: 600px) {
+  .main-each-res-component {
+    width: 100%;
+  }
+}
+@media (min-width: 601px) and (max-width: 700px) {
+  .main-each-res-component {
+    width: 45%;
+  }
+}
+@media (min-width: 701px) and (max-width: 960px) {
+  .main-each-res-component {
+    width: 50%;
+  }
+}

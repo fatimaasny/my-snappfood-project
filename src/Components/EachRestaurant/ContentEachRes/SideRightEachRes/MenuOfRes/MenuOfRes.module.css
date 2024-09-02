@@ -17,3 +17,12 @@
   border: none;
   background: none;
 }
+
+@media (max-width: 600px) {
+  .menu-of-res-components {
+    text-align: right;
+  }
+  .menu-of-res-components .kopen {
+    justify-content: start;
+  }
+}

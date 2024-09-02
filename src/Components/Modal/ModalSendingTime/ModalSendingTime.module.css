@@ -9,13 +9,14 @@
 }
 .sending-time {
   width: 33%;
-  height: 35vh;
+  /* height: 35vh; */
+  height: 44vh;
   position: fixed;
   z-index: 150;
   top: 34%;
   left: 34%;
   background: #fff;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 2rem;
 }
 .sending-time .btnclose {
   border: none;
@@ -53,7 +54,7 @@
 .overlay-day {
   display: none;
   width: 30%;
-  height: 10vh;
+  height: 13vh;
   position: absolute;
   z-index: 170;
   right: 0;
@@ -67,7 +68,7 @@
 .overlay-day p {
   font-size: 0.9rem;
   color: #444;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   margin-top: 2px;
   cursor: default;
 }
@@ -147,4 +148,32 @@
   margin: 1rem 0;
   border: none;
   cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .sending-time {
+    width: 90%;
+    left: 5%;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 670px) {
+  .sending-time {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+@media (min-width: 671px) and (max-width: 1000px) {
+  .sending-time {
+    width: 50%;
+    left: 25%;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1300px) {
+  .sending-time {
+    width: 40%;
+    left: 30%;
+  }
 }

@@ -1,25 +1,30 @@
 .sort-selected {
   display: flex;
   justify-content: end;
+  position: relative;
 }
 .sort-selected div {
   border: 1px solid #eee;
-  padding: 10px 8px;
+  padding: 8px;
   border-radius: 10px;
   display: flex;
-  justify-content: space-between;
+  gap: 0.5rem;
   align-items: center;
-  margin-left: 5px;
   color: #aaa;
 }
+
 .sort-selected div:hover {
-  border: 1px solid #ccc;
+  border: 1px solid #aaa;
 }
+.sort-selected div:focus {
+  border: 1px solid blue;
+}
+
 .sort-selected input {
   border: none;
   background: none;
   outline: none;
-  color: #aaa;
+  color: #666;
   font-size: 1rem;
   width: 150px;
 }

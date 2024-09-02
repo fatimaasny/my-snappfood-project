@@ -13,6 +13,11 @@
 }
 .list {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 0.5rem;
+}
+@media (max-width: 530px) {
+  .list {
+    justify-content: center;
+  }
 }

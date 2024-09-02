@@ -1,17 +1,32 @@
 .show-more {
   display: flex;
   align-items: center;
-  color: #26d354;
+  /* color: #26d354; */
+  color: rgb(0, 184, 98);
   font-size: 0.9rem;
   cursor: pointer;
 }
 
 .show-more .text {
-  color: #26d354;
+  /* color: #26d354; */
+  color: rgb(0, 184, 98);
 }
 .show-more span {
   margin: 0 5px;
 }
-.show-more.big p{
-  font-size: 1.4rem;
+.show-more.big p {
+  font-size: 1.2rem;
+  font-family: Vazir-bold;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 400px) {
+  .show-more.big p {
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 401px) and (max-width: 600px) {
+  .show-more.big p {
+    font-size: 1.1rem;
+  }
 }

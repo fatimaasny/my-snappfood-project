@@ -4,32 +4,25 @@
   border-bottom: 1px solid #eee;
   box-shadow: 0 3px 8px -5px #eee;
   display: flex;
+  justify-content: space-between;
   padding: 0px 30px;
   position: sticky;
   top: 0;
-  /* z-index: 999; */
 }
-.header-up img {
-  width: 70px;
-}
+
 .header-up .right {
-  width: 80%;
+  width: 70%;
   display: flex;
   align-items: center;
 }
-.header-up .right .logo-snapp {
-  width: 10%;
-}
+
 .header-up .right .logo-snapp img {
   width: 100px;
   height: 80px;
 }
 .header-up .right .map {
-  width: 25%;
   margin-right: 40px;
   cursor: pointer;
-}
-.right .map {
   display: flex;
   align-items: center;
 }
@@ -53,14 +46,14 @@
   margin-left: 10px;
 }
 .right .search-box {
-  width: 35%;
+  width: 45%;
   border-radius: 10px;
   background: #eee;
   padding: 10px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 40px;
+  margin-right: 50px;
 }
 
 .header-up .right .search-box input {
@@ -74,9 +67,8 @@
 }
 
 .header-up .left {
-  width: 20%;
   display: flex;
-  justify-content: space-around;
+  gap: 0.5rem;
   align-items: center;
 }
 .background {
@@ -86,4 +78,40 @@
 .no-background {
   background: #fff;
   color: #666;
+}
+.lefticons {
+  display: none;
+  align-items: center;
+  gap: 1rem;
+}
+.lefticons button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .header-up {
+    padding: 0.5rem 1rem;
+  }
+  .header-up .right .logo-snapp {
+    display: none;
+  }
+  .header-up .right .map {
+    margin-right: 0px;
+  }
+}
+@media (max-width: 1010px) {
+  .header-up .left {
+    display: none;
+  }
+  .lefticons {
+    display: flex;
+  }
+  .right .search-box {
+    display: none;
+  }
+  .header-up .right .map {
+    width: 70%;
+  }
 }

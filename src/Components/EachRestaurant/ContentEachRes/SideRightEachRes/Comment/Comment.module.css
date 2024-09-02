@@ -69,3 +69,17 @@
   color: #666;
   font-size: 0.8rem;
 }
+
+@media (max-width: 670px) {
+  .left .description,
+  .left .extra p:last-child {
+    font-size: 0.8rem;
+  }
+  .ressponse h5 {
+    font-size: 0.7rem;
+  }
+  .ressponse p {
+    color: #666;
+    font-size: 0.75rem;
+  }
+}

@@ -19,6 +19,7 @@
 .filter-price-component .item {
   cursor: pointer;
   border: none;
+  background: none;
   padding: 8px 10px;
   border-radius: 10px;
   font-size: 0.95rem;
@@ -27,4 +28,10 @@
 .item.filter {
   color: #26d354;
   background: #fff;
+}
+
+@media (max-width: 960px) {
+  .filter-price-component {
+    display: none;
+  }
 }

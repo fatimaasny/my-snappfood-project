@@ -10,29 +10,64 @@
 .footer .first-part {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 .footer .first-part img {
   width: 150px;
   margin-top: -80px;
 }
-.footer .first-part div {
+.footer .first-part .text {
   margin-right: 30px;
 }
 
-.footer .first-part div h4 {
+.footer .first-part .text h4 {
   color: #ff00b3;
   font-size: 1.4rem;
   /* margin-top: 60px; */
 }
-.footer .first-part div p {
+.footer .first-part .text p {
   margin-top: 8px;
   font-size: 0.8rem;
   color: #444;
   margin-bottom: 40px;
 }
-.footer .first-part div .icons {
+.footer .first-part .text .icons {
   margin-top: 40px;
   display: flex;
   justify-content: space-between;
   margin-right: 0px;
+}
+.footer .colcontent {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+  .footer .first-part {
+    flex-direction: column;
+    align-items: center;
+    gap: 0rem;
+  }
+  .footer .first-part .text {
+    margin-right: 0px;
+  }
+  .footer .colcontent {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+@media (max-width: 950px) {
+  .footer {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer .first-part .text {
+    margin-right: 10px;
+  }
+  .footer .colcontent {
+    width: 90%;
+    margin: 0 auto;
+  }
 }

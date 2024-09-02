@@ -9,12 +9,14 @@
 }
 .modalmap {
   width: 42%;
-  height: 73vh;
+  /* height: 73vh; */
+  height: 80%;
   position: fixed;
   z-index: 100;
   background: #fff;
   top: 13%;
-  left: 30%;
+  left: 28%;
+  padding: 1rem;
 }
 .btn-close-icon {
   background: none;
@@ -113,4 +115,36 @@
 }
 .confirm:hover {
   opacity: 0.8;
+}
+
+/*  **********************************  Ressponsive  ******************************** */
+
+@media (max-width: 400px) {
+  .modalmap {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+  .modalmap {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+  .modalmap {
+    width: 60%;
+    left: 20%;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  .modalmap {
+    width: 50%;
+    left: 25%;
+  }
+}
+@media (min-width: 1001px) and (max-width: 1300px) {
 }

@@ -16,7 +16,7 @@ function Content(props) {
   return (
     <div className={styles["first-part"]}>
       <img src={snappFood} alt="snapp-food.png" />
-      <div>
+      <div className={styles.text}>
         <h4>اسنپ‌فود</h4>
         <p>تجربه سفارش غذا، از زودفود تا اسنپ‌فود</p>
         <div className={styles.icons}>
@@ -25,6 +25,15 @@ function Content(props) {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+function ColContent(props) {
+  return (
+    <div className={styles.colcontent}>
+      <ShowList list={props.LinkList1} class={"column"} />
+      <ShowList list={props.LinkList2} class={"column"} />
+      <Image />
     </div>
   );
 }
@@ -63,9 +72,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <Content ListSocialIcon={ListSocialIcon} />
-      <ShowList list={LinkList1} class={"column"} />
-      <ShowList list={LinkList2} class={"column"} />
-      <Image />
+      <ColContent LinkList1={LinkList1} LinkList2={LinkList2} />
     </footer>
   );
 }

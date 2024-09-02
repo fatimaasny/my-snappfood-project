@@ -56,6 +56,26 @@
 .map .zoom button:first-child {
   border-bottom: 1px solid #aaa;
 }
-.map .zoom button:hover{
-    opacity: 0.95;
+.map .zoom button:hover {
+  opacity: 0.95;
+}
+
+@media (max-width: 600px) {
+  .modal-special-map {
+    width: 90%;
+    left: 5%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1000px) {
+  .modal-special-map {
+    width: 70%;
+    left: 15%;
+  }
+}
+@media (min-width: 1001px) and (max-width: 1300px) {
+  .modal-special-map {
+    width: 56%;
+    left: 17%;
+  }
 }

@@ -1,0 +1,26 @@
+.overlay-sort {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 198px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  z-index: 10;
+}
+.list {
+  width: 100%;
+  list-style: none;
+}
+.list li {
+  margin-top: 0.25rem;
+  cursor: default;
+  padding: 0.4rem;
+}
+.list li p {
+  color: #000;
+  font-size: 1rem;
+}
+
+.list li:hover {
+  background-color: rgb(211, 221, 240);
+}

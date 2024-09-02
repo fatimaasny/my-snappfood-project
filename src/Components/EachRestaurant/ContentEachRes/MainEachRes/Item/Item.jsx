@@ -75,32 +75,6 @@ export default function Item({ pName, spanTag, image, list, listComments }) {
           image={image}
         />
         <DownContent list={list} pName={pName} />
-        {/* <div
-          className={styles["up-content"]}
-          onClick={() => {
-            showModalSpecialItem();
-          }}
-        >
-          <div>
-            <p className={styles.name}>{pName}</p>
-            <span>{spanTag}</span>
-          </div>
-          <Card>
-            <img src={image} alt="image.png" />
-          </Card>
-        </div> */}
-        {/* <div className={styles["down-content"]}>
-          {list.map((i, index) => (
-            <ItemAddbtn
-              key={index}
-              title={i.title}
-              discount={i.discount}
-              oldPrice={i.oldPrice}
-              newPrice={i.newPrice}
-              name={pName}
-            />
-          ))}
-        </div> */}
       </div>
     </>
   );

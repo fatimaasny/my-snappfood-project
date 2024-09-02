@@ -108,22 +108,6 @@ export default function Restaurant({ title, index }) {
       postPriceFirstS: "پیک فروشنده",
       postPriceLastS: "19,000",
     },
-    {
-      backCoverUp: tazeImg4,
-      freeSendingP: false,
-      discountP: "5%",
-      centerImage: tazeImg41,
-      titleH: "مجتمع سنگک",
-      scorePFirst: "جدید",
-      scorePLast: false,
-      typeFoodP: false,
-      preRequestSpan: "پیش سفارش",
-      requestText: "پیش سفارش",
-      expressText: false,
-      salerText: false,
-      postPriceFirstS: false,
-      postPriceLastS: false,
-    },
   ];
   const bartarinhalist = [
     {

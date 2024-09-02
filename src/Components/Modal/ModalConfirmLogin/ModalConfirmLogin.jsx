@@ -7,7 +7,7 @@ import { FaEdit } from "react-icons/fa";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 function BackDrop(props) {
-  return <div className={styles.backdrop} />;
+  return <div className={styles.backdrop} onClick={props.onConfirm} />;
 }
 function Overlay(props) {
   return (
@@ -17,7 +17,7 @@ function Overlay(props) {
         color="#868686"
         cursor="pointer"
         onClick={() => {
-          props.hideModalConfirmHandler();
+          props.onConfirm();
           props.showModalHandler();
         }}
       />
@@ -34,7 +34,7 @@ function Overlay(props) {
         />
         <span
           onClick={async () => {
-            props.hideModalConfirmHandler();
+            props.onConfirm();
             props.showModalHandler();
             await props.setMobile("");
             await props.setActive(0);
@@ -67,10 +67,11 @@ function Overlay(props) {
 function FinalModal(props) {
   return (
     <>
-      <BackDrop />
+      <BackDrop onConfirm={props.onConfirm} />
       <Overlay
-        hideModalConfirmHandler={props.hideModalConfirmHandler}
+        onConfirm={props.onConfirm}
         showModalHandler={props.showModalHandler}
+        mobile={props.mobile}
         setMobile={props.setMobile}
         setActive={props.setActive}
       />
@@ -83,12 +84,13 @@ function ModalConfirmLogin(props) {
     <>
       {ReactDom.createPortal(
         <FinalModal
-          hideModalConfirmHandler={props.hideModalConfirmHandler}
+          onConfirm={props.onConfirm}
           showModalHandler={props.showModalHandler}
+          mobile={props.mobile}
           setMobile={props.setMobile}
           setActive={props.setActive}
         />,
-        document.getElementById("mpdal-root")
+        document.getElementById("modal-root")
       )}
     </>
   );

@@ -130,3 +130,16 @@
   font-family: Vazir-bold;
   color: #666;
 }
+
+@media (max-width: 400px) {
+  .card {
+    margin: 0;
+  }
+}
+/* این قسمت واسه mainAllRes تنظیم شده */
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

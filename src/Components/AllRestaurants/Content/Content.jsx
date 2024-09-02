@@ -1,4 +1,4 @@
-import SortSelected from "../SortSelected/SortSelected";
+import SortSelected from "./SortSelected/SortSelected";
 import MainSide from "./MainSide/MainSide";
 import styles from "./Content.module.css";
 export default function Content() {

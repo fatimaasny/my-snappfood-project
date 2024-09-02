@@ -1,11 +1,8 @@
 .side-left-each-res-component {
-  width: 22%;
+  width: 25%;
   position: relative;
 }
-/* .show {
-  display: block;
-  background: pink;
-} */
+
 .basket {
   margin-top: 1rem;
 }
@@ -123,4 +120,10 @@
 }
 .full .btntrash:hover {
   opacity: 0.5;
+}
+
+@media (max-width: 960px) {
+  .side-left-each-res-component {
+    width: 100%;
+  }
 }

@@ -48,6 +48,7 @@ export default function ListItems({
   }
   return (
     <OtherItems
+      title={title}
       listItem={listItem}
       listItemAddbtn={listItemAddbtn}
       listComments={listComments}

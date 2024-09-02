@@ -3,16 +3,17 @@
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
-  z-index: 10;
+  z-index: 125;
   top: 0;
   left: 0;
 }
 .modalconfirm {
   width: 32%;
-  height: 70vh;
+  height: 75vh;
   position: fixed;
-  z-index: 100;
-  top: 21%;
+  z-index: 130;
+  /* top: 21%; */
+  top: 15%;
   left: 36%;
   background: #fff;
   padding: 1rem;
@@ -51,6 +52,7 @@
   border: 1px solid #d7d7d7;
   border-radius: 7px;
   margin-top: 1.5rem;
+  padding-right: 1rem;
 }
 .modalconfirm input:focus {
   border: 1px solid gray;
@@ -114,4 +116,45 @@
 .button.active {
   color: #fff;
   background-color: #ff00b3;
+}
+
+@media (max-width: 600px) {
+  .modalconfirm {
+    width: 80%;
+    left: 10%;
+  }
+  .recieve {
+    font-size: 0.9rem;
+  }
+  .rules {
+    font-size: 0.75rem;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 700px) {
+  .modalconfirm {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 800px) {
+  .modalconfirm {
+    width: 60%;
+    left: 20%;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  .modalconfirm {
+    width: 50%;
+    left: 25%;
+  }
+}
+@media (min-width: 1001px) and (max-width: 1250px) {
+  .modalconfirm {
+    width: 40%;
+    left: 30%;
+  }
 }

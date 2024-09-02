@@ -1,6 +1,9 @@
+import { useState } from "react";
+import ReactDom from "react-dom";
+
 import styles from "./ModalLogin.module.css";
 import Card from "../../Card/Card";
-import ReactDom from "react-dom";
+// import ModalConfirmLogin from "../ModalConfirmLogin/ModalConfirmLogin";
 
 import snapImage from "../../../Images/Header/HeaderUp/snappfood.png";
 import { IoCloseOutline } from "react-icons/io5";
@@ -54,7 +57,7 @@ function ButtonContinue(props) {
 function Overlay(props) {
   return (
     <Card className={styles.modal}>
-      <Header />
+      <Header onConfirm={props.onConfirm} />
       <Content
         mobile={props.mobile}
         mobileCheckedHandler={props.mobileCheckedHandler}
@@ -83,8 +86,24 @@ function FinalModal(props) {
 }
 
 function ModalLogin(props) {
+  // const [isShowModalConfirm, setIsShowModalConfirm] = useState();
+  // const showModalConfirmHandler = () => {
+  //   setIsShowModalConfirm(1);
+  // };
+  // const hideModalConfirmHandler = () => {
+  //   setIsShowModalConfirm(0);
+  // };
   return (
     <>
+      {/* {isShowModalConfirm === 1 && (
+        <ModalConfirmLogin
+          mobile={props.mobile}
+          showModalHandler={props.showModalHandler}
+          onConfirm={hideModalConfirmHandler}
+          setMobile={props.setMobile}
+          setActive={props.setActive}
+        />
+      )} */}
       {ReactDom.createPortal(
         <FinalModal
           onConfirm={props.onConfirm}

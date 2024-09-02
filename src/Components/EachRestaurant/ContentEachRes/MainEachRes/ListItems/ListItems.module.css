@@ -20,6 +20,8 @@
 .list-items-kopen-component .list-of-kopen {
   display: flex;
   justify-content: start;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 .list-items-kopen-component .list-of-kopen .kopen-item {
   border-radius: 5px;
@@ -42,4 +44,10 @@
 .list-items-component .list {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 960px) {
+  .list-items-component .list {
+    grid-template-columns: 1fr;
+  }
 }

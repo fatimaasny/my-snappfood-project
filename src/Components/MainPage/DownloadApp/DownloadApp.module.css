@@ -3,19 +3,21 @@
   justify-content: space-around;
   background: rgb(235, 237, 240);
   border-bottom-right-radius: 7.5rem;
+  height: fit-content;
 }
 
 .dlApp-content .content {
   display: flex;
   flex-direction: column;
-  width: 65%;
   padding: 10px 140px 40px 90px;
 }
 .dlApp-content .content h3 {
   font-size: 2.4rem;
-  font-weight: 500;
+  /* font-family: Vazir-bold; */
+  font-weight: 800;
+  color: #444;
 }
-.dlApp-content .content p {
+.dlApp-content .content .text {
   font-size: 1rem;
   padding-left: 60px;
   color: #666;
@@ -27,8 +29,9 @@
   margin-top: 30px;
 }
 .dlApp-content .enter-phone p {
-  font-size: 0.9rem;
-  color: black;
+  font-size: 0.75rem;
+  color: #444;
+  font-family: Vazir-bold;
 }
 .dlApp-content .receive-link {
   display: flex;
@@ -57,20 +60,17 @@
   color: #fff;
   font-size: 0.95rem;
 }
-.dlApp-content .receive-link a p {
-}
 
 .dlApp-content .list-app {
-  display: grid;
-  grid-template-columns: repeat(4, 150px);
-  gap: 0px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .dlApp-content .list-app img {
   width: 140px;
 }
 
 .dlApp-content .image {
-  width: 35%;
+  width: 85%;
   position: relative;
   padding-left: 150px;
 }
@@ -82,4 +82,35 @@
 .background {
   color: #fff;
   background: #ff00b3;
+}
+
+/*  **********************************  Ressponsive  ******************************** */
+
+@media (max-width: 600px) {
+  .dlApp-content .content h3 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 1119px) {
+  .dlApp-content {
+    border-bottom-right-radius: 0;
+  }
+  .dlApp-content .content {
+    width: 100%;
+    padding: 30px 10px;
+  }
+  .dlApp-content .content .text {
+    padding-left: 10px;
+  }
+  .dlApp-content .image {
+    display: none;
+  }
+}
+@media (min-width: 1120px) and (max-width: 1300px) {
+  .dlApp-content .content {
+    padding: 10px 60px 20px 10px;
+  }
+  .dlApp-content .image {
+    width: 100%;
+  }
 }

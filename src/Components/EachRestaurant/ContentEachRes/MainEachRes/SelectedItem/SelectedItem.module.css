@@ -6,7 +6,7 @@
   background: #eee;
 } */
 .right {
-  width: 60%;
+  /* width: 60%; */
 }
 .discount {
   display: flex;
@@ -36,9 +36,10 @@
   font-size: 0.8rem;
 }
 .selected-item .left {
-  width: 40%;
+  /* width: 40%; */
   display: flex;
-  justify-content: space-between;
+  gap: 0.3rem;
+  /* justify-content: space-between; */
   align-items: center;
 }
 .left button {
@@ -62,7 +63,8 @@
   font-family: Vazir-bold;
 }
 
-/* .selected-item:hover .btnplus {
-  background-color: #ff00b3;
-  color: #fff;
-} */
+@media (max-width: 960px) {
+  .selected-item .left {
+    gap: 1rem;
+  }
+}

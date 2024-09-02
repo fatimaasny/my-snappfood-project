@@ -9,13 +9,22 @@
   background: none;
 }
 .details .title {
-  color: #606060;
+  color: #666;
   font-size: 0.85rem;
   margin-top: 5px;
 }
 .details .text {
   font-size: 0.8rem;
-  color: #404040;
+  color: #444;
   font-family: Vazir-medium;
   margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .details .title {
+    font-size: 0.7rem;
+  }
+  .details .text {
+    font-size: 0.6rem;
+  }
 }

@@ -1,13 +1,41 @@
 .header-down {
-  position: sticky;
+  /* position: sticky; */
+  /* position: fixed; */
   top: 100px;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10px;
+  padding: 20px 1rem;
   background: #fff;
   /* z-index: 999; */
   /* خواستیم زیر هدر هرچی اومد نشون داده نشه
   البته این شیشه ایش میکنه */
   /* background-color: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(20px); */
+}
+.header-down .list {
+  width: 1700px;
+  display: flex;
+  /* gap: 40px; */
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.angel-right,
+.angel-left {
+  position: absolute;
+  top: 16%;
+  /* z-index: 250; */
+  border: 1px solid #ccc;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.angel-left {
+  left: 1%;
+}
+.angel-right {
+  right: 1%;
 }

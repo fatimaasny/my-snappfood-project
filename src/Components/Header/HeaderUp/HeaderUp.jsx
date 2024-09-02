@@ -9,10 +9,11 @@ import ModalMap from "../../Modal/ModalMap/ModalMap";
 
 import snaplogo from "../../../Images/Header/HeaderUp/snappfood.svg";
 
-import { TbCurrentLocation } from "react-icons/tb";
+import { MdMyLocation } from "react-icons/md";
 import { IoStorefrontOutline } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
 import { FaAngleDown } from "react-icons/fa";
+import { GoPerson } from "react-icons/go";
 
 function Logo(props) {
   return (
@@ -24,7 +25,7 @@ function Logo(props) {
 function Map(props) {
   return (
     <div className={styles.map} onClick={props.showModalMapHandler}>
-      <TbCurrentLocation fontSize="1.4rem" color="#a9a7a7" />
+      <MdMyLocation fontSize="1.5rem" color="#a9a7a7" />
       <div className={styles.addresstext}>
         <p>آدرس انتخابی</p>
         <div className={styles.text}>
@@ -76,18 +77,37 @@ function RightContent(props) {
 }
 function LeftContent(props) {
   return (
-    <div className={styles.left}>
-      <Button
-        title={"ثبت‌نام فروشندگان"}
-        icon={<IoStorefrontOutline fontSize="1.3rem" color="#666" />}
-        className={styles["no-background"]}
-      />
-      <Button
-        title={"ورود یا عضویت"}
-        onClick={props.showModalHandler}
-        className={styles.background}
-      />
-    </div>
+    <>
+      <div className={styles.left}>
+        <Button
+          title={"ثبت‌نام فروشندگان"}
+          icon={<IoStorefrontOutline fontSize="1.3rem" color="#666" />}
+          className={styles["no-background"]}
+        />
+        <Button
+          title={"ورود یا عضویت"}
+          onClick={props.showModalHandler}
+          className={styles.background}
+        />
+      </div>
+      <div className={styles.lefticons}>
+        <button
+          // isShowModalSearch={props.isShowModalSearch}
+          // showModalSearchHandler={props.showModalSearchHandler}
+          // searchBox={props.searchBox}
+          // setSearchBox={props.setSearchBox}
+          onClick={() => {
+            props.showModalSearchHandler();
+            console.log("click");
+          }}
+        >
+          <FiSearch fontSize="1.3rem" color="#666" />
+        </button>
+        <button onClick={props.showModalHandler}>
+          <GoPerson fontSize="1.3rem" color="#666" />
+        </button>
+      </div>
+    </>
   );
 }
 
@@ -149,10 +169,13 @@ export default function HeaderUp() {
     <>
       {isShowModal === 1 && (
         <ModalLogin
+          // showModalHandler={showModalHandler}
           onConfirm={hideModalHandler}
           mobile={mobile}
+          // setMobile={setMobile}
           mobileCheckedHandler={mobileCheckedHandler}
           active={active}
+          // setActive={setActive}
           showModalConfirmHandler={showModalConfirmHandler}
         />
       )}
@@ -160,7 +183,7 @@ export default function HeaderUp() {
         <ModalConfirmLogin
           mobile={mobile}
           showModalHandler={showModalHandler}
-          hideModalConfirmHandler={hideModalConfirmHandler}
+          onConfirm={hideModalConfirmHandler}
           setMobile={setMobile}
           setActive={setActive}
         />
@@ -184,7 +207,10 @@ export default function HeaderUp() {
           searchBox={searchBox}
           setSearchBox={setSearchBox}
         />
-        <LeftContent showModalHandler={showModalHandler} />
+        <LeftContent
+          showModalHandler={showModalHandler}
+          showModalSearchHandler={showModalSearchHandler}
+        />
       </header>
     </>
   );

@@ -89,3 +89,17 @@
   font-size: 0.75rem;
   margin-right: 1rem;
 }
+
+@media (max-width: 400px) {
+  .sending-way {
+    width: 100%;
+    top: 0%;
+  }
+}
+@media (min-width: 401px) and (max-width: 960px) {
+  .sending-way {
+    width: 330px;
+    top: 0%;
+    right: 0;
+  }
+}

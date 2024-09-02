@@ -51,14 +51,14 @@ export default function ContentEachRes() {
 
   return (
     <div className={styles["content-each-res-component"]}>
-      <SideRightEachRes
-        listOfTitles={listOfTitles}
-        listComments={listComments}
-      />
-      <MainEachRes
-        listComments={listComments}
-        listOfTitles={listOfTitles}
-      />
+      <div className={styles.bothRessponsive}>
+        <SideRightEachRes
+          listOfTitles={listOfTitles}
+          listComments={listComments}
+        />
+        <MainEachRes listComments={listComments} listOfTitles={listOfTitles} />
+      </div>
+
       <SideLeftEachRes />
     </div>
   );

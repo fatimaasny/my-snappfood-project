@@ -9,10 +9,11 @@
 }
 .modal-add-item {
   width: 32%;
-  height: 56%;
+  /* height: 56%; */
+  height: 62vh;
   position: fixed;
   z-index: 150;
-  top: 23%;
+  top: 16%;
   left: 34%;
   background: #fff;
   padding: 1rem;
@@ -48,9 +49,8 @@
   border-radius: 5px;
   margin: 1rem 0;
   cursor: pointer;
-
 }
-.add-prices:hover{
+.add-prices:hover {
   opacity: 0.85;
 }
 
@@ -60,4 +60,32 @@
 }
 .add-prices span:first-child {
   font-family: Vazir-medium;
+}
+
+@media (max-width: 500px) {
+  .modal-add-item {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 780px) {
+  .modal-add-item {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+@media (min-width: 781px) and (max-width: 1000px) {
+  .modal-add-item {
+    width: 50%;
+    left: 25%;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1300px) {
+  .modal-add-item {
+    width: 40%;
+    left: 30%;
+  }
 }

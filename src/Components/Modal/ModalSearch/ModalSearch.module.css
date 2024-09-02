@@ -94,13 +94,16 @@
 /* ######################################## search-input ################# */
 
 .modal-serach-input {
-  width: 450px;
+  /* width: 450px; */
+  width: 36%;
   height: 55px;
   line-height: 55px;
   position: fixed;
   z-index: 100;
   top: 2%;
-  left: 37%;
+  /* left: 37%; */
+
+  left: 32%;
   background: #fff;
   padding-right: 10px;
 }
@@ -126,13 +129,15 @@
 
 /* ######################################## search-text ################# */
 .modal-serach-text {
-  width: 450px;
+  /* width: 450px; */
+  width: 36%;
   height: 55px;
   line-height: 55px;
   position: fixed;
   z-index: 100;
   top: 9%;
-  left: 37%;
+  /* left: 37%; */
+  left: 32%;
   background: #fff;
   padding-right: 10px;
 }
@@ -160,13 +165,15 @@
 }
 /* ######################################## category ################# */
 .category {
-  width: 450px;
+  /* width: 450px; */
+  width: 36%;
   height: 80%;
   overflow-y: scroll;
   position: fixed;
   z-index: 100;
   top: 16%;
-  left: 37%;
+  /* left: 37%; */
+  left: 32%;
   background: #fff;
 }
 .category .header {
@@ -174,4 +181,50 @@
 }
 .category .stores {
   border-bottom: 1px solid #eee;
+}
+
+/*  **********************************  Ressponsive  ******************************** */
+
+@media (max-width: 400px) {
+  .modal-serach-input,
+  .modal-serach-text,
+  .category {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+  .modal-serach-input,
+  .modal-serach-text,
+  .category {
+    width: 60%;
+    left: 20%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+  .modal-serach-input,
+  .modal-serach-text,
+  .category {
+    width: 40%;
+    left: 30%;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  .modal-serach-input,
+  .modal-serach-text,
+  .category {
+    width: 35%;
+    left: 32%;
+  }
+}
+@media (min-width: 1001px) and (max-width: 1300px) {
+  .modal-serach-input,
+  .modal-serach-text,
+  .category {
+    width: 35%;
+    left: 30%;
+  }
 }

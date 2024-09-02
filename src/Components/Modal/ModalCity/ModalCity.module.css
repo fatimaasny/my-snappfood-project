@@ -8,7 +8,8 @@
   background: rgba(0, 0, 0, 0.2);
 }
 .modalcity {
-  width: 400px;
+  /* width: 400px; */
+  width: 25%;
   height: 30vh;
   position: fixed;
   z-index: 130;
@@ -44,4 +45,36 @@
   margin: 1rem 0;
   padding-bottom: 0.5rem;
   font-family: Vazir-bold;
+}
+
+/*  **********************************  Ressponsive  ******************************** */
+
+@media (max-width: 400px) {
+  .modalcity {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+  .modalcity {
+    width: 50%;
+    left: 25%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+  .modalcity {
+    width: 50%;
+    left: 25%;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  .modalcity {
+    width: 40%;
+    left: 30%;
+  }
+}
+@media (min-width: 1001px) and (max-width: 1300px) {
 }

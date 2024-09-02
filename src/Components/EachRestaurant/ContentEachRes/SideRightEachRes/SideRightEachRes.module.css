@@ -22,3 +22,15 @@
 .side-Right-each-res-component .comments:hover p {
   color: #418a47;
 }
+
+@media (max-width: 600px) {
+  .side-Right-each-res-component {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 601px) and (max-width: 700px) {
+  .side-Right-each-res-component .comments p {
+    font-size: 0.8rem;
+  }
+}

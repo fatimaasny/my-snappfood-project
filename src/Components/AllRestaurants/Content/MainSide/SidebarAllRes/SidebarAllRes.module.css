@@ -1,3 +1,19 @@
 .sidebar-SidebarAllRes {
   width: 21%;
 }
+
+@media (max-width: 600px) {
+  .sidebar-SidebarAllRes {
+    width: 100%;
+  }
+}
+@media (min-width: 601px) and (max-width: 1012px) {
+  .sidebar-SidebarAllRes {
+    width: 38%;
+  }
+}
+@media (min-width: 1013px) and (max-width: 1350px) {
+  .sidebar-SidebarAllRes {
+    width: 28%;
+  }
+}

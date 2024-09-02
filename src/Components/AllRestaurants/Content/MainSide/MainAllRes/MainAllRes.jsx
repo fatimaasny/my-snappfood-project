@@ -279,7 +279,7 @@ export default function MainAllRes() {
       if (
         top < height < bottom &&
         bottom <= window.innerHeight &&
-        list.length <= 50
+        list.length <= 30
       ) {
         let item = {
           backCoverUp: tazeImg1,

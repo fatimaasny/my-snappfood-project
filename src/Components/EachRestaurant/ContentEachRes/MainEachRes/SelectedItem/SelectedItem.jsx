@@ -31,9 +31,6 @@ function ContentRight(props) {
 function ContentLeft(props) {
   return (
     <div className={styles.left}>
-      {/* <button className={styles.btnplus}>
-    <FaMinus color="#ff00b3" />
-  </button> */}
       <button className={styles.btntrash}>
         <TbTrash color="#aaa" fontSize="1rem" />
       </button>
