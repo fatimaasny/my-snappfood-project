@@ -1,7 +1,7 @@
 .header-down {
   /* position: sticky; */
   /* position: fixed; */
-  top: 100px;
+  top: 88px;
   padding: 20px 1rem;
   background: #fff;
   /* z-index: 999; */
@@ -10,6 +10,14 @@
   /* background-color: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(20px); */
 }
+
+.header-down.fix {
+  position: fixed;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 3px 8px -5px #eee;
+  z-index: 200;
+}
+
 .header-down .list {
   width: 1700px;
   display: flex;

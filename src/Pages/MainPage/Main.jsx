@@ -7,7 +7,7 @@ import OnlineRegister from "../../Components/MainPage/onlineRegister/OnlineRegis
 export default function Main() {
   return (
     <>
-      <HeaderDown />
+      <HeaderDown class="fix" />
       <main className={styles["main-MainPage"]}>
         <Category title={"دسته بندی ها"} />
         <Restaurant title={"تازه ها در اسنپ‌فود"} index={1} />

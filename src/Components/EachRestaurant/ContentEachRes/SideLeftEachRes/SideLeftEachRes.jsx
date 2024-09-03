@@ -130,7 +130,7 @@ function Basket(props) {
   );
 }
 
-export default function SideLeftEachRes() {
+export default function SideLeftEachRes({ scrollposition }) {
   const [isShowMultiSendingWay, setIsShowMultiSendingWay] = useState(false);
 
   const showMultiSendingWayHandler = () => {
@@ -142,7 +142,11 @@ export default function SideLeftEachRes() {
 
   return (
     <>
-      <div className={styles["side-left-each-res-component"]}>
+      <div
+        className={`${styles["side-left-each-res-component"]} ${
+          scrollposition && styles.fix
+        }`}
+      >
         <>
           <Sendingway
             firstIcon={<AiOutlineFieldTime fontSize="1.2rem" color="#666" />}

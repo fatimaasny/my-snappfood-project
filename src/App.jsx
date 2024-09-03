@@ -6,12 +6,12 @@ import EachRestaurant from "./Pages/EachRestaurant/EachRestaurant";
 import Footer from "./Components/Footer/Footer";
 export default function App() {
   return (
-    <>
+    <div className={styles.app}>
       <HeaderUp />
       {/* <Main /> */}
       {/* <AllRestaurants /> */}
       <EachRestaurant />
       <Footer />
-    </>
+    </div>
   );
 }

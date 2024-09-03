@@ -1,6 +1,13 @@
 .side-Right-each-res-component {
   width: 22%;
 }
+/* .side-Right-each-res-component.fix {
+  width: 18%;
+  background: yellow;
+  position: fixed;
+  right: 6rem;
+  top: 90px;
+} */
 
 .side-Right-each-res-component .comments {
   display: flex;
@@ -25,8 +32,12 @@
 
 @media (max-width: 600px) {
   .side-Right-each-res-component {
+    /* position: static; */
     width: 90%;
     margin: 0 auto;
+  }
+  .side-Right-each-res-component.fix {
+    position: static;
   }
 }
 @media (min-width: 601px) and (max-width: 700px) {

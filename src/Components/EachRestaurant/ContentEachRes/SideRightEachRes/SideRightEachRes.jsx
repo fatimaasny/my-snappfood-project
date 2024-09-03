@@ -3,7 +3,7 @@ import InfoOfRes from "./InfoOfRes/InfoOfRes";
 import MenuOfRes from "./MenuOfRes/MenuOfRes";
 
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalComments from "../../../Modal/ModalComments/ModalComments";
 import ModalSpecialMap from "../../../Modal/ModalSpecialMap/ModalSpecialMap";
 
@@ -16,7 +16,11 @@ function CommentInfo(props) {
   );
 }
 
-export default function SideRightEachRes({ listOfTitles, listComments }) {
+export default function SideRightEachRes({
+  listOfTitles,
+  listComments,
+  scrollposition,
+}) {
   const [isShowModalComments, setIsShowModalComments] = useState();
   const [isShowModalSpecialMap, setIsShowModalSpecialMap] = useState();
 
@@ -33,6 +37,7 @@ export default function SideRightEachRes({ listOfTitles, listComments }) {
   const hideModalSpecialMap = () => {
     setIsShowModalSpecialMap(0);
   };
+
   return (
     <>
       {isShowModalComments === 1 && (
@@ -48,7 +53,11 @@ export default function SideRightEachRes({ listOfTitles, listComments }) {
           hideModalSpecialMap={hideModalSpecialMap}
         />
       )}
-      <div className={styles["side-Right-each-res-component"]}>
+      <div
+        className={`${styles["side-Right-each-res-component"]} ${
+          scrollposition && styles.fix
+        }`}
+      >
         <InfoOfRes />
         <CommentInfo showModalComments={showModalComments} />
         <MenuOfRes listOfTitles={listOfTitles} />

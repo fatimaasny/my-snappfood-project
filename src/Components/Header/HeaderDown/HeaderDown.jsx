@@ -77,9 +77,9 @@ const menuListIcon = [
     title: "سایر",
   },
 ];
-const itemWidth = 100;
+const itemWidth = 240;
 
-export default function HeaderDown() {
+export default function HeaderDown(props) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const contentRef = useRef();
 
@@ -90,12 +90,7 @@ export default function HeaderDown() {
     console.log(newScrollPosition);
   };
   return (
-    // <header className={styles["header-down"]}>
-    //   {menuListIcon.map((i, index) => (
-    //     <IconMenu key={index} title={i.title} source={i.source} alt={i.alt} />
-    //   ))}
-    // </header>
-    <header className={styles["header-down"]}>
+    <header className={`${styles["header-down"]} ${styles[props.class]}`}>
       <div
         ref={contentRef}
         style={{

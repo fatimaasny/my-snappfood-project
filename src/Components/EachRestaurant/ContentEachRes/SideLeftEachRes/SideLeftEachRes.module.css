@@ -2,6 +2,13 @@
   width: 25%;
   position: relative;
 }
+/* .side-left-each-res-component.fix {
+  position: fixed;
+  left: 6rem;
+  top: 90px;
+  background-color: green;
+  width: 19%;
+} */
 
 .basket {
   margin-top: 1rem;

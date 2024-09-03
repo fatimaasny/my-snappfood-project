@@ -2,11 +2,16 @@
   padding: 2rem 6rem;
   display: flex;
   background: #fdfdfd;
+  position: relative;
 }
 .bothRessponsive {
   display: flex;
   justify-content: space-around;
+  position: relative;
 }
+/* .bothRessponsive.end {
+  justify-content: end;
+} */
 
 @media (max-width: 600px) {
   .bothRessponsive {
