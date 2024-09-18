@@ -4,6 +4,8 @@
   background: rgb(235, 237, 240);
   border-bottom-right-radius: 7.5rem;
   height: fit-content;
+  padding-bottom: 1rem;
+  margin-top: 8rem;
 }
 
 .dlApp-content .content {
@@ -16,6 +18,7 @@
   /* font-family: Vazir-bold; */
   font-weight: 800;
   color: #444;
+  margin-top: 2rem;
 }
 .dlApp-content .content .text {
   font-size: 1rem;

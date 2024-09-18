@@ -6,7 +6,7 @@ export default function AllCategoryItem({ source, title, icon }) {
   return (
     <div className={styles["all-category-item-component"]}>
       <div className={styles["img-title"]}>
-        <img src={source} alt="" />
+        {source && <img src={source} alt="" />}
         <p>{title}</p>
       </div>
       {icon && (

@@ -1,12 +1,17 @@
 .card {
-  margin: 20px;
+  /* margin: 20px; */
   cursor: pointer;
   box-shadow: 0 1px 3px #eee;
-  width: 290px;
+  /* width: 290px; */
+  /* width: 310px; */
+  width: 24%;
   height: 350px;
 }
 .card:hover {
   box-shadow: 0 10px 15px #eee;
+}
+.card.all {
+  width: 31%;
 }
 
 .up {
@@ -47,7 +52,7 @@
   background: #fdfdfd;
   position: absolute;
   border-radius: 10px;
-  right: 100px;
+  right: 35%;
   bottom: -20px;
 }
 .center-image img {
@@ -93,25 +98,7 @@
   font-size: 0.75rem;
   color: #aaa;
 }
-.pre-request {
-  display: flex;
-  /* margin-top: 25px; */
-  align-items: center;
-  border-radius: 25px;
-  background: #eee;
-  padding: 10px 12px;
-}
-.pre-request.quarter {
-  margin-top: 25px;
-}
-.pre-request.half {
-  margin-top: 50px;
-}
-.pre-request span {
-  margin-right: 8px;
-  font-size: 0.85rem;
-  color: #666;
-}
+
 .post-price {
   color: #666;
   display: flex;
@@ -122,24 +109,45 @@
   box-shadow: 1px 1px 5px #ddd, -1px -1px 1px #fff;
 }
 
-.post-price span {
-  margin-right: 5px;
-  font-size: 0.75rem;
-}
-.post-price span:nth-child(3) {
-  font-family: Vazir-bold;
-  color: #666;
+.post-price.half {
+  margin-top: 50px;
 }
 
-@media (max-width: 400px) {
-  .card {
-    margin: 0;
-  }
+.post-price p {
+  margin-right: 5px;
+  font-size: 0.7rem;
 }
+.post-price span {
+  font-family: Vazir-bold;
+  font-size: 0.7rem;
+  margin: 0 3px;
+}
+
 /* این قسمت واسه mainAllRes تنظیم شده */
 @media (max-width: 600px) {
   .card {
     width: 100%;
     margin: 0 auto;
+  }
+  .center-image {
+    right: 40%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 946px) {
+  .card {
+    width: 48%;
+  }
+  .card.all {
+    width: 100%;
+  }
+}
+
+@media (min-width: 947px) and (max-width: 1330px) {
+  .card {
+    width: 30%;
+  }
+  .card.all {
+    width: 47%;
   }
 }

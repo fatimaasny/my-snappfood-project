@@ -2,21 +2,16 @@ import styles from "./CategoryItem.module.css";
 
 import Card from "../../../Card/Card";
 
-import { FaAngleLeft } from "react-icons/fa";
+import { LiaAngleLeftSolid } from "react-icons/lia";
 
-export default function CategoryItem({ source, title, alt }) {
+export default function CategoryItem({ source, title }) {
   return (
-    <Card className={styles.margin}>
-      <div
-        className={styles.item}
-        style={{ background: `url(${source})`, backgroundSize: "cover" }}
-      >
-        <div className={styles.text}>
-          <p>{title}</p>
-          <button>
-            <FaAngleLeft color="#ff00b3" fontSize="1rem" />
-          </button>
-        </div>
+    <Card className={styles.card}>
+      <img src={source} className={styles.image} />
+      <div className={styles.text}>
+        <p>{title}</p>
+
+        <LiaAngleLeftSolid color="#ff00b3" fontSize="0.9rem" />
       </div>
     </Card>
   );

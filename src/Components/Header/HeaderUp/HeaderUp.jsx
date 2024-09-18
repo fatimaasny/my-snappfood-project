@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./HeaderUp.module.css";
 
 import Button from "../../Button/Button";
@@ -17,9 +18,9 @@ import { GoPerson } from "react-icons/go";
 
 function Logo(props) {
   return (
-    <a href="#" className={styles["logo-snapp"]}>
+    <Link to={"/"} className={styles["logo-snapp"]}>
       <img src={snaplogo} alt="snapfood-logo" />
-    </a>
+    </Link>
   );
 }
 function Map(props) {

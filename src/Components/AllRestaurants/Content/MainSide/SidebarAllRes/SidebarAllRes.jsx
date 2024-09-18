@@ -7,7 +7,7 @@ export default function SidebarAllRes() {
   return (
     <aside className={styles["sidebar-SidebarAllRes"]}>
       <AllCategory />
-      <OneCategory title={"همه ایرانی‌ها"} />
+      {/* <OneCategory title={"همه ایرانی‌ها"} /> */}
       <FilterPrice />
       <ToggleFilterButtons />
     </aside>

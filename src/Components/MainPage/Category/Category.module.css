@@ -14,10 +14,15 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1.2rem;
 }
-@media (max-width: 530px) {
+@media (max-width: 946px) {
   .list {
-    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+@media (min-width: 947px) and (max-width: 1330px) {
+  .list {
+    gap: 1rem;
   }
 }

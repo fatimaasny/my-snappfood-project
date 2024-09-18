@@ -7,8 +7,6 @@ export default function ToggleFilterButtonsItem({ title }) {
       <div className={styles["toggle-btn"]}>
         <label className={styles.switch}>
           <input type="checkbox" />
-          {/* <span className={styles["slider round"]}></span> */}
-          {/* اینجوری کار نمیده و باید مثل پایین بنویسم */}
           <span className={`${styles.slider} ${styles.round}`}></span>
         </label>
       </div>

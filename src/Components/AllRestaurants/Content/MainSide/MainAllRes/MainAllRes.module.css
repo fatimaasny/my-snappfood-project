@@ -7,6 +7,7 @@
 .list {
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
 }
 @media (max-width: 600px) {
   .main-MainAllRes {
@@ -26,15 +27,14 @@
     box-shadow: none;
   }
   .list {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 }
 @media (min-width: 1013px) and (max-width: 1350px) {
   .main-MainAllRes {
     width: 70%;
-   
   }
   .list {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 }

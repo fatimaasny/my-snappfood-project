@@ -4,10 +4,8 @@ import Card from "../../Components/Card/Card";
 import GiftBar from "../GiftBar/GiftBar";
 
 import { AiFillTags } from "react-icons/ai";
-import { GiFullMotorcycleHelmet } from "react-icons/gi";
 import { BsPersonUp } from "react-icons/bs";
 import { IoMdStar } from "react-icons/io";
-import { IoMdTime } from "react-icons/io";
 
 function UpContent(props) {
   return (
@@ -27,10 +25,12 @@ function UpContent(props) {
           />
         </div>
       )}
-
-      {props.discountP && (
+      {/* این رو زدم ون وقتی 0 بود مقدارش توی صفحه نشونش میداد props.discountP
+ولی اینو زدم تا این مشکل پیش نیادش  !!props.discountP
+*/}
+      {!!props.discountP && (
         <div className={styles.discount}>
-          <p>{props.discountP}</p>
+          <p>{props.discountP}%</p>
         </div>
       )}
 
@@ -47,78 +47,46 @@ function DownContent(props) {
       <div className={styles.score}>
         <IoMdStar fontSize="1rem" color="#f8d527" />
         {props.scorePFirst && <p>{props.scorePFirst}</p>}
-        {props.scorePLast && <p>{props.scorePLast}</p>}
+        {props.scorePLast > 0 && <p>( {props.scorePLast} )</p>}
       </div>
       {props.typeFoodP && (
         <p className={styles["types-food"]}>{props.typeFoodP}</p>
       )}
 
-      {props.requestText && (
-        <div
-          className={`${styles["pre-request"]} ${
-            props.typeFoodP ? styles.quarter : styles.half
-          }`}
-        >
-          <IoMdTime color="#666" fontSize="1.4rem" />
-          <span>{props.preRequestSpan}</span>
-        </div>
-      )}
+      <div
+        className={`${styles["post-price"]} ${!props.typeFoodP && styles.half}`}
+      >
+        <BsPersonUp color="#666" fontSize="1.4rem" />
+        <p>پیک فروشنده</p>
 
-      {props.expressText && (
-        <div className={styles["post-price"]}>
-          <GiFullMotorcycleHelmet color="#666" fontSize="1.4rem" />
-          <span>{props.postPriceFirstS}</span>
-          <span>{props.postPriceLastS}</span>
-          <span>تومان</span>
-        </div>
-      )}
-      {props.salerText && (
-        <div className={styles["post-price"]}>
-          <BsPersonUp color="#666" fontSize="1.4rem" />
-          <span>{props.postPriceFirstS}</span>
-          <span>{props.postPriceLastS}</span>
-          <span>تومان</span>
-        </div>
-      )}
+        {props.postPriceLastS > 0 ? (
+          <p>
+            <span>{props.postPriceLastS}</span>
+            تومان
+          </p>
+        ) : (
+          <span>رایگان</span>
+        )}
+      </div>
     </div>
   );
 }
 
-export default function RestaurantItem({
-  backCoverUp,
-  freeSendingP,
-  discountP,
-  centerImage,
-  titleH,
-  scorePFirst,
-  scorePLast,
-  typeFoodP,
-  preRequestSpan,
-  expressText,
-  requestText,
-  salerText,
-  postPriceFirstS,
-  postPriceLastS,
-}) {
+export default function RestaurantItem(props) {
   return (
-    <Card className={styles.card}>
+    <Card className={`${styles.card} ${styles[props.class]}`}>
       <UpContent
-        freeSendingP={freeSendingP}
-        discountP={discountP}
-        centerImage={centerImage}
-        backCoverUp={backCoverUp}
+        backCoverUp={props.backCoverUp}
+        freeSendingP={props.freeSendingP}
+        discountP={props.discountP}
+        centerImage={props.centerImage}
       />
       <DownContent
-        titleH={titleH}
-        scorePFirst={scorePFirst}
-        scorePLast={scorePLast}
-        typeFoodP={typeFoodP}
-        preRequestSpan={preRequestSpan}
-        expressText={expressText}
-        requestText={requestText}
-        salerText={salerText}
-        postPriceFirstS={postPriceFirstS}
-        postPriceLastS={postPriceLastS}
+        titleH={props.titleH}
+        scorePFirst={props.scorePFirst}
+        scorePLast={props.scorePLast}
+        typeFoodP={props.typeFoodP}
+        postPriceLastS={props.postPriceLastS}
       />
     </Card>
   );

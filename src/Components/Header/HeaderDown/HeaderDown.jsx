@@ -1,86 +1,16 @@
-import { useRef, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 
-import reastaurant from "../../../Images/Header/HeaderDown/restaurant.png";
-import supermarket from "../../../Images/Header/HeaderDown/supermarket.png";
-import cafe from "../../../Images/Header/HeaderDown/cafe.png";
-import sweet from "../../../Images/Header/HeaderDown/sweet.png";
-import bakery from "../../../Images/Header/HeaderDown/bakery.png";
-import fruit from "../../../Images/Header/HeaderDown/fruit.png";
-import meat from "../../../Images/Header/HeaderDown/meat.png";
-import iceCream from "../../../Images/Header/HeaderDown/icecream.png";
-import nut from "../../../Images/Header/HeaderDown/nut.png";
-import other from "../../../Images/Header/HeaderDown/other.png";
 import styles from "./HeaderDown.module.css";
 import IconMenu from "./IconMenu/IconMenu";
-const menuListIcon = [
-  {
-    source: reastaurant,
-    alt: "reastaurant.svg",
-    title: "رستوران",
-  },
-  {
-    source: supermarket,
-    alt: "supermarket.svg",
-    title: "سوپرمارکت",
-  },
-  {
-    source: cafe,
-    alt: "cafe.svg",
-    title: "کافه",
-  },
-  {
-    source: sweet,
-    alt: "sweet.svg",
-    title: "شیرینی",
-  },
-  {
-    source: bakery,
-    alt: "bakery.svg",
-    title: "نانوایی",
-  },
-  {
-    source: fruit,
-    alt: "fruit.svg",
-    title: "میوه",
-  },
-  {
-    source: meat,
-    alt: "meat.svg",
-    title: "پروتئین",
-  },
-  {
-    source: iceCream,
-    alt: "iceCream.svg",
-    title: "آبمیوه بستنی",
-  },
-  {
-    source: nut,
-    alt: "nut.svg",
-    title: "آجیل",
-  },
-  {
-    source: iceCream,
-    alt: "iceCream.svg",
-    title: "آبمیوه بستنی",
-  },
-  {
-    source: nut,
-    alt: "nut.svg",
-    title: "آجیل",
-  },
-  {
-    source: other,
-    alt: "other.svg",
-    title: "سایر",
-  },
-];
+
 const itemWidth = 240;
 
 export default function HeaderDown(props) {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [listMenu, setListMenu] = useState([]);
   const contentRef = useRef();
 
   const handleScroll = (scrollAmount) => {
@@ -89,25 +19,40 @@ export default function HeaderDown(props) {
     contentRef.current.scrollLeft = newScrollPosition;
     console.log(newScrollPosition);
   };
+  useEffect(() => {
+    fetch(
+      "https://snappfood.ir/search/api/v1/desktop/service?lat=35.774&long=51.418&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&locale=fa"
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((res) => {
+        setListMenu(res.data.items);
+      });
+  }, []);
   return (
     <header className={`${styles["header-down"]} ${styles[props.class]}`}>
-      <div
-        ref={contentRef}
-        style={{
-          width: "100%",
-          overflowX: "scroll",
-          scrollBehavior: "smooth",
-        }}
-      >
+      <div ref={contentRef} className={styles.ref}>
         <div className={styles.list}>
-          {menuListIcon.map((i, index) => (
-            <IconMenu
-              key={index}
-              title={i.title}
-              source={i.source}
-              alt={i.alt}
-            />
+          {listMenu.map((category) => (
+            <Link to={`/restaurants/${category.id}/${category.superTypeAlias}`}>
+              <IconMenu
+                key={category.id}
+                title={category.title}
+                icon={category.icon}
+              />
+            </Link>
           ))}
+          {/* {listMenu.map((i) => {
+            return i.title === "رستوران" ? (
+              <Link to={"/restaurants"}>
+                <IconMenu key={i.id} title={i.title} icon={i.icon} />
+              </Link>
+            ) : (
+              <IconMenu key={i.id} title={i.title} icon={i.icon} />
+            );
+
+          })} */}
         </div>
       </div>
       <button
