@@ -158,7 +158,18 @@ function TitleInScores(props) {
       <div className={styles.leftcontent}>
         <span>به ترتیب</span>
         <div className={styles.togglebtn}>
-          <button
+          {props.sortParams.map((i, index) => (
+            <button
+              key={index}
+              className={`${styles.button} ${
+                props.isToggleBtn === i.key ? styles.toggle : ""
+              }`}
+              onClick={() => props.ToggleHandler(i.key)}
+            >
+              {i.title}
+            </button>
+          ))}
+          {/* <button
             className={`${styles.button} ${
               props.isToggleBtn === "new" ? styles.toggle : ""
             }`}
@@ -173,7 +184,7 @@ function TitleInScores(props) {
             onClick={() => props.ToggleHandler("related")}
           >
             مرتبط‌‌‌‌ ترین
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
@@ -182,19 +193,17 @@ function TitleInScores(props) {
 function CommentsInScores(props) {
   return (
     <div className={styles.comments}>
-      {props.listComments.map((i, index) => (
+      {props.listComment.map((i) => (
         <Comment
-          key={index}
-          name={i.name}
+          key={i.commentId}
+          sender={i.sender}
           date={i.date}
           starscore={i.starscore}
           rate={i.rate}
-          description={i.description}
-          extracomment={i.extracomment}
-          extratext={i.extratext}
-          listOrderName={i.listOrderName}
-          ressponse={i.ressponse}
-          ressponsetext={i.ressponsetext}
+          commentText={i.commentText}
+          deliveryComment={i.deliveryComment}
+          foods={i.foods}
+          replies={i.replies}
         />
       ))}
     </div>
@@ -207,8 +216,9 @@ function Scrolled(props) {
       <TitleInScores
         isToggleBtn={props.isToggleBtn}
         ToggleHandler={props.ToggleHandler}
+        sortParams={props.sortParams}
       />
-      <CommentsInScores listComments={props.listComments} />
+      <CommentsInScores listComment={props.listComment} />
     </div>
   );
 }
@@ -222,7 +232,8 @@ function Overlay(props) {
         hideModalComments={props.hideModalComments}
       />
       <Scrolled
-        listComments={props.listComments}
+        listComment={props.listComment}
+        sortParams={props.sortParams}
         isToggleBtn={props.isToggleBtn}
         ToggleHandler={props.ToggleHandler}
       />
@@ -237,7 +248,8 @@ function FinalModal(props) {
       <Overlay
         hideModalComments={props.hideModalComments}
         showModalSpecialMap={props.showModalSpecialMap}
-        listComments={props.listComments}
+        listComment={props.listComment}
+        sortParams={props.sortParams}
         isToggleBtn={props.isToggleBtn}
         ToggleHandler={props.ToggleHandler}
       />
@@ -256,7 +268,8 @@ function ModalComments(props) {
         <FinalModal
           hideModalComments={props.hideModalComments}
           showModalSpecialMap={props.showModalSpecialMap}
-          listComments={props.listComments}
+          listComment={props.listComment}
+          sortParams={props.sortParams}
           isToggleBtn={isToggleBtn}
           ToggleHandler={ToggleHandler}
         />,

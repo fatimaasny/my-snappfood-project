@@ -10,7 +10,6 @@ export default function CategoryItem({ source, title }) {
       <img src={source} className={styles.image} />
       <div className={styles.text}>
         <p>{title}</p>
-
         <LiaAngleLeftSolid color="#ff00b3" fontSize="0.9rem" />
       </div>
     </Card>

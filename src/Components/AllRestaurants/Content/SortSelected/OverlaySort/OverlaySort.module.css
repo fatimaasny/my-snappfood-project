@@ -15,12 +15,10 @@
   margin-top: 0.25rem;
   cursor: default;
   padding: 0.4rem;
-}
-.list li p {
   color: #000;
   font-size: 1rem;
 }
 
 .list li:hover {
-  background-color: rgb(211, 221, 240);
+  background-color: #c7dafc;
 }

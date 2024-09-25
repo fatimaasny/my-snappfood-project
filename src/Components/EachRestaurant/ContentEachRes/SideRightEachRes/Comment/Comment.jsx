@@ -6,7 +6,7 @@ import { IoMdStar } from "react-icons/io";
 function RightContent(props) {
   return (
     <div className={styles.right}>
-      <h5>{props.name}</h5>
+      <h5>{props.sender}</h5>
       <p>{props.date}</p>
       {props.starscore && (
         <button className={styles.starbtn}>
@@ -20,23 +20,31 @@ function RightContent(props) {
 function LeftContent(props) {
   return (
     <div className={styles.left}>
-      <p className={styles.description}>{props.description}</p>
-      {props.extracomment && (
+      <p className={styles.description}>{props.commentText}</p>
+      {props.deliveryComment && (
         <div className={styles.extra}>
           <p>نظر درباره ارسال:</p>
-          <p>{props.extratext}</p>
+          <p>{props.deliveryComment}</p>
         </div>
       )}
       <div className={styles.ordernames}>
-        {props.listOrderName.map((item, index) => (
-          <OrderName name={item} key={index} />
+        {props.foods.map((item, index) => (
+          <OrderName name={item.title} key={index} />
         ))}
       </div>
-      {props.ressponse && (
-        <div className={styles.ressponse}>
-          <h5>پاسخ اسنپ‌فود</h5>
-          <p>{props.ressponsetext}</p>
-        </div>
+      {props.replies.length > 0 && (
+        <>
+          {props.replies.map((item, index) => (
+            <div className={styles.ressponse} key={index}>
+              <h5>
+                {item.source === "VENDOR"
+                  ? "پاسخ مدیر رستوران"
+                  : "پاسخ اسنپ‌فود"}
+              </h5>
+              <p>{item.commentText}</p>
+            </div>
+          ))}
+        </>
       )}
     </div>
   );
@@ -45,15 +53,14 @@ function Comment(props) {
   return (
     <div className={styles.comments}>
       <RightContent
-        name={props.name}
+        sender={props.sender}
         date={props.date}
         starscore={props.starscore}
         rate={props.rate}
       />
       <LeftContent
-        description={props.description}
-        extracomment={props.extracomment}
-        extratext={props.extratext}
+        commentText={props.commentText}
+        deliveryComment={props.deliveryComment}
         listOrderName={props.listOrderName}
         ressponse={props.ressponse}
         ressponsetext={props.ressponsetext}

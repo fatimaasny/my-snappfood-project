@@ -1,17 +1,11 @@
 .card {
-  /* margin: 20px; */
   cursor: pointer;
   box-shadow: 0 1px 3px #eee;
-  /* width: 290px; */
-  /* width: 310px; */
-  width: 24%;
+  width: 95%;
   height: 350px;
 }
 .card:hover {
   box-shadow: 0 10px 15px #eee;
-}
-.card.all {
-  width: 31%;
 }
 
 .up {
@@ -123,31 +117,8 @@
   margin: 0 3px;
 }
 
-/* این قسمت واسه mainAllRes تنظیم شده */
 @media (max-width: 600px) {
-  .card {
-    width: 100%;
-    margin: 0 auto;
-  }
   .center-image {
     right: 40%;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 946px) {
-  .card {
-    width: 48%;
-  }
-  .card.all {
-    width: 100%;
-  }
-}
-
-@media (min-width: 947px) and (max-width: 1330px) {
-  .card {
-    width: 30%;
-  }
-  .card.all {
-    width: 47%;
   }
 }
