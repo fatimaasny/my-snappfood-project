@@ -44,17 +44,17 @@ export default function Main() {
   //   fetchData();
   // }, []);
 
-  const { isLoading, res, error } = useFetch(titlesInMain);
+  const { isLoading, data, setData, error } = useFetch(titlesInMain);
 
   useEffect(() => {
     const fetchData = async () => {
-      await setListFirst(res.data.result[3]["data"]["restaurants"]);
-      await setTitleFirst(res.data.result[3]["title"]);
-      await setListSecond(res.data.result[4]["data"]["restaurants"]);
-      await setTitleSecond(res.data.result[4]["title"]);
+      await setListFirst(data.data.result[3]["data"]["restaurants"]);
+      await setTitleFirst(data.data.result[3]["title"]);
+      await setListSecond(data.data.result[4]["data"]["restaurants"]);
+      await setTitleSecond(data.data.result[4]["title"]);
     };
     fetchData();
-  }, [res]);
+  }, [data]);
 
   if (error) {
     return <Error title={error} />;

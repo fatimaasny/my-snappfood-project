@@ -28,7 +28,7 @@ function List({ listCategory }) {
 }
 
 export default function Category({ title }) {
-  const [list, setList] = useState([]);
+  // const [list, setList] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
   // const [listCategory, setListCategory] = useState([]);
   // const [error, setError] = useState();
@@ -48,14 +48,14 @@ export default function Category({ title }) {
   //   fetchData();
   // }, []);
 
-  const { isLoading, res, error } = useFetch(categoryInMain);
+  const { isLoading, data, setData, error } = useFetch(categoryInMain);
 
   useEffect(() => {
     const fetchData = async () => {
-      await setList(res.data.result[0]["data"]["cuisines"]);
+      await setData(data.data.result[0]["data"]["cuisines"]);
     };
     fetchData();
-  }, [res]);
+  }, [data]);
 
   if (error) {
     return <Error title={error} />;
@@ -65,7 +65,7 @@ export default function Category({ title }) {
       {!isLoading && (
         <section className={styles.category}>
           <Title title={title} />
-          <List listCategory={list} />
+          <List listCategory={data} />
         </section>
       )}
     </>
