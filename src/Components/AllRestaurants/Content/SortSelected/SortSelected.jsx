@@ -61,7 +61,7 @@ export default function SortSelected() {
   useEffect(() => {
     hideSortOverlay();
     processData();
-  }, [selectedSort]);
+  }, [params]);
 
   if (error) {
     return <Error title={error} />;
