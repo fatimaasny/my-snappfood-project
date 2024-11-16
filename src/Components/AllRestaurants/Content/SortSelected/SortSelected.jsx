@@ -1,19 +1,25 @@
 import styles from "./SortSelected.module.css";
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import Error from "../../../Error/Error";
-
-import { GoTriangleDown } from "react-icons/go";
 import OverlaySort from "./OverlaySort/OverlaySort";
 
+// api
+import { vendorList } from "../../../../CallApi/CallApi";
+
+// custom hooks
+import { useFetch2 } from "../../../../hooks/useFetch";
+
+import { GoTriangleDown } from "react-icons/go";
+import { IoIosClose } from "react-icons/io";
+
 export default function SortSelected() {
+  // const [list, setList] = useState([]);
   const [isOverlaySort, setIsOverlaySort] = useState(false);
   const [selectedSort, setSelectedSort] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [list, setList] = useState([]);
-  const [error, setError] = useState();
+  const params = useParams();
 
   const handleSortOverlay = () => {
     setIsOverlaySort((isOverlaySort) => !isOverlaySort);
@@ -24,35 +30,38 @@ export default function SortSelected() {
   const handleSelectedSort = (value) => {
     setSelectedSort(value);
   };
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [list, setList] = useState([]);
+  // const [error, setError] = useState();
 
-  const params = useParams();
+  // useEffect(() => {
+  //   hideSortOverlay();
+  //   const fetchData = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await vendorList(params.alias, params.catId);
+  //       setList(res.data.extra_sections.filters.top.data);
+
+  //       setError();
+  //     } catch (error) {
+  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, [params]);
+
+  const { isLoading, data, setData, error, fetchData } = useFetch2(vendorList);
+
+  const processData = async () => {
+    await fetchData(params.alias, params.catId);
+    await setData(data.data.extra_sections.filters.top.data);
+  };
 
   useEffect(() => {
     hideSortOverlay();
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:null,%22sortings%22:null%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.catId}]&extra-filter=&vendor_title=&locale=fa`
-        );
-        if (!response.ok) {
-          throw new Error("اطلاعات به درستی دریافت نشده است.");
-        }
-        const res = await response.json();
-        const oldArray = res.data.extra_sections.filters.top.data;
-        const finalArray = [];
-        for (let i = 0; i < oldArray.length; i++) {
-          finalArray.push(oldArray[i]["title"]);
-        }
-        setList(finalArray);
-        setError();
-      } catch (error) {
-        setError("خطایی رخ داده است، مجددا تلاش کنید.");
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, [params]);
+    processData();
+  }, [selectedSort]);
 
   if (error) {
     return <Error title={error} />;
@@ -60,13 +69,37 @@ export default function SortSelected() {
 
   return (
     <div className={styles["sort-selected"]}>
-      <div onClick={handleSortOverlay}>
-        <input type="text" placeholder="به ترتیب پیش‌فرض" />
+      <div className={styles.content} onClick={handleSortOverlay}>
+        <div>
+          <input
+            type="text"
+            value={selectedSort}
+            placeholder="به ترتیب پیش‌فرض"
+          />
+          {selectedSort.length > 0 && (
+            <Link
+              to={`/category/${params.catId}/${params.alias}/null/${params.catValue}/${params.subValue}/${params.filterPrice}`}
+            >
+              <IoIosClose
+                fontSize="1.5rem"
+                color="#aaa"
+                onClick={() => handleSelectedSort("")}
+              />
+            </Link>
+          )}
+        </div>
         <button>
           <GoTriangleDown fontSize="1rem" color="#666" />
         </button>
       </div>
-      {isOverlaySort && <OverlaySort list={list} isLoading={isLoading} />}
+      {isOverlaySort && (
+        <OverlaySort
+          list={data}
+          isLoading={isLoading}
+          params={params}
+          handleSelectedSort={handleSelectedSort}
+        />
+      )}
     </div>
   );
 }

@@ -6,77 +6,242 @@ import RestaurantItem from "../../../../../Components/RestaurantItem/RestaurantI
 import Error from "../../../../Error/Error";
 import Loading from "../../../../Loading/Loading";
 
+// api
+import { vendorList } from "../../../../../CallApi/CallApi";
+import { categoryVendorList } from "../../../../../CallApi/CallApi";
+import { subCategoryVendorList } from "../../../../../CallApi/CallApi";
+import { sortingVendorList } from "../../../../../CallApi/CallApi";
+import { sortingCategoryVendorList } from "../../../../../CallApi/CallApi";
+import { sortingSubofCategoryVendorList } from "../../../../../CallApi/CallApi";
+
+import { filterPriceVendorList } from "../../../../../CallApi/CallApi";
+import { filterPriceSortingVendorList } from "../../../../../CallApi/CallApi";
+import { filterPriceSubOrCatValueVendorList } from "../../../../../CallApi/CallApi";
+import { filterPriceSortingSubOrCatValueVendorList } from "../../../../../CallApi/CallApi";
+
+// custom hooks
+
+import { useAllApiMainAllRes } from "../../../../../hooks/useFetch";
+
 export default function MainAllRes() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [list, setList] = useState([]);
-  const [error, setError] = useState();
-
-  const endRef = useRef(null);
   const params = useParams();
+  let res = [];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const { top, bottom, height } = endRef.current.getBoundingClientRect();
-      if (
-        top < height < bottom &&
-        bottom <= window.innerHeight &&
-        list.length <= 30
-      ) {
-        // let item = {
-        //   backCoverUp: tazeImg1,
-        //   freeSendingP: false,
-        //   discountP: "20%",
-        //   centerImage: tazeImg11,
-        //   titleH: "آش و حلیم کرمانشاهی آوین",
-        //   scorePFirst: "جدید",
-        //   scorePLast: "(9)",
-        //   typeFoodP: "سنتی، آش و حلیم",
-        //   preRequestSpan: false,
-        //   RequestText: false,
-        //   expressText: "اکسپرس",
-        //   salerText: false,
-        //   postPriceFirstS: "ارسال اکسپرس",
-        //   postPriceLastS: "10,500",
-        // };
-        // setList([...list, item]);
-      }
-    };
+  // TODO
+  //  یک لیست کمکی داشته باشم که بیام 5 تا 5 تا از لیست اصلی بگیرم و بریزم توش تا نمایشش بده و هر
+  //  بار ایندکس خونه اخر رو هم نگهدارم. که با اسکرول خوردن هی اضافه بشه به لیست.
+  
+  // const endRef = useRef(null);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const { top, bottom, height } = endRef.current.getBoundingClientRect();
+  //     if (
+  //       top < height < bottom &&
+  //       bottom <= window.innerHeight &&
+  //       list.length <= 30
+  //     ) {
+  //       // let item = {
+  //       //   backCoverUp: tazeImg1,
+  //       //   freeSendingP: false,
+  //       //   discountP: "20%",
+  //       //   centerImage: tazeImg11,
+  //       //   titleH: "آش و حلیم کرمانشاهی آوین",
+  //       //   scorePFirst: "جدید",
+  //       //   scorePLast: "(9)",
+  //       //   typeFoodP: "سنتی، آش و حلیم",
+  //       //   preRequestSpan: false,
+  //       //   RequestText: false,
+  //       //   expressText: "اکسپرس",
+  //       //   salerText: false,
+  //       //   postPriceFirstS: "ارسال اکسپرس",
+  //       //   postPriceLastS: "10,500",
+  //       // };
+  //       // setList([...list, item]);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [list]);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [list]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:null,%22sortings%22:null%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.catId}]&extra-filter=&vendor_title=&locale=fa`
-        );
-        if (!response.ok) {
-          throw new Error("اطلاعات به درستی دریافت نشده است.");
-        }
-        const res = await response.json();
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [list, setList] = useState([]);
+  // const [error, setError] = useState();
 
-        let allList = res.data.finalResult;
-        const finalList = [];
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       // **********************   filterPriceVendorList ****************
+  //       if (
+  //         params.filterPrice !== "null" &&
+  //         params.sorting === "null" &&
+  //         params.catValue === "null" &&
+  //         params.subValue === "null"
+  //       ) {
+  //         res = await filterPriceVendorList(
+  //           params.alias,
+  //           params.id,
+  //           params.filterPrice
+  //         );
+  //       }
+  //       // **********************   filterPriceSortingVendorList ****************
+  //       else if (
+  //         params.filterPrice !== "null" &&
+  //         params.sorting !== "null" &&
+  //         params.catValue === "null" &&
+  //         params.subValue === "null"
+  //       ) {
+  //         res = await filterPriceSortingVendorList(
+  //           params.alias,
+  //           params.id,
+  //           params.filterPrice,
+  //           params.sorting
+  //         );
+  //       }
+  //       // **********************   filterPriceSubOrCatValueVendorList ****************
+  //       else if (
+  //         params.filterPrice !== "null" &&
+  //         params.sorting === "null" &&
+  //         params.catValue !== "null"
+  //       ) {
+  //         res = await filterPriceSubOrCatValueVendorList(
+  //           params.alias,
+  //           params.id,
+  //           params.filterPrice,
+  //           params.catValue,
+  //           params.subValue
+  //         );
+  //       }
+  //       // **********************   filterPriceSortingSubOrCatValueVendorList ****************
+  //       else if (
+  //         params.filterPrice !== "null" &&
+  //         params.sorting !== "null" &&
+  //         params.catValue !== "null"
+  //       ) {
+  //         res = await filterPriceSortingSubOrCatValueVendorList(
+  //           params.alias,
+  //           params.id,
+  //           params.sorting,
+  //           params.filterPrice,
+  //           params.catValue,
+  //           params.subValue
+  //         );
+  //       }
 
-        for (let i = 0; i < allList.length; i++) {
-          finalList.push(allList[i]["data"]);
-        }
-        setList(finalList);
-        setError();
-      } catch (error) {
-        setError("خطایی رخ داده است بعدا مجدد تلاش کنید.");
-      }
-      setIsLoading(false);
-      console.log(list);
-    };
-    fetchData();
-  }, [params]);
+  //       //
+
+  //       // **********************   sortingSubofCategoryVendorList ****************
+  //       else if (
+  //         params.filterPrice === "null" &&
+  //         params.sorting !== "null" &&
+  //         params.catValue !== "null" &&
+  //         params.subValue !== "null"
+  //       ) {
+  //         res = await sortingSubofCategoryVendorList(
+  //           params.alias,
+  //           params.catId,
+  //           params.sorting,
+  //           params.catValue,
+  //           params.subValue
+  //         );
+  //       }
+  //       // **********************   sortingCategoryVendorList ****************
+  //       else if (
+  //         params.filterPrice === "null" &&
+  //         params.sorting !== "null" &&
+  //         params.catValue !== "null" &&
+  //         params.subValue === "null"
+  //       ) {
+  //         res = await sortingCategoryVendorList(
+  //           params.alias,
+  //           params.catId,
+  //           params.sorting,
+  //           params.catValue
+  //         );
+  //       }
+  //       // **********************   sortingVendorList ****************
+  //       else if (
+  //         params.filterPrice === "null" &&
+  //         params.sorting !== "null" &&
+  //         params.catValue === "null" &&
+  //         params.subValue === "null"
+  //       ) {
+  //         res = await sortingVendorList(
+  //           params.alias,
+  //           params.catId,
+  //           params.sorting
+  //         );
+  //       }
+  //       // **********************   categoryVendorList ****************
+  //       else if (
+  //         params.filterPrice === "null" &&
+  //         params.sorting === "null" &&
+  //         params.catValue !== "null" &&
+  //         params.subValue === "null"
+  //       ) {
+  //         res = await categoryVendorList(
+  //           params.alias,
+  //           params.catId,
+  //           params.catValue
+  //         );
+  //       }
+  //       // **********************   subCategoryVendorList ****************
+  //       else if (
+  //         params.filterPrice === "null" &&
+  //         params.sorting === "null" &&
+  //         params.catValue !== "null" &&
+  //         params.subValue !== "null"
+  //       ) {
+  //         res = await subCategoryVendorList(
+  //           params.alias,
+  //           params.catId,
+  //           params.catValue,
+  //           params.subValue
+  //         );
+  //       }
+  //       // **********************   vendorList ****************
+  //       else if (
+  //         params.filterPrice === "null" &&
+  //         params.sorting === "null" &&
+  //         params.catValue === "null" &&
+  //         params.subValue === "null"
+  //       ) {
+  //         res = await vendorList(params.alias, params.catId);
+  //       }
+
+  //       let allList = res.data.finalResult;
+  //       const finalList = [];
+
+  //       for (let i = 0; i < allList.length; i++) {
+  //         finalList.push(allList[i]["data"]);
+  //       }
+  //       setList(finalList);
+  //       setError();
+  //     } catch (error) {
+  //       setError("خطایی رخ داده است بعدا مجدد تلاش کنید.");
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, [params]);
+
+  const { isLoading, list, error } = useAllApiMainAllRes(
+    filterPriceVendorList,
+    filterPriceSortingVendorList,
+    filterPriceSubOrCatValueVendorList,
+    filterPriceSortingSubOrCatValueVendorList,
+    sortingSubofCategoryVendorList,
+    sortingCategoryVendorList,
+    sortingVendorList,
+    categoryVendorList,
+    subCategoryVendorList,
+    vendorList,
+    params
+  );
 
   if (error) {
     return <Error title={error} />;
@@ -88,10 +253,7 @@ export default function MainAllRes() {
       ) : (
         <main className={styles["main-MainAllRes"]}>
           <div className={styles.list}>
-            {list.map((i) =>
-            
-            
-            (
+            {list.map((i) => (
               <Link to={`/item/${i.code}`}>
                 <RestaurantItem
                   class="all"
@@ -107,11 +269,8 @@ export default function MainAllRes() {
                   postPriceLastS={i.deliveryFee}
                 />
               </Link>
-            )
-            
-            
-            )}
-            <p className={styles.end} ref={endRef}></p>
+            ))}
+            {/* <p className={styles.end} ref={endRef}></p> */}
           </div>
         </main>
       )}

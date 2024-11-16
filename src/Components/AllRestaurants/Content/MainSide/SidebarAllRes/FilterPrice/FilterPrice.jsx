@@ -4,46 +4,52 @@ import { useParams } from "react-router-dom";
 import styles from "./FilterPrice.module.css";
 import Error from "../../../../../Error/Error";
 
+// api
+import { vendorList } from "../../../../../../CallApi/CallApi";
+
+// custom hooks
+import { useFilterPrice } from "../../../../../../hooks/useFetch";
+
+import { Link } from "react-router-dom";
+
 export default function FilterPrice() {
   const [filterPrice, setFilterPrice] = useState("همه");
-  const [isLoading, setIsLoading] = useState(false);
-  const [listPricing, setListPricing] = useState([]);
-  const [error, setError] = useState();
+  const params = useParams();
+
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [listPricing, setListPricing] = useState([]);
+  // const [error, setError] = useState();
+
+  // useEffect(() => {
+  //   const fetchPricing = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await vendorList(params.alias, params.catId);
+  //       const allArray = res.data.extra_sections.filters.sections;
+  //       for (let i = 0; i < allArray.length; i++) {
+  //         if (allArray[i]["section_name_fa"] === "کلاس قیمتی") {
+  //           setListPricing(allArray[i]["data"]);
+  //           return;
+  //         } else {
+  //           setListPricing([]);
+  //         }
+  //       }
+  //       setError();
+  //     } catch (err) {
+  //       setError(
+  //         "اطلاعات به درستی از سرور دریافت نشده است، بعدا مجددا تلاش کنید."
+  //       );
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchPricing();
+  // }, [params]);
+
+  const { isLoading, listPricing, error } = useFilterPrice(vendorList, params);
+
   const filterHandler = (value) => {
     setFilterPrice(value);
   };
-
-  const params = useParams();
-  useEffect(() => {
-    const fetchPricing = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:null,%22sortings%22:null%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.catId}]&extra-filter=&vendor_title=&locale=fa`
-        );
-        const res = await response.json();
-        if (!response.ok) {
-          throw new Error("اطلاعات به درستی از سرور دریافت نشده است.");
-        }
-        const allArray = res.data.extra_sections.filters.sections;
-        for (let i = 0; i < allArray.length; i++) {
-          if (allArray[i]["section_name_fa"] === "کلاس قیمتی") {
-            setListPricing(allArray[i]["data"]);
-            return;
-          } else {
-            setListPricing([]);
-          }
-        }
-        setError();
-      } catch (err) {
-        setError(
-          "اطلاعات به درستی از سرور دریافت نشده است، بعدا مجددا تلاش کنید."
-        );
-      }
-      setIsLoading(false);
-    };
-    fetchPricing();
-  }, [params]);
 
   if (error) {
     return <Error title={error} />;
@@ -51,28 +57,37 @@ export default function FilterPrice() {
 
   return (
     <>
-      {listPricing.length > 0 && !isLoading && (
+      {listPricing.length > 0 && (
         <div className={styles["filter-price-component"]}>
           <p>کلاس قیمتی</p>
           <div className={styles["list"]}>
-            <button
-              className={`${styles.item} ${
-                filterPrice === "همه" ? styles.filter : ""
-              }`}
-              onClick={() => filterHandler("همه")}
+            <Link
+              to={`/category/${params.catId}/${params.alias}/${params.sorting}/${params.catValue}/${params.subValue}/null`}
             >
-              همه
-            </button>
-            {listPricing.map((item, index) => (
               <button
-                key={index}
                 className={`${styles.item} ${
-                  filterPrice === item.title ? styles.filter : ""
+                  filterPrice === "همه" ? styles.filter : ""
                 }`}
-                onClick={() => filterHandler(item.title)}
+                onClick={() => filterHandler("همه")}
               >
-                {item.title}
+                همه
               </button>
+            </Link>
+
+            {listPricing.map((item, index) => (
+              <Link
+                to={`/category/${params.catId}/${params.alias}/${params.sorting}/${params.catValue}/${params.subValue}/${item.value}`}
+              >
+                <button
+                  key={index}
+                  className={`${styles.item} ${
+                    filterPrice === item.title ? styles.filter : ""
+                  }`}
+                  onClick={() => filterHandler(item.title)}
+                >
+                  {item.title}
+                </button>
+              </Link>
             ))}
           </div>
         </div>

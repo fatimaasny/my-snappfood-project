@@ -1,24 +1,33 @@
 .all-category-item-component {
+  margin: 20px 0;
+  cursor: pointer;
+}
+.all-category-item-component .link {
   display: flex;
   justify-content: space-between;
-  margin-top: 12px;
-  cursor: pointer;
+  align-items: center;
+  padding: 0 8px;
 }
 .all-category-item-component .img-title {
   display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 .all-category-item-component .img-title img {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }
 .all-category-item-component .img-title p {
   font-size: 0.9rem;
   color: #666;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   background: none;
 }
 
 .all-category-item-component button {
   border: none;
   background: none;
+}
+.all-category-item-component a {
+  text-decoration: none;
 }

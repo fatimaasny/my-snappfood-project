@@ -13,6 +13,7 @@
 .onecategory-component .back button {
   border: none;
   background: none;
+  cursor: pointer;
 }
 .onecategory-component .back p {
   font-size: 0.9rem;
@@ -21,14 +22,15 @@
   margin-bottom: 7px;
 }
 .onecategory-component h4 {
-  background: #eee;
   color: #444;
   border-radius: 10px;
-  font-family: Vazir-bold;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 12px 10px;
   cursor: pointer;
   font-size: 0.95rem;
+  font-weight: 400;
 }
-
+.onecategory-component a {
+  text-decoration: none;
+}

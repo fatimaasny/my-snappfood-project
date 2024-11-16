@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-top: 10px; */
+  margin-top: 0.5rem;
   height: 65px;
 }
 .item-addbtn-component:hover {
@@ -17,31 +17,39 @@
   display: flex;
 }
 
-.item-addbtn-component .content-right .all-price {
+.item-addbtn-component .all-price {
   display: flex;
   flex-direction: column;
+  margin-top: 0.5rem;
 }
-.item-addbtn-component .content-right .all-price .title {
+.item-addbtn-component .title {
   font-size: 0.75rem;
   color: #444;
 }
-.item-addbtn-component .content-right .all-price .box-price {
+.item-addbtn-component .box-price {
   display: flex;
   align-items: center;
 }
 
-.item-addbtn-component .content-right .all-price .prices {
+.item-addbtn-component .prices {
   padding-right: 5px;
+  margin-right: 0.5rem;
 }
-.item-addbtn-component .content-right .all-price .prices #old-price {
+
+.item-addbtn-component #old-price {
   font-size: 0.76rem;
   color: #999;
   text-decoration: line-through;
 }
-.item-addbtn-component .content-right .all-price .prices #new-price {
+.item-addbtn-component #new-price {
   font-size: 0.85rem;
   color: #444;
   font-family: Vazir-medium;
+}
+.item-addbtn-component #new-price span {
+  font-size: 0.85rem;
+  color: #666;
+  margin-right: 0.3rem;
 }
 
 .item-addbtn-component .add-btn {
@@ -54,4 +62,18 @@
   padding: 5px 30px;
   box-shadow: 1px 1px 1px #faedf5, -1px -1px 1px #faedf5;
   font-size: 0.9rem;
+}
+
+.item-addbtn-component .disablebtn1 {
+  border: none;
+  color: #666;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+.item-addbtn-component .disablebtn2 {
+  border: none;
+  color: #666;
+  padding: 5px 30px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px #faedf5, -1px -1px 1px #faedf5;
 }

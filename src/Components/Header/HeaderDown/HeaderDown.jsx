@@ -1,47 +1,67 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 
 import styles from "./HeaderDown.module.css";
+
+// components
 import IconMenu from "./IconMenu/IconMenu";
 import Error from "../../Error/Error";
+
+// api
+import { menuInHeaderDown } from "../../../CallApi/CallApi";
+
+// custom hooks
+import { useFetch } from "../../../hooks/useFetch";
 
 const itemWidth = 240;
 
 export default function HeaderDown(props) {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [listMenu, setListMenu] = useState([]);
-  const [error, setError] = useState();
   const contentRef = useRef();
+
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [listMenu, setListMenu] = useState([]);
+  // const [error, setError] = useState();
+
+  // useEffect(() => {
+  //   const fetchMenu = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await menuInHeaderDown();
+  //       setListMenu(res.data.items);
+  //       setError();
+  //     } catch (error) {
+  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchMenu();
+  // }, []);
+
+  // custom hook
+  const { isLoading, data, setData, error } = useFetch(menuInHeaderDown);
+  console.log("data in headerdown: ", data);
+
+  useEffect(() => {
+    console.log("first");
+    const fetchData = async () => {
+      console.log("data.data.items in useEffect : ", data.data.items);
+      await setData(data.data.items);
+    };
+    fetchData();
+  }, [data]);
+
+  console.log("**********************");
 
   const handleScroll = (scrollAmount) => {
     const newScrollPosition = scrollPosition + scrollAmount;
     setScrollPosition(newScrollPosition);
     contentRef.current.scrollLeft = newScrollPosition;
-    // console.log(newScrollPosition);
   };
-  useEffect(() => {
-    const fetchMenu = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          "https://snappfood.ir/search/api/v1/desktop/service?lat=35.774&long=51.418&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&locale=fa"
-        );
-        if (!response.ok) {
-          throw new Error("اطلاعات به درستی دریافت نشده است.");
-        }
-        const res = await response.json();
-        setListMenu(res.data.items);
-        setError();
-      } catch (error) {
-        setError("خطایی رخ داده است، مجددا تلاش کنید.");
-      }
-      setIsLoading(false);
-    };
-    fetchMenu();
-  }, []);
+
   if (error) {
     return <Error title={error} />;
   }
@@ -51,9 +71,9 @@ export default function HeaderDown(props) {
         <header className={`${styles["header-down"]} ${styles[props.class]}`}>
           <div ref={contentRef} className={styles.ref}>
             <div className={styles.list}>
-              {listMenu.map((category) => (
+              {data.map((category) => (
                 <Link
-                  to={`/category/${category.id}/${category.superTypeAlias}`}
+                  to={`/category/${category.id}/${category.superTypeAlias}/null/null/null/null`}
                 >
                   <IconMenu
                     key={category.id}

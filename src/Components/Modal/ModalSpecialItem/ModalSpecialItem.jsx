@@ -1,12 +1,24 @@
 import styles from "./ModalSpecialItem.module.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import ReactDom from "react-dom";
 import Card from "../../Card/Card";
+
 import ItemAddbtn from "../../EachRestaurant/ContentEachRes/MainEachRes/ItemAddbtn/ItemAddbtn";
 import Comment from "../../EachRestaurant/ContentEachRes/SideRightEachRes/Comment/Comment";
 
 import { IoCloseOutline } from "react-icons/io5";
 import { IoMdStar } from "react-icons/io";
-import { useState } from "react";
+
+import Loading from "../../Loading/Loading";
+
+// api
+import { detailsDynamic1 } from "../../../CallApi/CallApi";
+import { commentInSpecialItem } from "../../../CallApi/CallApi";
+
+// custom hooks
+import { useModalSpecialItem } from "../../../hooks/useFetch";
 
 function BackDrop(props) {
   return (
@@ -29,7 +41,7 @@ function RightUpScroll(props) {
       <Card>
         <img className={styles.img} src={props.image} alt="image" />
       </Card>
-      <div className={styles.list}>
+      {/* <div className={styles.list}>
         {props.listImages.map((imge, index) => (
           <Card className={styles.card}>
             <img
@@ -40,7 +52,7 @@ function RightUpScroll(props) {
             />
           </Card>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -48,15 +60,15 @@ function LeftUpScroll(props) {
   return (
     <div className={styles.left}>
       <div className={styles.title}>
-        <p>{props.pName}</p>
+        <p>{props.title}</p>
         <button className={styles.btnstar}>
           <IoMdStar fontSize="0.95rem" color="#f8d527" />
           <span>4.2</span>
         </button>
       </div>
-      <p className={styles.text}>{props.spanTag}</p>
+      <p className={styles.text}>{props.description}</p>
       <div className={styles.items}>
-        {props.listAddBtn.map((i, index) => (
+        {/* {props.listAddBtn.map((i, index) => (
           <ItemAddbtn
             key={index}
             title={i.title}
@@ -64,7 +76,16 @@ function LeftUpScroll(props) {
             oldPrice={i.oldPrice}
             newPrice={i.newPrice}
           />
-        ))}
+        ))} */}
+
+        <ItemAddbtn
+          name={props.title}
+          productVariationTitle={props.productVariationTitle}
+          price={props.price}
+          discount={props.discount}
+          discountRatio={props.discountRatio}
+          // disabledUntil={disabledUntil}
+        />
       </div>
     </div>
   );
@@ -74,13 +95,17 @@ function UpScroll(props) {
     <div className={styles.up}>
       <RightUpScroll
         image={props.image}
-        setImage={props.setImage}
-        listImages={props.listImages}
+        // setImage={props.setImage}
+        // listImages={props.listImages}
       />
       <LeftUpScroll
-        pName={props.pName}
-        listAddBtn={props.listAddBtn}
-        spanTag={props.spanTag}
+        title={props.title}
+        // listAddBtn={props.listAddBtn}
+        description={props.description}
+        productVariationTitle={props.productVariationTitle}
+        price={props.price}
+        discount={props.discount}
+        discountRatio={props.discountRatio}
       />
     </div>
   );
@@ -89,23 +114,25 @@ function DownScroll(props) {
   return (
     <div className={styles.down}>
       <h3>نظرات کاربران</h3>
-      <div className={styles.comments}>
-        {props.listComments.map((i, index) => (
-          <Comment
-            key={index}
-            name={i.name}
-            date={i.date}
-            starscore={i.starscore}
-            rate={i.rate}
-            description={i.description}
-            extracomment={i.extracomment}
-            extratext={i.extratext}
-            listOrderName={i.listOrderName}
-            ressponse={i.ressponse}
-            ressponsetext={i.ressponsetext}
-          />
-        ))}
-      </div>
+      {props.isLoading ? (
+        <Loading />
+      ) : (
+        <div className={styles.comments}>
+          {props.commentListInSpecialItem.map((i) => (
+            <Comment
+              key={i.commentId}
+              sender={i.sender}
+              date={i.date}
+              starscore={i.rating}
+              rate={i.rate}
+              commentText={i.commentText}
+              deliveryComment={i.deliveryComment}
+              foods={i.foods}
+              replies={i.replies}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -114,13 +141,17 @@ function ContentScrolled(props) {
     <div className={styles["scrolled-content"]}>
       <UpScroll
         image={props.image}
-        setImage={props.setImage}
-        listImages={props.listImages}
-        pName={props.pName}
-        listAddBtn={props.listAddBtn}
-        spanTag={props.spanTag}
+        title={props.title}
+        description={props.description}
+        productVariationTitle={props.productVariationTitle}
+        price={props.price}
+        discount={props.discount}
+        discountRatio={props.discountRatio}
       />
-      <DownScroll listComments={props.listComments} />
+      <DownScroll
+        commentListInSpecialItem={props.commentListInSpecialItem}
+        isLoading={props.isLoading}
+      />
     </div>
   );
 }
@@ -130,11 +161,14 @@ function Overlay(props) {
       <Header hideModalSpecialItem={props.hideModalSpecialItem} />
       <ContentScrolled
         image={props.image}
-        setImage={props.setImage}
-        listImages={props.listImages}
-        pName={props.pName}
-        listAddBtn={props.listAddBtn}
-        listComments={props.listComments}
+        title={props.title}
+        description={props.description}
+        productVariationTitle={props.productVariationTitle}
+        price={props.price}
+        discount={props.discount}
+        discountRatio={props.discountRatio}
+        commentListInSpecialItem={props.commentListInSpecialItem}
+        isLoading={props.isLoading}
       />
     </Card>
   );
@@ -145,33 +179,62 @@ function FinalModal(props) {
     <>
       <BackDrop hideModalSpecialItem={props.hideModalSpecialItem} />
       <Overlay
-        listImages={props.listImages}
         image={props.image}
-        setImage={props.setImage}
         hideModalSpecialItem={props.hideModalSpecialItem}
-        pName={props.pName}
-        listComments={props.listComments}
-        listAddBtn={props.listAddBtn}
-        spanTag={props.spanTag}
+        title={props.title}
+        description={props.description}
+        productVariationTitle={props.productVariationTitle}
+        price={props.price}
+        discount={props.discount}
+        discountRatio={props.discountRatio}
+        commentListInSpecialItem={props.commentListInSpecialItem}
+        isLoading={props.isLoading}
       />
     </>
   );
 }
 function ModalSpecialItem(props) {
-  const img = props.image;
-  const [image, setImage] = useState(img);
+  const params = useParams();
+
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [commentListInSpecialItem, setCommentListInSpecialItem] = useState([]);
+  // const [error, setError] = useState();
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await commentInSpecialItem(props.id);
+  //       setCommentListInSpecialItem(res.data.comments);
+  //       console.log("comments in item", commentListInSpecialItem);
+  //     } catch (error) {
+  //       setCommentListInSpecialItem([]);
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const { isLoading, commentListInSpecialItem, error } = useModalSpecialItem(
+    commentInSpecialItem,
+    props.id
+  );
+
   return (
     <>
       {ReactDom.createPortal(
         <FinalModal
           hideModalSpecialItem={props.hideModalSpecialItem}
-          listImages={props.listImages}
-          image={image}
-          setImage={setImage}
-          listComments={props.listComments}
-          listAddBtn={props.listAddBtn}
-          pName={props.pName}
-          spanTag={props.spanTag}
+          image={props.image}
+          title={props.title}
+          description={props.description}
+          productVariationTitle={props.productVariationTitle}
+          price={props.price}
+          discount={props.discount}
+          discountRatio={props.discountRatio}
+          commentListInSpecialItem={commentListInSpecialItem}
+          isLoading={isLoading}
+          error={error}
         />,
         document.getElementById("modal-root")
       )}

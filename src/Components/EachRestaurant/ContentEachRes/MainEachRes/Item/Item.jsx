@@ -2,11 +2,7 @@ import styles from "./Item.module.css";
 import ItemAddbtn from "../ItemAddbtn/ItemAddbtn";
 import Card from "../../../../Card/Card";
 import ModalSpecialItem from "../../../../Modal/ModalSpecialItem/ModalSpecialItem";
-import { useState } from "react";
-import img1 from "../../../../../Images/EachRestaurant/image-item-1.jpg";
-import img2 from "../../../../../Images/EachRestaurant/image-item-2.jpg";
-import img3 from "../../../../../Images/EachRestaurant/image-item-3.jpg";
-import img4 from "../../../../../Images/EachRestaurant/image-item-4.jpg";
+import { useEffect, useState } from "react";
 
 function UpContent(props) {
   return (
@@ -17,8 +13,8 @@ function UpContent(props) {
       }}
     >
       <div>
-        <p className={styles.name}>{props.pName}</p>
-        <span>{props.spanTag}</span>
+        <p className={styles.name}>{props.title}</p>
+        <span>{props.description}</span>
       </div>
       <Card>
         <img src={props.image} alt="image.png" />
@@ -26,26 +22,20 @@ function UpContent(props) {
     </div>
   );
 }
-function DownContent(props) {
-  return (
-    <div className={styles["down-content"]}>
-      {props.list.map((i, index) => (
-        <ItemAddbtn
-          key={index}
-          title={i.title}
-          discount={i.discount}
-          oldPrice={i.oldPrice}
-          newPrice={i.newPrice}
-          name={props.pName}
-        />
-      ))}
-    </div>
-  );
-}
 
-export default function Item({ pName, spanTag, image, list, listComments }) {
+export default function Item({
+  id,
+  productTitle,
+  description,
+  images,
+  productVariationTitle,
+  price,
+  discount,
+  discountRatio,
+  disabledUntil,
+}) {
   const [isModalSpecialItem, setIsModalSpecialItem] = useState(false);
-  const listImages = [img1, img2, img3, img4];
+  const [listImages, setListImages] = useState([]);
 
   const showModalSpecialItem = () => {
     setIsModalSpecialItem(true);
@@ -53,28 +43,46 @@ export default function Item({ pName, spanTag, image, list, listComments }) {
   const hideModalSpecialItem = () => {
     setIsModalSpecialItem(false);
   };
+  useEffect(() => {
+    const handleImages = () => {
+      for (let i = 0; i < images.length; i++) {
+        setListImages([...listImages, images[i].imageSrc]);
+      }
+    };
+    handleImages();
+  }, []);
 
   return (
     <>
       {isModalSpecialItem && (
         <ModalSpecialItem
           hideModalSpecialItem={hideModalSpecialItem}
-          image={image}
-          pName={pName}
-          spanTag={spanTag}
-          listImages={listImages}
-          listAddBtn={list}
-          listComments={listComments}
+          image={listImages[0]}
+          id={id}
+          title={productTitle}
+          description={description}
+          productVariationTitle={productVariationTitle}
+          price={price}
+          discount={discount}
+          discountRatio={discountRatio}
         />
       )}
       <div className={styles["item-component"]}>
         <UpContent
           showModalSpecialItem={showModalSpecialItem}
-          pName={pName}
-          spanTag={spanTag}
-          image={image}
+          title={productTitle}
+          description={description}
+          image={listImages[0]}
         />
-        <DownContent list={list} pName={pName} />
+
+        <ItemAddbtn
+          name={productTitle}
+          productVariationTitle={productVariationTitle}
+          price={price}
+          discount={discount}
+          discountRatio={discountRatio}
+          disabledUntil={disabledUntil}
+        />
       </div>
     </>
   );

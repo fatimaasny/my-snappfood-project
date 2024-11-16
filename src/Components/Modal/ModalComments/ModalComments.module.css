@@ -31,7 +31,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: pink;
 }
 .middle-content .shadow {
   box-shadow: 0 0 20px 5px #eee;
@@ -50,12 +49,13 @@
 }
 .info .content {
   margin-top: 5px;
-  color: #666;
+  color: #444;
   font-size: 0.9rem;
 }
 .info .address {
   font-size: 0.7rem;
   margin-top: 5px;
+  color: #666;
 }
 
 .map {

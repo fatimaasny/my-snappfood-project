@@ -2,7 +2,7 @@
   position: absolute;
   top: 55px;
   left: 0;
-  width: 198px;
+  width: 220px;
   background-color: #fff;
   border: 1px solid #eee;
   z-index: 10;
@@ -21,4 +21,7 @@
 
 .list li:hover {
   background-color: #c7dafc;
+}
+.list a {
+  text-decoration: none;
 }

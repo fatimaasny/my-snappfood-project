@@ -1,0 +1,40 @@
+.list-items-coupons-component {
+  margin-top: 5px;
+}
+
+.list-items-coupons-component h4 {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.list-items-component h4 {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.list-items-coupons-component .list-of-coupons {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.list-items-coupons-component .list-of-coupons .coupons-item {
+  border-radius: 5px;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  color: #aaa;
+  padding: 10px;
+  margin-right: 10px;
+}
+.list-items-coupons-component .list-of-coupons .coupons-item .first {
+  font-size: 0.85rem;
+}
+.list-items-coupons-component .list-of-coupons .coupons-item .second {
+  font-size: 0.7rem;
+  margin-top: 5px;
+}

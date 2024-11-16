@@ -4,51 +4,78 @@ import styles from "./ToggleFilterButtons.module.css";
 import ToggleFilterButtonsItem from "./ToggleFilterButtonsItem/ToggleFilterButtonsItem";
 import Error from "../../../../../Error/Error";
 
+//api
+import { vendorList } from "../../../../../../CallApi/CallApi";
+
+// custom hooks
+import { useToggleButtons } from "../../../../../../hooks/useFetch";
+
 export default function ToggleFilterButtons() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [list, setList] = useState([]);
-  const [error, setError] = useState();
   const params = useParams();
 
-  useEffect(() => {
-    const fetchFilter = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:null,%22sortings%22:null%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.catId}]&extra-filter=&vendor_title=&locale=fa`
-        );
-        if (!response.ok) {
-          throw new Error("اطلاعات به درستی از سرور دریافت نشده است.");
-        }
-        const res = await response.json();
-        const allArray = res.data.extra_sections.filters.sections;
-        for (let i = 0; i < allArray.length; i++) {
-          if (allArray[i]["section_name_fa"] === "فیلتر") {
-            setList(allArray[i]["data"]);
-            return;
-          } else {
-            setList([]);
-          }
-        }
-        setError();
-      } catch (err) {
-        setError("خطایی رخ داده است، بعدا مجددا تلاش کنید.");
-      }
-      setIsLoading(false);
-    };
-    fetchFilter();
-  }, [params]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [list, setList] = useState([]);
+  // const [error, setError] = useState();
 
+  // useEffect(() => {
+  //   const fetchFilter = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await vendorList(params.alias, params.catId);
+  //       const allArray = res.data.extra_sections.filters.sections;
+  //       for (let i = 0; i < allArray.length; i++) {
+  //         if (allArray[i]["section_name_fa"] === "فیلتر") {
+  //           setList(allArray[i]["data"]);
+  //           return;
+  //         } else {
+  //           setList([]);
+  //         }
+  //       }
+  //       setError();
+  //     } catch (err) {
+  //       setError("خطایی رخ داده است، بعدا مجددا تلاش کنید.");
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchFilter();
+  // }, [params]);
+
+  const { isLoading, list, error } = useToggleButtons(vendorList, params);
+
+  // TODO
+  //  باید روی هر تاگل زد و سبز شد لینک بده به یک
+  // api
+  // میبینیم که رو هر تاگل میزنی نشون میده
+  // توی
+  //url
+  //  و میشه همزمان چند تاگل رو بزنیم و همه رو نشون میده
+  // توی
+  // url
+  // و روی هر کدوم زد و آف کرد دوباره برش گردونه و لینک بده به چیز دیگه ای
+
+  // const [filter, setFilter] = useState({});
+  // const HandleToggleChecked = (e, item, index) => {
+  //   // TODO
+  //   // فکرکن ببین به چه روشی باید دست پیدا کنی به ورودی های مورد نیازت
+  //   console.log("sth");
+  // };
   if (error) {
     return <Error title={error} />;
   }
 
   return (
     <>
-      {list.length > 0 && !isLoading && (
+      {list.length > 0 && (
         <div className={styles["toogle-filter-buttons-component"]}>
           {list.map((item, index) => (
-            <ToggleFilterButtonsItem key={index} title={item.title} />
+            <ToggleFilterButtonsItem
+              // ببین به چیا نیاز داری اینجا بفرستش که بعد بتونی به عنوان ورودی بدیش به تابع
+              // مثل ایندکس و آیتم واسه فیلترش  و لیست واسه طولش
+              key={index}
+              title={item.title}
+              list={list}
+              // HandleToggleChecked={HandleToggleChecked}
+            />
           ))}
         </div>
       )}

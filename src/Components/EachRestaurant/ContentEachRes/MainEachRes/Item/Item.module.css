@@ -2,10 +2,13 @@
   border: 1px solid #eee;
   display: flex;
   flex-direction: column;
+  padding: 0.5rem;
 }
 .item-component .up-content {
   display: flex;
   align-items: center;
+  gap: 0.8rem;
+
   padding: 10px;
   cursor: pointer;
 }
@@ -13,8 +16,8 @@
   display: block;
 }
 .item-component .up-content div .name {
-  font-family: Vazir-medium;
-  font-size: 0.95rem;
+  font-family: Vazir-bold;
+  font-size: 1rem;
   color: #444;
 }
 .item-component .up-content div span {
@@ -28,6 +31,6 @@
   display: block;
 }
 .item-component .down-content {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }

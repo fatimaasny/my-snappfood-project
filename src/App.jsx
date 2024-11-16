@@ -9,7 +9,10 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/category/:catId/:alias" element={<AllRestaurants />} />
+          <Route
+            path="/category/:catId/:alias/:sorting/:catValue/:subValue/:filterPrice"
+            element={<AllRestaurants />}
+          />
           <Route path="/item/:code" element={<EachRestaurant />} />
         </Routes>
       </BrowserRouter>

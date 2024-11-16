@@ -1,108 +1,78 @@
-import ListItems from "./ListItems/ListItems";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import styles from "./MainEachRes.module.css";
-import foodImg from "../../../../Images/EachRestaurant/foodiii.jpg";
-export default function MainEachRes({ listOfTitles, listComments }) {
-  // const listOfTitles = ["کوپن‌ها", "پرطرفدارها", "سوخاری"];
-  const listOfKopen = [
-    ["ماست موسیر خامه ای رایگان", "مخصوص سفارش اول"],
-    ["نوشابه خانواده اسپرایت رایگان", "با خرید از دسته ی سینی کباب"],
-    ["ماست موسیر خامه ای رایگان", "مخصوص سفارش اول"],
-  ];
-  const listItemAddbtn1 = [
-    {
-      title: "ممتاز یک سیخ 250 گرمی",
-      discount: "10% ",
-      oldPrice: "130,000",
-      newPrice: "117,000 تومان",
-    },
-    {
-      title: false,
-      discount: false,
-      oldPrice: false,
-      newPrice: "50,000 تومان",
-    },
-    ,
-    {
-      title: "ممتاز یک سیخ 250 گرمی",
-      discount: false,
-      oldPrice: false,
-      newPrice: "320,000 تومان",
-    },
-  ];
+import Error from "../../../Error/Error";
+import CouponsList from "./CouponsList/CouponsList";
+import OtherList from "./OtherList/OtherList";
 
-  const listItemAddbtn2 = [
-    {
-      title: "ممتاز یک سیخ 250 گرمی",
-      discount: false,
-      oldPrice: false,
-      newPrice: "320,000 تومان",
-    },
+// api
+import { detailsDynamic1 } from "../../../../CallApi/CallApi";
+import { coupons } from "../../../../CallApi/CallApi";
 
-    {
-      title: false,
-      discount: "20% ",
-      oldPrice: "200,000",
-      newPrice: "160,000 تومان",
-    },
-  ];
-  const listItem1 = [
-    {
-      pName: "چلو کباب دیگی",
-      spanTag:
-        "150 گرم گوشت گوساله ، 335 گرم برنج ساده به همراه 30 گرم برنح ایرانی",
-      image: foodImg,
-    },
-    {
-      pName: "چلو کباب دیگی",
-      spanTag:
-        "150 گرم گوشت گوساله ، 335 گرم برنج ساده به همراه 30 گرم برنح ایرانی",
-      image: foodImg,
-    },
-    {
-      pName: "چلو کباب دیگی",
-      spanTag:
-        "150 گرم گوشت گوساله ، 335 گرم برنج ساده به همراه 30 گرم برنح ایرانی",
-      image: foodImg,
-    },
-  ];
+// custom hooks
+import { useMainEachResOtherList } from "../../../../hooks/useFetch";
+import { useMainEachResCoupons } from "../../../../hooks/useFetch";
 
-  const listItem2 = [
-    {
-      pName: "چلو کباب دیگی",
-      spanTag:
-        "150 گرم گوشت گوساله ، 335 گرم برنج ساده به همراه 30 گرم برنح ایرانی",
-      image: foodImg,
-    },
-    {
-      pName: "چلو کباب دیگی",
-      spanTag:
-        "150 گرم گوشت گوساله ، 335 گرم برنج ساده به همراه 30 گرم برنح ایرانی",
-      image: foodImg,
-    },
-  ];
+export default function MainEachRes() {
+  const params = useParams();
+
+  // const [isLoadingTitles, setIsLoadingTitles] = useState(false);
+  // const [listTitles, setListTitles] = useState([]);
+  // const [error, setError] = useState();
+
+  // useEffect(() => {
+  //   const fetchDataTitles = async () => {
+  //     setIsLoadingTitles(true);
+  //     try {
+  //       const res = await detailsDynamic1(params.code);
+  //       setListTitles(res.data.menus);
+  //     } catch (error) {
+  //       setError("اطلاعات سایر تایتل ها به درستی دریافت نشده است.");
+  //     }
+  //     setIsLoadingTitles(false);
+  //   };
+  //   fetchDataTitles();
+  // }, [params]);
+
+  const { isLoadingTitles, listTitles, error } = useMainEachResOtherList(
+    detailsDynamic1,
+    params
+  );
+
+  // const [isLoadingCoupons, setIsLoadingCoupons] = useState(false);
+  // const [listCoupons, setListCoupons] = useState([]);
+  // useEffect(() => {
+  //   const fetchDataCoupons = async () => {
+  //     setIsLoadingCoupons(true);
+  //     try {
+  //       const res = await coupons(params.code);
+  //       setListCoupons(res.data.coupons);
+  //     } catch (error) {
+  //       // setError("اطلاعات کوپن ها به درستی دریافت نشده است.");
+  //       setListCoupons([]);
+  //     }
+  //     setIsLoadingCoupons(false);
+  //   };
+  //   fetchDataCoupons();
+  // }, [params]);
+
+  const { isLoadingCoupons, listCoupons } = useMainEachResCoupons(
+    detailsDynamic1,
+    params
+  );
+
+  if (error) {
+    return <Error title={error} />;
+  }
   return (
     <div className={styles["main-each-res-component"]}>
-      <ListItems
-        title={listOfTitles[0]}
-        listOfKopen={listOfKopen}
-        listItem={listItem1}
-        listItemAddbtn={false}
-        listComments={listComments}
-      />
-      <ListItems
-        title={listOfTitles[1]}
-        listOfKopen={false}
-        listItem={listItem1}
-        listItemAddbtn={listItemAddbtn1}
-        listComments={listComments}
-      />
-      <ListItems
-        title={listOfTitles[2]}
-        listOfKopen={false}
-        listItem={listItem2}
-        listItemAddbtn={listItemAddbtn2}
-        listComments={listComments}
-      />
+      {/* {!isLoadingCoupons && listCoupons.length > 0 && (
+        <CouponsList list={listCoupons} />
+      )} */}
+      {!isLoadingTitles && listTitles.length > 0 && (
+        <OtherList list={listTitles} />
+      )}
     </div>
   );
 }

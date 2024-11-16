@@ -1,13 +1,13 @@
 import styles from "./ModalComments.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactDom from "react-dom";
+import { useParams } from "react-router-dom";
 
 import Card from "../../Card/Card";
 import Details from "../../EachRestaurant/ContentEachRes/SideRightEachRes/Details/Details";
 import Comment from "../../EachRestaurant/ContentEachRes/SideRightEachRes/Comment/Comment";
 import Lineer from "../../EachRestaurant/ContentEachRes/SideRightEachRes/Lineer/Lineer";
 
-import imgRes from "../../../Images/EachRestaurant/image-res1.jpg";
 import imgmap from "../../../Images/Modal/map11.jpg";
 
 import { IoClose } from "react-icons/io5";
@@ -17,6 +17,17 @@ import { IoMdTime } from "react-icons/io";
 import { LiaHandLizard } from "react-icons/lia";
 import { SlBasketLoaded } from "react-icons/sl";
 import { IoMdStar } from "react-icons/io";
+
+import Error from "../../Error/Error";
+import Loading from "../../Loading/Loading";
+
+// api
+import { detailsDynamic1 } from "../../../CallApi/CallApi";
+import { VendorComment } from "../../../CallApi/CallApi";
+
+// custom hooks
+import { useModalCommentForData } from "../../../hooks/useFetch";
+import { useModalCommentForComments } from "../../../hooks/useFetch";
 
 function BackDrop(props) {
   return <div className={styles.backdrop} onClick={props.hideModalComments} />;
@@ -35,15 +46,29 @@ function MiddleInHeader(props) {
   return (
     <div className={styles["middle-content"]}>
       <Card className={styles.shadow}>
-        <img src={imgRes} alt="image-res" className={styles.imgres} />
+        <img
+          src={props.listData.logo}
+          alt="image-res"
+          className={styles.imgres}
+        />
       </Card>
       <div className={styles.info}>
-        <h4>آش و حلیم ولیعصر</h4>
-        <p className={styles.content}>آش و حلیم، آش، غذای سنتی، سوپ، نوشیدنی</p>
+        <h4>{props.listData.title}</h4>
+        {console.log("tagNames: ", props.listData.tagNames)}
+
+        {props.listData.tagNames && (
+          <p className={styles.content}>
+            {props.listData.tagNames.map((item, index) => (
+              <span key={index}>
+                {item} {" , "}
+              </span>
+            ))}
+          </p>
+        )}
+
         <p className={styles.address}>
           <FaLocationDot fontSize="1rem" color="#aaa" />
-          ولیعصر، بعد از انقلاب اسلامی، کوچه مدنی، سمت راست، ساختمان پنجم طبقه
-          ششم
+          {props.listData.address}
         </p>
       </div>
       <div className={styles.map} style={{ background: `url(${imgmap})` }}>
@@ -67,11 +92,12 @@ function DetailsInHeader(props) {
         icon={<LiaHandLizard color="#666" fontSize="1.3rem" />}
         title={"شیوه های پرداخت"}
         text={"آنلاین، اعتبار جایزه خرید"}
+        list={props.listData.paymentTypesToShow}
       />
       <Details
         icon={<SlBasketLoaded color="#666" fontSize="1.3rem" />}
         title={"حداقل سبد خرید"}
-        text={"40000 تومان"}
+        text={props.listData.minOrder}
       />
     </div>
   );
@@ -80,8 +106,17 @@ function Header(props) {
   return (
     <div className={styles.header}>
       <ButtonClose hideModalComments={props.hideModalComments} />
-      <MiddleInHeader showModalSpecialMap={props.showModalSpecialMap} />
-      <DetailsInHeader />
+      {props.isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <MiddleInHeader
+            showModalSpecialMap={props.showModalSpecialMap}
+            listData={props.listData}
+          />
+          <DetailsInHeader listData={props.listData} />
+        </>
+      )}
     </div>
   );
 }
@@ -96,8 +131,8 @@ function RightInScores(props) {
       </p>
       <p className={styles.text}>
         از مجموع
-        <span>9096</span>
-        امتیاز و<span>1430</span>
+        <span>{props.listData.commentCount}</span>
+        امتیاز و<span>{props.listData.textCommentCount}</span>
         نظر
       </p>
     </div>
@@ -144,7 +179,7 @@ function LineerInScores(props) {
 function ScoresInScrolled(props) {
   return (
     <div className={styles.scores}>
-      <RightInScores />
+      <RightInScores listData={props.listData} />
       <MiddleInScores />
       <LineerInScores />
     </div>
@@ -169,22 +204,6 @@ function TitleInScores(props) {
               {i.title}
             </button>
           ))}
-          {/* <button
-            className={`${styles.button} ${
-              props.isToggleBtn === "new" ? styles.toggle : ""
-            }`}
-            onClick={() => props.ToggleHandler("new")}
-          >
-            جدیدترین
-          </button>
-          <button
-            className={`${styles.button} ${
-              props.isToggleBtn === "related" ? styles.toggle : ""
-            }`}
-            onClick={() => props.ToggleHandler("related")}
-          >
-            مرتبط‌‌‌‌ ترین
-          </button> */}
         </div>
       </div>
     </div>
@@ -198,7 +217,7 @@ function CommentsInScores(props) {
           key={i.commentId}
           sender={i.sender}
           date={i.date}
-          starscore={i.starscore}
+          starscore={i.rating}
           rate={i.rate}
           commentText={i.commentText}
           deliveryComment={i.deliveryComment}
@@ -212,13 +231,19 @@ function CommentsInScores(props) {
 function Scrolled(props) {
   return (
     <div className={styles["content-scrolled"]}>
-      <ScoresInScrolled />
-      <TitleInScores
-        isToggleBtn={props.isToggleBtn}
-        ToggleHandler={props.ToggleHandler}
-        sortParams={props.sortParams}
-      />
-      <CommentsInScores listComment={props.listComment} />
+      <ScoresInScrolled listData={props.listData} />
+      {props.isLoadingComment ? (
+        <Loading />
+      ) : (
+        <>
+          <TitleInScores
+            isToggleBtn={props.isToggleBtn}
+            ToggleHandler={props.ToggleHandler}
+            sortParams={props.sortParams}
+          />
+          <CommentsInScores listComment={props.listComment} />
+        </>
+      )}
     </div>
   );
 }
@@ -230,12 +255,17 @@ function Overlay(props) {
         ToggleHandler={props.ToggleHandler}
         showModalSpecialMap={props.showModalSpecialMap}
         hideModalComments={props.hideModalComments}
+        isLoading={props.isLoading}
+        listData={props.listData}
+        error={props.error}
       />
       <Scrolled
+        isLoadingComment={props.isLoadingComment}
         listComment={props.listComment}
         sortParams={props.sortParams}
         isToggleBtn={props.isToggleBtn}
         ToggleHandler={props.ToggleHandler}
+        listData={props.listData}
       />
     </Card>
   );
@@ -248,30 +278,97 @@ function FinalModal(props) {
       <Overlay
         hideModalComments={props.hideModalComments}
         showModalSpecialMap={props.showModalSpecialMap}
+        isLoadingComment={props.isLoadingComment}
         listComment={props.listComment}
         sortParams={props.sortParams}
         isToggleBtn={props.isToggleBtn}
         ToggleHandler={props.ToggleHandler}
+        isLoading={props.isLoading}
+        listData={props.listData}
+        error={props.error}
       />
     </>
   );
 }
 
 function ModalComments(props) {
-  const [isToggleBtn, setIsToggleBtn] = useState("new");
-  const ToggleHandler = (value) => {
-    setIsToggleBtn(value);
-  };
+  const params = useParams();
+
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [listData, setListData] = useState([]);
+  // const [error, setError] = useState();
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await detailsDynamic1(params.code);
+  //       setListData(res.data.vendor);
+  //     } catch (error) {
+  //       setError("خطایی رخ داده است، مجددا اقدام کنید.");
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const {
+    isLoading,
+    listData,
+    error: errorData,
+  } = useModalCommentForData(detailsDynamic1, params);
+
+  // const [isLoadingComment, setIsLoadingComment] = useState(false);
+  // const [listComment, setListComment] = useState([]);
+  // const [error, setError] = useState();
+  // const [sortParams, setSortParams] = useState([]);
+
+  // const [isToggleBtn, setIsToggleBtn] = useState("new");
+  // const ToggleHandler = (value) => {
+  //   setIsToggleBtn(value);
+  // };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsLoadingComment(true);
+  //     try {
+  //       const res = await VendorComment(params.code, isToggleBtn);
+  //       setListComment(res.data.comments);
+  //       setSortParams(res.data.sort.params);
+  //     } catch (error) {
+  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
+  //     }
+  //     setIsLoadingComment(false);
+  //   };
+  //   fetchData();
+  // }, [isToggleBtn]);
+
+  const {
+    isLoadingComment,
+    listComment,
+    error,
+    sortParams,
+    isToggleBtn,
+    ToggleHandler,
+  } = useModalCommentForComments(VendorComment, params);
+
+  if (error || errorData) {
+    return <Error title={error || errorData} />;
+  }
+
   return (
     <>
       {ReactDom.createPortal(
         <FinalModal
           hideModalComments={props.hideModalComments}
           showModalSpecialMap={props.showModalSpecialMap}
-          listComment={props.listComment}
-          sortParams={props.sortParams}
+          isLoadingComment={isLoadingComment}
+          listComment={listComment}
+          sortParams={sortParams}
           isToggleBtn={isToggleBtn}
           ToggleHandler={ToggleHandler}
+          isLoading={isLoading}
+          listData={listData}
+          error={error || errorData}
         />,
         document.getElementById("modal-root")
       )}

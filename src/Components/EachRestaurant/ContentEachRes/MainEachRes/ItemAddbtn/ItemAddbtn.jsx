@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ItemAddbtn.module.css";
 
 import ModalAddItem from "../../../../Modal/ModalAddItem/ModalAddItem";
@@ -7,19 +7,29 @@ function Content(props) {
   return (
     <div className={styles["content-right"]}>
       <div className={styles["all-price"]}>
-        {props.title && <p className={styles.title}>{props.title}</p>}
+        {props.productVariationTitle && (
+          <p className={styles.title}>{props.productVariationTitle}</p>
+        )}
         <div className={styles["box-price"]}>
-          {props.discount && <Discount discount={props.discount} />}
+          {props.discountRatio !== 0 && props.discountRatio !== 0 && (
+            <Discount discount={props.discountRatio} />
+          )}
 
-          {props.oldPrice && props.newPrice && (
+          {props.discount !== 0 && props.price && (
             <div className={styles.prices}>
-              <span id={styles["old-price"]}>{props.oldPrice}</span>
-              <p id={styles["new-price"]}>{props.newPrice}</p>
+              <span id={styles["old-price"]}>{props.price}</span>
+              <p id={styles["new-price"]}>
+                {props.finalPrice}
+                <span>تومان</span>
+              </p>
             </div>
           )}
-          {!props.oldPrice && props.newPrice && (
+          {props.discount === 0 && props.price && (
             <div className={styles.prices}>
-              <p id={styles["new-price"]}>{props.newPrice}</p>
+              <p id={styles["new-price"]}>
+                {props.price}
+                <span>تومان</span>
+              </p>
             </div>
           )}
         </div>
@@ -35,13 +45,15 @@ function ButtonAdd(props) {
   );
 }
 export default function ItemAddbtn({
-  title,
-  discount,
-  oldPrice,
-  newPrice,
   name,
+  productVariationTitle,
+  price,
+  discount,
+  discountRatio,
+  disabledUntil,
 }) {
   const [isShowModalAddItem, setIsShowModalAddItem] = useState(false);
+  const [finalPrice, setFinalPrice] = useState(0);
 
   const showModalAddItem = () => {
     setIsShowModalAddItem(true);
@@ -49,19 +61,36 @@ export default function ItemAddbtn({
   const hideModalAddItem = () => {
     setIsShowModalAddItem(false);
   };
+  useEffect(() => {
+    setFinalPrice(price - discount);
+  }, []);
   return (
     <>
       {isShowModalAddItem && (
         <ModalAddItem hideModalAddItem={hideModalAddItem} name={name} />
       )}
       <div className={styles["item-addbtn-component"]}>
-        <Content
-          title={title}
-          discount={discount}
-          oldPrice={oldPrice}
-          newPrice={newPrice}
-        />
-        <ButtonAdd showModalAddItem={showModalAddItem} />
+        {!disabledUntil ? (
+          <>
+            <Content
+              productVariationTitle={productVariationTitle}
+              price={price}
+              discount={discount}
+              discountRatio={discountRatio}
+              finalPrice={finalPrice}
+            />
+            <ButtonAdd showModalAddItem={showModalAddItem} />
+          </>
+        ) : (
+          <>
+            <button className={styles.disablebtn1} disabled>
+              ناموجود
+            </button>
+            <button className={styles.disablebtn2} disabled>
+              افزودن
+            </button>
+          </>
+        )}
       </div>
     </>
   );

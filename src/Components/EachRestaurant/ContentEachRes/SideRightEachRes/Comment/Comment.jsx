@@ -61,9 +61,8 @@ function Comment(props) {
       <LeftContent
         commentText={props.commentText}
         deliveryComment={props.deliveryComment}
-        listOrderName={props.listOrderName}
-        ressponse={props.ressponse}
-        ressponsetext={props.ressponsetext}
+        foods={props.foods}
+        replies={props.replies}
       />
     </div>
   );

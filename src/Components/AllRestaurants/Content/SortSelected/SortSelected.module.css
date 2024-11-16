@@ -3,21 +3,28 @@
   justify-content: end;
   position: relative;
 }
-.sort-selected div {
+.sort-selected .content {
   border: 1px solid #eee;
   padding: 8px;
   border-radius: 10px;
   display: flex;
+  justify-content: space-between;
   gap: 0.5rem;
   align-items: center;
   color: #aaa;
+  width: 220px;
 }
 
-.sort-selected div:hover {
+.sort-selected .content:hover {
   border: 1px solid #aaa;
 }
-.sort-selected div:focus {
+.sort-selected .content:focus {
   border: 1px solid blue;
+}
+.sort-selected .content div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sort-selected input {

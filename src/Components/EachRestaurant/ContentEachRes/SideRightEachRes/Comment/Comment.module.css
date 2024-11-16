@@ -13,7 +13,7 @@
   color: #444;
 }
 .right p {
-  color: #666;
+  color: #444;
   margin-top: 5px;
   font-size: 0.85rem;
 }
@@ -34,7 +34,7 @@
   padding-left: 1rem;
 }
 .left .description {
-  color: #666;
+  color: #444;
   font-size: 0.9rem;
 }
 .left .extra {
@@ -52,6 +52,8 @@
 }
 .ordernames {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-top: 10px;
 }
 .ressponse {

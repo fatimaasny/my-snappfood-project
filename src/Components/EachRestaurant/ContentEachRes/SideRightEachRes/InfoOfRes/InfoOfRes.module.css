@@ -1,11 +1,11 @@
 .info-of-res-component {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  gap: 5px;
 }
 .info-of-res-component .image-res {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border: 1px solid #eee;
   display: block;
   /* این رو دادم به این علت که کارد یه ارتفاع اضافه ای میگرفت */
@@ -13,7 +13,12 @@
 .info-of-res-component .info {
   display: flex;
   flex-direction: column;
+  /* این سه تای پایینی رو دادم که متن تایتل وقتی طولانی هست همش نشون داده نشه و نره خط بعدی */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
+
 .info-of-res-component .info .title {
   display: flex;
   justify-content: space-between;
@@ -24,18 +29,21 @@
 }
 
 .info-of-res-component .info .score span {
-  margin-right: 5px;
+  margin: 0 1px;
   font-size: 0.8rem;
 }
 .info-of-res-component .info .score p {
   color: #aaa;
-  margin-right: 5px;
-  font-size: 0.65rem;
+  margin-right: 3px;
+  font-size: 0.69rem;
   font-family: Vazir-medium;
+}
+.info-of-res-component .info .score span {
+  font-size: 0.69rem;
 }
 
 .info-of-res-component .info h4 {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   margin-top: 8px;
   color: #444;
 }
