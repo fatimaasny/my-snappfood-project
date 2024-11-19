@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { vendorList } from "../../../../../CallApi/CallApi";
 
 // hooks
-import { useCategoriesSidebar } from "../../../../../hooks/useFetch";
+import { useFetch2 } from "../../../../../hooks/useFetch";
 
 import AllCategory from "./AllCategory/AllCategory";
 import OneCategory from "./OneCategory/OneCategory";
@@ -39,11 +39,14 @@ export default function SidebarAllRes() {
   //   fetchData();
   // }, [params]);
 
-  const {
-    isLoading,
-    data: list,
-    error,
-  } = useCategoriesSidebar(vendorList, params);
+  const { isLoading, data, error, fetchData } = useFetch2(
+    vendorList,
+    (data) => data.data.extra_sections.categories.data
+  );
+
+  useEffect(() => {
+    fetchData(params.alias, params.catId);
+  }, [params]); //
 
   const handleShowOverlayBack = () => {
     setIsOverlayBack(true);
@@ -70,7 +73,7 @@ export default function SidebarAllRes() {
         />
       ) : (
         <AllCategory
-          list={list}
+          list={data}
           isLoading={isLoading}
           error={error}
           params={params}

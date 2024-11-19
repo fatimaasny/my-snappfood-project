@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // useFetch    ---> useEffect
 
-export function useFetch(apiFn) {
+export function useFetch(apiFn, parser) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState();
@@ -11,8 +11,14 @@ export function useFetch(apiFn) {
     const fetchData = async () => {
       setIsLoading(true);
       try {
+        // first way
+        // const response = await apiFn();
+        // setData(response);
+
+        // second way
         const response = await apiFn();
-        setData(response);
+        const parserData = await parser(response);
+        setData(parserData);
       } catch (error) {
         setError("خطایی رخ داده است، مجددا تلاش کنید.");
       }
@@ -21,11 +27,11 @@ export function useFetch(apiFn) {
     fetchData();
   }, [apiFn]);
 
-  return { isLoading, data, setData, error };
+  return { isLoading, data, error };
 }
 
 // useFetch2    ---> sendData
-export function useFetch2(apiFn) {
+export function useFetch2(apiFn, parser) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState();
@@ -33,16 +39,21 @@ export function useFetch2(apiFn) {
   const fetchData = async (body) => {
     setIsLoading(true);
     try {
+      // console.log("apiFn: ", apiFn);
       const response = await apiFn(body);
 
-      setData(response);
+      // console.log("response in useFetch2: ", response);
+      const parserData = await parser(response);
+      // console.log("parserData in useFetch2: ", parserData);
+      setData(parserData);
+      setError();
     } catch (error) {
       setError("خطایی رخ داده است، مجددا تلاش کنید.");
     }
     setIsLoading(false);
   };
 
-  return { isLoading, data, setData, error, fetchData };
+  return { isLoading, data, error, fetchData, setData };
 }
 
 //
@@ -162,258 +173,258 @@ export function useFetch2(apiFn) {
 //   return { isLoading, list, error };
 // }
 
-export function useCategoriesSidebar(apiFn, params) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const [error, setError] = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const res = await apiFn(params.alias, params.catId);
-        setData(res.data.extra_sections.categories.data);
-        setError();
-      } catch (error) {
-        setError("خطایی رخ داده است، مجددا تلاش کنید.");
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, [params]);
-  return { isLoading, data, error };
-}
+// export function useCategoriesSidebar(apiFn, params) {
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [data, setData] = useState([]);
+//   const [error, setError] = useState();
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       setIsLoading(true);
+//       try {
+//         const res = await apiFn(params.alias, params.catId);
+//         setData(res.data.extra_sections.categories.data);
+//         setError();
+//       } catch (error) {
+//         setError("خطایی رخ داده است، مجددا تلاش کنید.");
+//       }
+//       setIsLoading(false);
+//     };
+//     fetchData();
+//   }, [params]);
+//   return { isLoading, data, error };
+// }
 
-export function useFilterPrice(apiFn, params) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [listPricing, setListPricing] = useState([]);
-  const [error, setError] = useState();
+// export function useFilterPrice(apiFn, params) {
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [listPricing, setListPricing] = useState([]);
+//   const [error, setError] = useState();
 
-  useEffect(() => {
-    const fetchPricing = async () => {
-      setIsLoading(true);
-      try {
-        const res = await apiFn(params.alias, params.catId);
-        const allArray = res.data.extra_sections.filters.sections;
-        for (let i = 0; i < allArray.length; i++) {
-          if (allArray[i]["section_name_fa"] === "کلاس قیمتی") {
-            setListPricing(allArray[i]["data"]);
-            return;
-          } else {
-            setListPricing([]);
-          }
-        }
-        setError();
-      } catch (err) {
-        setError(
-          "اطلاعات به درستی از سرور دریافت نشده است، بعدا مجددا تلاش کنید."
-        );
-      }
-      setIsLoading(false);
-    };
-    fetchPricing();
-  }, [params]);
+//   useEffect(() => {
+//     const fetchPricing = async () => {
+//       setIsLoading(true);
+//       try {
+//         const res = await apiFn(params.alias, params.catId);
+//         const allArray = res.data.extra_sections.filters.sections;
+//         for (let i = 0; i < allArray.length; i++) {
+//           if (allArray[i]["section_name_fa"] === "کلاس قیمتی") {
+//             setListPricing(allArray[i]["data"]);
+//             return;
+//           } else {
+//             setListPricing([]);
+//           }
+//         }
+//         setError();
+//       } catch (err) {
+//         setError(
+//           "اطلاعات به درستی از سرور دریافت نشده است، بعدا مجددا تلاش کنید."
+//         );
+//       }
+//       setIsLoading(false);
+//     };
+//     fetchPricing();
+//   }, [params]);
 
-  return { isLoading, listPricing, error };
-}
+//   return { isLoading, listPricing, error };
+// }
 
-export function useToggleButtons(apiFn, params) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [list, setList] = useState([]);
-  const [error, setError] = useState();
+// export function useToggleButtons(apiFn, params) {
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [list, setList] = useState([]);
+//   const [error, setError] = useState();
 
-  useEffect(() => {
-    const fetchFilter = async () => {
-      setIsLoading(true);
-      try {
-        const res = await apiFn(params.alias, params.catId);
-        const allArray = res.data.extra_sections.filters.sections;
-        for (let i = 0; i < allArray.length; i++) {
-          if (allArray[i]["section_name_fa"] === "فیلتر") {
-            setList(allArray[i]["data"]);
-            return;
-          } else {
-            setList([]);
-          }
-        }
-        setError();
-      } catch (err) {
-        setError("خطایی رخ داده است، بعدا مجددا تلاش کنید.");
-      }
-      setIsLoading(false);
-    };
-    fetchFilter();
-  }, [params]);
+//   useEffect(() => {
+//     const fetchFilter = async () => {
+//       setIsLoading(true);
+//       try {
+//         const res = await apiFn(params.alias, params.catId);
+//         const allArray = res.data.extra_sections.filters.sections;
+//         for (let i = 0; i < allArray.length; i++) {
+//           if (allArray[i]["section_name_fa"] === "فیلتر") {
+//             setList(allArray[i]["data"]);
+//             return;
+//           } else {
+//             setList([]);
+//           }
+//         }
+//         setError();
+//       } catch (err) {
+//         setError("خطایی رخ داده است، بعدا مجددا تلاش کنید.");
+//       }
+//       setIsLoading(false);
+//     };
+//     fetchFilter();
+//   }, [params]);
 
-  return { isLoading, list, error };
-}
+//   return { isLoading, list, error };
+// }
 
-export function useAllApiMainAllRes(
-  apiFn1,
-  apiFn2,
-  apiFn3,
-  apiFn4,
-  apiFn5,
-  apiFn6,
-  apiFn7,
-  apiFn8,
-  apiFn9,
-  apiFn10,
-  params
-) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [list, setList] = useState([]);
-  const [error, setError] = useState();
+// export function useAllApiMainAllRes(
+//   apiFn1,
+//   apiFn2,
+//   apiFn3,
+//   apiFn4,
+//   apiFn5,
+//   apiFn6,
+//   apiFn7,
+//   apiFn8,
+//   apiFn9,
+//   apiFn10,
+//   params
+// ) {
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [list, setList] = useState([]);
+//   const [error, setError] = useState();
 
-  let res = [];
+//   let res = [];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        // **********************   filterPriceVendorList ****************
-        if (
-          params.filterPrice !== "null" &&
-          params.sorting === "null" &&
-          params.catValue === "null" &&
-          params.subValue === "null"
-        ) {
-          res = await apiFn1(params.alias, params.id, params.filterPrice);
-        }
-        // **********************   filterPriceSortingVendorList ****************
-        else if (
-          params.filterPrice !== "null" &&
-          params.sorting !== "null" &&
-          params.catValue === "null" &&
-          params.subValue === "null"
-        ) {
-          res = await apiFn2(
-            params.alias,
-            params.id,
-            params.filterPrice,
-            params.sorting
-          );
-        }
-        // **********************   filterPriceSubOrCatValueVendorList ****************
-        else if (
-          params.filterPrice !== "null" &&
-          params.sorting === "null" &&
-          params.catValue !== "null"
-        ) {
-          res = await apiFn3(
-            params.alias,
-            params.id,
-            params.filterPrice,
-            params.catValue,
-            params.subValue
-          );
-        }
-        // **********************   filterPriceSortingSubOrCatValueVendorList ****************
-        else if (
-          params.filterPrice !== "null" &&
-          params.sorting !== "null" &&
-          params.catValue !== "null"
-        ) {
-          res = await apiFn4(
-            params.alias,
-            params.id,
-            params.sorting,
-            params.filterPrice,
-            params.catValue,
-            params.subValue
-          );
-        }
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       setIsLoading(true);
+//       try {
+//         // **********************   filterPriceVendorList ****************
+//         if (
+//           params.filterPrice !== "null" &&
+//           params.sorting === "null" &&
+//           params.catValue === "null" &&
+//           params.subValue === "null"
+//         ) {
+//           res = await apiFn1(params.alias, params.id, params.filterPrice);
+//         }
+//         // **********************   filterPriceSortingVendorList ****************
+//         else if (
+//           params.filterPrice !== "null" &&
+//           params.sorting !== "null" &&
+//           params.catValue === "null" &&
+//           params.subValue === "null"
+//         ) {
+//           res = await apiFn2(
+//             params.alias,
+//             params.id,
+//             params.filterPrice,
+//             params.sorting
+//           );
+//         }
+//         // **********************   filterPriceSubOrCatValueVendorList ****************
+//         else if (
+//           params.filterPrice !== "null" &&
+//           params.sorting === "null" &&
+//           params.catValue !== "null"
+//         ) {
+//           res = await apiFn3(
+//             params.alias,
+//             params.id,
+//             params.filterPrice,
+//             params.catValue,
+//             params.subValue
+//           );
+//         }
+//         // **********************   filterPriceSortingSubOrCatValueVendorList ****************
+//         else if (
+//           params.filterPrice !== "null" &&
+//           params.sorting !== "null" &&
+//           params.catValue !== "null"
+//         ) {
+//           res = await apiFn4(
+//             params.alias,
+//             params.id,
+//             params.sorting,
+//             params.filterPrice,
+//             params.catValue,
+//             params.subValue
+//           );
+//         }
 
-        //
+//         //
 
-        // **********************   sortingSubofCategoryVendorList ****************
-        else if (
-          params.filterPrice === "null" &&
-          params.sorting !== "null" &&
-          params.catValue !== "null" &&
-          params.subValue !== "null"
-        ) {
-          res = await apiFn5(
-            params.alias,
-            params.catId,
-            params.sorting,
-            params.catValue,
-            params.subValue
-          );
-        }
-        // **********************   sortingCategoryVendorList ****************
-        else if (
-          params.filterPrice === "null" &&
-          params.sorting !== "null" &&
-          params.catValue !== "null" &&
-          params.subValue === "null"
-        ) {
-          res = await apiFn6(
-            params.alias,
-            params.catId,
-            params.sorting,
-            params.catValue
-          );
-        }
-        // **********************   sortingVendorList ****************
-        else if (
-          params.filterPrice === "null" &&
-          params.sorting !== "null" &&
-          params.catValue === "null" &&
-          params.subValue === "null"
-        ) {
-          res = await apiFn7(params.alias, params.catId, params.sorting);
-        }
-        // **********************   categoryVendorList ****************
-        else if (
-          params.filterPrice === "null" &&
-          params.sorting === "null" &&
-          params.catValue !== "null" &&
-          params.subValue === "null"
-        ) {
-          res = await apiFn8(params.alias, params.catId, params.catValue);
-        }
-        // **********************   subCategoryVendorList ****************
-        else if (
-          params.filterPrice === "null" &&
-          params.sorting === "null" &&
-          params.catValue !== "null" &&
-          params.subValue !== "null"
-        ) {
-          res = await apiFn9(
-            params.alias,
-            params.catId,
-            params.catValue,
-            params.subValue
-          );
-        }
-        // **********************   vendorList ****************
-        else if (
-          params.filterPrice === "null" &&
-          params.sorting === "null" &&
-          params.catValue === "null" &&
-          params.subValue === "null"
-        ) {
-          res = await apiFn10(params.alias, params.catId);
-        }
+//         // **********************   sortingSubofCategoryVendorList ****************
+//         else if (
+//           params.filterPrice === "null" &&
+//           params.sorting !== "null" &&
+//           params.catValue !== "null" &&
+//           params.subValue !== "null"
+//         ) {
+//           res = await apiFn5(
+//             params.alias,
+//             params.catId,
+//             params.sorting,
+//             params.catValue,
+//             params.subValue
+//           );
+//         }
+//         // **********************   sortingCategoryVendorList ****************
+//         else if (
+//           params.filterPrice === "null" &&
+//           params.sorting !== "null" &&
+//           params.catValue !== "null" &&
+//           params.subValue === "null"
+//         ) {
+//           res = await apiFn6(
+//             params.alias,
+//             params.catId,
+//             params.sorting,
+//             params.catValue
+//           );
+//         }
+//         // **********************   sortingVendorList ****************
+//         else if (
+//           params.filterPrice === "null" &&
+//           params.sorting !== "null" &&
+//           params.catValue === "null" &&
+//           params.subValue === "null"
+//         ) {
+//           res = await apiFn7(params.alias, params.catId, params.sorting);
+//         }
+//         // **********************   categoryVendorList ****************
+//         else if (
+//           params.filterPrice === "null" &&
+//           params.sorting === "null" &&
+//           params.catValue !== "null" &&
+//           params.subValue === "null"
+//         ) {
+//           res = await apiFn8(params.alias, params.catId, params.catValue);
+//         }
+//         // **********************   subCategoryVendorList ****************
+//         else if (
+//           params.filterPrice === "null" &&
+//           params.sorting === "null" &&
+//           params.catValue !== "null" &&
+//           params.subValue !== "null"
+//         ) {
+//           res = await apiFn9(
+//             params.alias,
+//             params.catId,
+//             params.catValue,
+//             params.subValue
+//           );
+//         }
+//         // **********************   vendorList ****************
+//         else if (
+//           params.filterPrice === "null" &&
+//           params.sorting === "null" &&
+//           params.catValue === "null" &&
+//           params.subValue === "null"
+//         ) {
+//           res = await apiFn10(params.alias, params.catId);
+//         }
 
-        let allList = res.data.finalResult;
-        const finalList = [];
+//         let allList = res.data.finalResult;
+//         const finalList = [];
 
-        for (let i = 0; i < allList.length; i++) {
-          finalList.push(allList[i]["data"]);
-        }
-        setList(finalList);
-        setError();
-      } catch (error) {
-        setError("خطایی رخ داده است بعدا مجدد تلاش کنید.");
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, [params]);
+//         for (let i = 0; i < allList.length; i++) {
+//           finalList.push(allList[i]["data"]);
+//         }
+//         setList(finalList);
+//         setError();
+//       } catch (error) {
+//         setError("خطایی رخ داده است بعدا مجدد تلاش کنید.");
+//       }
+//       setIsLoading(false);
+//     };
+//     fetchData();
+//   }, [params]);
 
-  return { isLoading, list, error };
-}
+//   return { isLoading, list, error };
+// }
 
 export function useInfoOfRes(apiFn, params) {
   const [isLoading, setIsLoading] = useState(false);

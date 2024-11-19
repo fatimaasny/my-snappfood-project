@@ -18,10 +18,10 @@ import Error from "../../Components/Error/Error";
 import Loading from "../../Components/Loading/Loading";
 
 export default function Main() {
-  const [listFirst, setListFirst] = useState([]);
-  const [titleFirst, setTitleFirst] = useState();
-  const [listSecond, setListSecond] = useState([]);
-  const [titleSecond, setTitleSecond] = useState();
+  // const [listFirst, setListFirst] = useState([]);
+  // const [titleFirst, setTitleFirst] = useState();
+  // const [listSecond, setListSecond] = useState([]);
+  // const [titleSecond, setTitleSecond] = useState();
 
   // const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState();
@@ -44,17 +44,39 @@ export default function Main() {
   //   fetchData();
   // }, []);
 
-  const { isLoading, data, setData, error } = useFetch(titlesInMain);
+  const {
+    isLoading,
+    data: listFirst,
+    error,
+  } = useFetch(
+    titlesInMain,
+    (listFirst) => listFirst.data.result[3]["data"]["restaurants"]
+  );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await setListFirst(data.data.result[3]["data"]["restaurants"]);
-      await setTitleFirst(data.data.result[3]["title"]);
-      await setListSecond(data.data.result[4]["data"]["restaurants"]);
-      await setTitleSecond(data.data.result[4]["title"]);
-    };
-    fetchData();
-  }, [data]);
+  const { data: titleFirst } = useFetch(
+    titlesInMain,
+    (titleFirst) => titleFirst.data.result[3]["title"]
+  );
+
+  const { data: listSecond } = useFetch(
+    titlesInMain,
+    (listSecond) => listSecond.data.result[4]["data"]["restaurants"]
+  );
+
+  const { data: titleSecond } = useFetch(
+    titlesInMain,
+    (titleSecond) => titleSecond.data.result[4]["title"]
+  );
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await setListFirst(data.data.result[3]["data"]["restaurants"]);
+  //     await setTitleFirst(data.data.result[3]["title"]);
+  //     await setListSecond(data.data.result[4]["data"]["restaurants"]);
+  //     await setTitleSecond(data.data.result[4]["title"]);
+  //   };
+  //   fetchData();
+  // }, [data]);
 
   if (error) {
     return <Error title={error} />;

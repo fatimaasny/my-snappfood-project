@@ -16,20 +16,10 @@ import { GoTriangleDown } from "react-icons/go";
 import { IoIosClose } from "react-icons/io";
 
 export default function SortSelected() {
-  // const [list, setList] = useState([]);
   const [isOverlaySort, setIsOverlaySort] = useState(false);
   const [selectedSort, setSelectedSort] = useState("");
   const params = useParams();
 
-  const handleSortOverlay = () => {
-    setIsOverlaySort((isOverlaySort) => !isOverlaySort);
-  };
-  const hideSortOverlay = () => {
-    setIsOverlaySort(false);
-  };
-  const handleSelectedSort = (value) => {
-    setSelectedSort(value);
-  };
   // const [isLoading, setIsLoading] = useState(false);
   // const [list, setList] = useState([]);
   // const [error, setError] = useState();
@@ -51,21 +41,41 @@ export default function SortSelected() {
   //   fetchData();
   // }, [params]);
 
-  const { isLoading, data, setData, error, fetchData } = useFetch2(vendorList);
+  const { isLoading, data, error, fetchData } = useFetch2(
+    vendorList,
+    (data) => data.data.extra_sections.filters.top.data
+  );
 
   const processData = async () => {
     await fetchData(params.alias, params.catId);
-    await setData(data.data.extra_sections.filters.top.data);
   };
 
   useEffect(() => {
-    hideSortOverlay();
     processData();
-  }, [params]);
+  }, []);
+
+  //A: به جای این رفتم توی تابعی که هر بار روی جدید ترین, ... اینا کلیک کنیم اونجا گذاشتمش
+  useEffect(() => {
+    processData();
+    hideSortOverlay();
+  }, [selectedSort]);
 
   if (error) {
     return <Error title={error} />;
   }
+
+  const handleSortOverlay = () => {
+    setIsOverlaySort((isOverlaySort) => !isOverlaySort);
+  };
+  const hideSortOverlay = () => {
+    setIsOverlaySort(false);
+  };
+  const handleSelectedSort = (value) => {
+    setSelectedSort(value);
+    //A:
+    // hideSortOverlay();
+    // processData();
+  };
 
   return (
     <div className={styles["sort-selected"]}>

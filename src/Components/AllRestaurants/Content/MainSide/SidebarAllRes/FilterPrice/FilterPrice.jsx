@@ -8,7 +8,7 @@ import Error from "../../../../../Error/Error";
 import { vendorList } from "../../../../../../CallApi/CallApi";
 
 // custom hooks
-import { useFilterPrice } from "../../../../../../hooks/useFetch";
+import { useFetch2 } from "../../../../../../hooks/useFetch";
 
 import { Link } from "react-router-dom";
 
@@ -45,7 +45,28 @@ export default function FilterPrice() {
   //   fetchPricing();
   // }, [params]);
 
-  const { isLoading, listPricing, error } = useFilterPrice(vendorList, params);
+  const { isLoading, data, error, fetchData, setData } = useFetch2(
+    vendorList,
+    (data) => {
+      const allArray = data.data.extra_sections.filters.sections;
+
+      for (let i = 0; i < allArray.length; i++) {
+        if (allArray[i]["section_name_fa"] === "کلاس قیمتی") {
+          return allArray[i]["data"];
+        }
+        if (i === allArray.length - 1) {
+          return [];
+        }
+      } // end for
+    }
+  );
+
+  useEffect(() => {
+    const process = async () => {
+      await fetchData(params.alias, params.catId);
+    };
+    process();
+  }, [params]);
 
   const filterHandler = (value) => {
     setFilterPrice(value);
@@ -57,7 +78,7 @@ export default function FilterPrice() {
 
   return (
     <>
-      {listPricing.length > 0 && (
+      {data.length > 0 && !isLoading && (
         <div className={styles["filter-price-component"]}>
           <p>کلاس قیمتی</p>
           <div className={styles["list"]}>
@@ -74,7 +95,7 @@ export default function FilterPrice() {
               </button>
             </Link>
 
-            {listPricing.map((item, index) => (
+            {data.map((item, index) => (
               <Link
                 to={`/category/${params.catId}/${params.alias}/${params.sorting}/${params.catValue}/${params.subValue}/${item.value}`}
               >

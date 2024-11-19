@@ -8,7 +8,7 @@ import Error from "../../../../../Error/Error";
 import { vendorList } from "../../../../../../CallApi/CallApi";
 
 // custom hooks
-import { useToggleButtons } from "../../../../../../hooks/useFetch";
+import { useFetch2 } from "../../../../../../hooks/useFetch";
 
 export default function ToggleFilterButtons() {
   const params = useParams();
@@ -40,7 +40,27 @@ export default function ToggleFilterButtons() {
   //   fetchFilter();
   // }, [params]);
 
-  const { isLoading, list, error } = useToggleButtons(vendorList, params);
+  const { isLoading, data, error, fetchData, setData } = useFetch2(
+    vendorList,
+    (data) => {
+      const allArray = data.data.extra_sections.filters.sections;
+      for (let i = 0; i < allArray.length; i++) {
+        if (allArray[i]["section_name_fa"] === "فیلتر") {
+          return allArray[i]["data"];
+        }
+        if (i === allArray.length - 1) {
+          return [];
+        }
+      }
+    }
+  );
+
+  useEffect(() => {
+    const process = async () => {
+      await fetchData(params.alias, params.catId);
+    };
+    process();
+  }, [params]);
 
   // TODO
   //  باید روی هر تاگل زد و سبز شد لینک بده به یک
@@ -65,15 +85,15 @@ export default function ToggleFilterButtons() {
 
   return (
     <>
-      {list.length > 0 && (
+      {data.length > 0 && !isLoading && (
         <div className={styles["toogle-filter-buttons-component"]}>
-          {list.map((item, index) => (
+          {data.map((item, index) => (
             <ToggleFilterButtonsItem
               // ببین به چیا نیاز داری اینجا بفرستش که بعد بتونی به عنوان ورودی بدیش به تابع
               // مثل ایندکس و آیتم واسه فیلترش  و لیست واسه طولش
               key={index}
               title={item.title}
-              list={list}
+              list={data}
               // HandleToggleChecked={HandleToggleChecked}
             />
           ))}

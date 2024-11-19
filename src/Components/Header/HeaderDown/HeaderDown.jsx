@@ -42,19 +42,21 @@ export default function HeaderDown(props) {
   // }, []);
 
   // custom hook
-  const { isLoading, data, setData, error } = useFetch(menuInHeaderDown);
-  console.log("data in headerdown: ", data);
+  // first way vali kar nakard
+  // const { isLoading, data, setData, error } = useFetch(menuInHeaderDown);
 
-  useEffect(() => {
-    console.log("first");
-    const fetchData = async () => {
-      console.log("data.data.items in useEffect : ", data.data.items);
-      await setData(data.data.items);
-    };
-    fetchData();
-  }, [data]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await setData(data.data.items);
+  //   };
+  //   fetchData();
+  // }, [data]);
 
-  console.log("**********************");
+  // second way
+  const { isLoading, data, error } = useFetch(
+    menuInHeaderDown,
+    (data) => data.data.items
+  );
 
   const handleScroll = (scrollAmount) => {
     const newScrollPosition = scrollPosition + scrollAmount;

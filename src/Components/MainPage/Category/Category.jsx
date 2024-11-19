@@ -48,14 +48,17 @@ export default function Category({ title }) {
   //   fetchData();
   // }, []);
 
-  const { isLoading, data, setData, error } = useFetch(categoryInMain);
+  const { isLoading, data, error } = useFetch(
+    categoryInMain,
+    (data) => data.data.result[0]["data"]["cuisines"]
+  );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await setData(data.data.result[0]["data"]["cuisines"]);
-    };
-    fetchData();
-  }, [data]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await setData(data.data.result[0]["data"]["cuisines"]);
+  //   };
+  //   fetchData();
+  // }, [data]);
 
   if (error) {
     return <Error title={error} />;
