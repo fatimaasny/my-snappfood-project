@@ -45,8 +45,11 @@ export default function SidebarAllRes() {
   );
 
   useEffect(() => {
-    fetchData(params.alias, params.catId);
-  }, [params]); //
+    const process = async () => {
+      await fetchData(params.alias, params.catId);
+    };
+    process();
+  }, [params]);
 
   const handleShowOverlayBack = () => {
     setIsOverlayBack(true);

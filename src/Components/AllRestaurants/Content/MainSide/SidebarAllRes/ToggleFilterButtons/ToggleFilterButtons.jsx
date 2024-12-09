@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { createSearchParams, useNavigate, useParams } from "react-router-dom";
 import styles from "./ToggleFilterButtons.module.css";
 import ToggleFilterButtonsItem from "./ToggleFilterButtonsItem/ToggleFilterButtonsItem";
 import Error from "../../../../../Error/Error";
@@ -12,33 +12,7 @@ import { useFetch2 } from "../../../../../../hooks/useFetch";
 
 export default function ToggleFilterButtons() {
   const params = useParams();
-
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [list, setList] = useState([]);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   const fetchFilter = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await vendorList(params.alias, params.catId);
-  //       const allArray = res.data.extra_sections.filters.sections;
-  //       for (let i = 0; i < allArray.length; i++) {
-  //         if (allArray[i]["section_name_fa"] === "فیلتر") {
-  //           setList(allArray[i]["data"]);
-  //           return;
-  //         } else {
-  //           setList([]);
-  //         }
-  //       }
-  //       setError();
-  //     } catch (err) {
-  //       setError("خطایی رخ داده است، بعدا مجددا تلاش کنید.");
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchFilter();
-  // }, [params]);
+  const navigate = useNavigate();
 
   const { isLoading, data, error, fetchData, setData } = useFetch2(
     vendorList,
@@ -73,15 +47,25 @@ export default function ToggleFilterButtons() {
   // url
   // و روی هر کدوم زد و آف کرد دوباره برش گردونه و لینک بده به چیز دیگه ای
 
-  // const [filter, setFilter] = useState({});
-  // const HandleToggleChecked = (e, item, index) => {
-  //   // TODO
-  //   // فکرکن ببین به چه روشی باید دست پیدا کنی به ورودی های مورد نیازت
-  //   console.log("sth");
-  // };
+  const [filter, setFilter] = useState();
+  const HandleToggleChecked = (e, value, index) => {
+    if (e.target.checked) {
+      setFilter({ ...filter, value });
+    } else {
+      setFilter({});
+    }
+    if (data.length === index) {
+      navigate({
+        pathname: `/category/${params.catId}/${params.alias}/${params.sorting}/${params.catValue}/${params.subValue}/${params.filterPrice}`,
+
+        search: createSearchParams({ filter: filter }).toString(),
+      });
+    }
+  };
   if (error) {
     return <Error title={error} />;
   }
+  console.log("filter : ", filter);
 
   return (
     <>
@@ -93,8 +77,9 @@ export default function ToggleFilterButtons() {
               // مثل ایندکس و آیتم واسه فیلترش  و لیست واسه طولش
               key={index}
               title={item.title}
-              list={data}
-              // HandleToggleChecked={HandleToggleChecked}
+              value={item.value} // has-discount
+              // list={data}
+              HandleToggleChecked={HandleToggleChecked}
             />
           ))}
         </div>

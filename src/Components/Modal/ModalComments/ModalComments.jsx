@@ -26,8 +26,7 @@ import { detailsDynamic1 } from "../../../CallApi/CallApi";
 import { VendorComment } from "../../../CallApi/CallApi";
 
 // custom hooks
-import { useModalCommentForData } from "../../../hooks/useFetch";
-import { useModalCommentForComments } from "../../../hooks/useFetch";
+import { useFetch2 } from "../../../hooks/useFetch";
 
 function BackDrop(props) {
   return <div className={styles.backdrop} onClick={props.hideModalComments} />;
@@ -294,65 +293,56 @@ function FinalModal(props) {
 function ModalComments(props) {
   const params = useParams();
 
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [listData, setListData] = useState([]);
-  // const [error, setError] = useState();
+  // ********************************************** data *************
+  const { isLoading, data, error, fetchData } = useFetch2(
+    detailsDynamic1,
+    (data) => data.data.vendor
+  );
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await detailsDynamic1(params.code);
-  //       setListData(res.data.vendor);
-  //     } catch (error) {
-  //       setError("خطایی رخ داده است، مجددا اقدام کنید.");
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const process = async () => {
+      await fetchData(params.code);
+    };
+    process();
+  }, [params]);
 
+  const [isToggleBtn, setIsToggleBtn] = useState("new");
+  const ToggleHandler = (value) => {
+    setIsToggleBtn(value);
+  };
+
+  // ******************************************* comments **************
   const {
-    isLoading,
-    listData,
-    error: errorData,
-  } = useModalCommentForData(detailsDynamic1, params);
+    isLoading: isLoadingComment,
+    data: listComment,
+    error: errorComment,
+    fetchData: fetchDataComments,
+  } = useFetch2(VendorComment, (data) => data.data.comments);
 
-  // const [isLoadingComment, setIsLoadingComment] = useState(false);
-  // const [listComment, setListComment] = useState([]);
-  // const [error, setError] = useState();
-  // const [sortParams, setSortParams] = useState([]);
+  useEffect(() => {
+    const process = async () => {
+      await fetchDataComments(params.code);
+    };
+    process();
+  }, [isToggleBtn]);
 
-  // const [isToggleBtn, setIsToggleBtn] = useState("new");
-  // const ToggleHandler = (value) => {
-  //   setIsToggleBtn(value);
-  // };
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoadingComment(true);
-  //     try {
-  //       const res = await VendorComment(params.code, isToggleBtn);
-  //       setListComment(res.data.comments);
-  //       setSortParams(res.data.sort.params);
-  //     } catch (error) {
-  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
-  //     }
-  //     setIsLoadingComment(false);
-  //   };
-  //   fetchData();
-  // }, [isToggleBtn]);
-
+  // *********************************** sortParams **************
   const {
-    isLoadingComment,
-    listComment,
-    error,
-    sortParams,
-    isToggleBtn,
-    ToggleHandler,
-  } = useModalCommentForComments(VendorComment, params);
+    isLoading: isLoadingsortParams,
+    data: listsortParams,
+    error: errorsortParams,
+    fetchData: fetchDatasortParams,
+  } = useFetch2(VendorComment, (data) => data.data.sort.params);
 
-  if (error || errorData) {
-    return <Error title={error || errorData} />;
+  useEffect(() => {
+    const process = async () => {
+      await fetchDatasortParams(params.code);
+    };
+    process();
+  }, [isToggleBtn]);
+
+  if (error || errorComment || errorsortParams) {
+    return <Error title={error || errorComment || errorsortParams} />;
   }
 
   return (
@@ -363,12 +353,12 @@ function ModalComments(props) {
           showModalSpecialMap={props.showModalSpecialMap}
           isLoadingComment={isLoadingComment}
           listComment={listComment}
-          sortParams={sortParams}
+          sortParams={listsortParams}
           isToggleBtn={isToggleBtn}
           ToggleHandler={ToggleHandler}
           isLoading={isLoading}
-          listData={listData}
-          error={error || errorData}
+          listData={data}
+          error={error || errorComment || errorsortParams}
         />,
         document.getElementById("modal-root")
       )}

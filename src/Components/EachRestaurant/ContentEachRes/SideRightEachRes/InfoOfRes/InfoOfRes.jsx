@@ -12,7 +12,7 @@ import Error from "../../../../Error/Error";
 import { detailsDynamic1 } from "../../../../../CallApi/CallApi";
 
 // custom hook
-import { useInfoOfRes } from "../../../../../hooks/useFetch";
+import { useFetch2 } from "../../../../../hooks/useFetch";
 
 function Info(props) {
   return (
@@ -64,8 +64,32 @@ export default function InfoOfRes() {
   //   fetchData();
   // }, []);
 
-  const { isLoading, item, error } = useInfoOfRes(detailsDynamic1, params);
+  // TODO
+  //  حتما نکته برداری کنم اینو که سومین پارامتر رو چطوری دادم و توی
+  // useFetch2
+  // چطوری عمل کردم بهش
+  const { isLoading, data, error, fetchData, setData } = useFetch2(
+    detailsDynamic1,
+    (data) => {
+      const item = {
+        title: data.data.vendor.title,
+        commentCount: data.data.vendor.commentCount,
+        logo: data.data.vendor.logo,
+        discount: data.data.vendor.discountValueForView,
+      };
+      return item;
+    },
+    { title: "", commentCount: 0, logo: "" }
+  );
 
+  useEffect(() => {
+    const process = async () => {
+      await fetchData(params.code);
+    };
+    process();
+  }, [params]);
+
+  // console.log("data in info :", data);
   if (error) {
     return <Error title={error} />;
   }
@@ -77,14 +101,14 @@ export default function InfoOfRes() {
           <Card>
             <img
               className={styles["image-res"]}
-              src={item.logo}
+              src={data.logo}
               alt="image-res1"
             />
           </Card>
           <Info
-            title={item.title}
-            commentCount={item.commentCount}
-            discount={item.discount}
+            title={data.title}
+            commentCount={data.commentCount}
+            discount={data.discount}
           />
         </div>
       )}

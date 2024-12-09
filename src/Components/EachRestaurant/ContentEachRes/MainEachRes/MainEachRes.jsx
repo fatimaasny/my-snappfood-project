@@ -11,7 +11,7 @@ import { detailsDynamic1 } from "../../../../CallApi/CallApi";
 import { coupons } from "../../../../CallApi/CallApi";
 
 // custom hooks
-import { useMainEachResOtherList } from "../../../../hooks/useFetch";
+import { useFetch2, useMainEachResOtherList } from "../../../../hooks/useFetch";
 import { useMainEachResCoupons } from "../../../../hooks/useFetch";
 
 export default function MainEachRes() {
@@ -35,10 +35,22 @@ export default function MainEachRes() {
   //   fetchDataTitles();
   // }, [params]);
 
-  const { isLoadingTitles, listTitles, error } = useMainEachResOtherList(
+  // const { isLoadingTitles, listTitles, error } = useMainEachResOtherList(
+  //   detailsDynamic1,
+  //   params
+  // );
+
+  const { isLoading, data, error, fetchData, setData } = useFetch2(
     detailsDynamic1,
-    params
+    (data) => data.data.menus
   );
+
+  useEffect(() => {
+    const process = async () => {
+      await fetchData(params.code);
+    };
+    process();
+  }, [params]);
 
   // const [isLoadingCoupons, setIsLoadingCoupons] = useState(false);
   // const [listCoupons, setListCoupons] = useState([]);
@@ -57,10 +69,22 @@ export default function MainEachRes() {
   //   fetchDataCoupons();
   // }, [params]);
 
-  const { isLoadingCoupons, listCoupons } = useMainEachResCoupons(
-    detailsDynamic1,
-    params
-  );
+  // کار نمکینه این
+  // API
+  
+  // const {
+  //   isLoading: isLoadingCoupons,
+  //   data: listCoupons,
+  //   error: errorCopouns,
+  //   fetchData: fetchDataCopouns,
+  // } = useFetch2(detailsDynamic1, (data) => data.data.coupons);
+
+  // useEffect(() => {
+  //   const process = async () => {
+  //     await fetchDataCopouns(params.code);
+  //   };
+  //   process();
+  // }, [params]);
 
   if (error) {
     return <Error title={error} />;
@@ -70,9 +94,7 @@ export default function MainEachRes() {
       {/* {!isLoadingCoupons && listCoupons.length > 0 && (
         <CouponsList list={listCoupons} />
       )} */}
-      {!isLoadingTitles && listTitles.length > 0 && (
-        <OtherList list={listTitles} />
-      )}
+      {!isLoading && data.length > 0 && <OtherList list={data} />}
     </div>
   );
 }

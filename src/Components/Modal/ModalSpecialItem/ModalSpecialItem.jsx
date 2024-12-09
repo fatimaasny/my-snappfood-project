@@ -14,11 +14,10 @@ import { IoMdStar } from "react-icons/io";
 import Loading from "../../Loading/Loading";
 
 // api
-import { detailsDynamic1 } from "../../../CallApi/CallApi";
 import { commentInSpecialItem } from "../../../CallApi/CallApi";
 
 // custom hooks
-import { useModalSpecialItem } from "../../../hooks/useFetch";
+import { useFetch2 } from "../../../hooks/useFetch";
 
 function BackDrop(props) {
   return (
@@ -112,28 +111,32 @@ function UpScroll(props) {
 }
 function DownScroll(props) {
   return (
-    <div className={styles.down}>
-      <h3>نظرات کاربران</h3>
-      {props.isLoading ? (
-        <Loading />
-      ) : (
-        <div className={styles.comments}>
-          {props.commentListInSpecialItem.map((i) => (
-            <Comment
-              key={i.commentId}
-              sender={i.sender}
-              date={i.date}
-              starscore={i.rating}
-              rate={i.rate}
-              commentText={i.commentText}
-              deliveryComment={i.deliveryComment}
-              foods={i.foods}
-              replies={i.replies}
-            />
-          ))}
+    <>
+      {props.commentListInSpecialItem.length > 0 && (
+        <div className={styles.down}>
+          <h3>نظرات کاربران</h3>
+          {props.isLoading ? (
+            <Loading />
+          ) : (
+            <div className={styles.comments}>
+              {props.commentListInSpecialItem.map((i) => (
+                <Comment
+                  key={i.commentId}
+                  sender={i.sender}
+                  date={i.date}
+                  starscore={i.rating}
+                  rate={i.rate}
+                  commentText={i.commentText}
+                  deliveryComment={i.deliveryComment}
+                  foods={i.foods}
+                  replies={i.replies}
+                />
+              ))}
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 }
 function ContentScrolled(props) {
@@ -196,29 +199,17 @@ function FinalModal(props) {
 function ModalSpecialItem(props) {
   const params = useParams();
 
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [commentListInSpecialItem, setCommentListInSpecialItem] = useState([]);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await commentInSpecialItem(props.id);
-  //       setCommentListInSpecialItem(res.data.comments);
-  //       console.log("comments in item", commentListInSpecialItem);
-  //     } catch (error) {
-  //       setCommentListInSpecialItem([]);
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  const { isLoading, commentListInSpecialItem, error } = useModalSpecialItem(
+  const { isLoading, data, error, fetchData } = useFetch2(
     commentInSpecialItem,
-    props.id
+    (data) => data.data.comments
   );
+
+  useEffect(() => {
+    const process = async () => {
+      await fetchData(props.id);
+    };
+    process();
+  }, []);
 
   return (
     <>
@@ -232,7 +223,7 @@ function ModalSpecialItem(props) {
           price={props.price}
           discount={props.discount}
           discountRatio={props.discountRatio}
-          commentListInSpecialItem={commentListInSpecialItem}
+          commentListInSpecialItem={data}
           isLoading={isLoading}
           error={error}
         />,

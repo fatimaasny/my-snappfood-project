@@ -16,34 +16,7 @@ export default function FilterPrice() {
   const [filterPrice, setFilterPrice] = useState("همه");
   const params = useParams();
 
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [listPricing, setListPricing] = useState([]);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   const fetchPricing = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await vendorList(params.alias, params.catId);
-  //       const allArray = res.data.extra_sections.filters.sections;
-  //       for (let i = 0; i < allArray.length; i++) {
-  //         if (allArray[i]["section_name_fa"] === "کلاس قیمتی") {
-  //           setListPricing(allArray[i]["data"]);
-  //           return;
-  //         } else {
-  //           setListPricing([]);
-  //         }
-  //       }
-  //       setError();
-  //     } catch (err) {
-  //       setError(
-  //         "اطلاعات به درستی از سرور دریافت نشده است، بعدا مجددا تلاش کنید."
-  //       );
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchPricing();
-  // }, [params]);
+ 
 
   const { isLoading, data, error, fetchData, setData } = useFetch2(
     vendorList,

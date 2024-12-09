@@ -1,7 +1,9 @@
 import styles from "./ToggleFilterButtonsItem.module.css";
 
 export default function ToggleFilterButtonsItem({
+  key,
   title,
+  value,
   HandleToggleChecked,
 }) {
   return (
@@ -11,9 +13,9 @@ export default function ToggleFilterButtonsItem({
         <label className={styles.switch}>
           <input
             type="checkbox"
-            // onClick={(e) => {
-            //   HandleToggleChecked(e);
-            // }}
+            onClick={(e) => {
+              HandleToggleChecked(e, value, key);
+            }}
           />
           <span className={`${styles.slider} ${styles.round}`}></span>
         </label>

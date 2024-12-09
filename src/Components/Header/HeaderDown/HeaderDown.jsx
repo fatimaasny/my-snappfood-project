@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -21,38 +21,8 @@ const itemWidth = 240;
 export default function HeaderDown(props) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const contentRef = useRef();
+  const params = useParams();
 
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [listMenu, setListMenu] = useState([]);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   const fetchMenu = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await menuInHeaderDown();
-  //       setListMenu(res.data.items);
-  //       setError();
-  //     } catch (error) {
-  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchMenu();
-  // }, []);
-
-  // custom hook
-  // first way vali kar nakard
-  // const { isLoading, data, setData, error } = useFetch(menuInHeaderDown);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await setData(data.data.items);
-  //   };
-  //   fetchData();
-  // }, [data]);
-
-  // second way
   const { isLoading, data, error } = useFetch(
     menuInHeaderDown,
     (data) => data.data.items
@@ -76,6 +46,7 @@ export default function HeaderDown(props) {
               {data.map((category) => (
                 <Link
                   to={`/category/${category.id}/${category.superTypeAlias}/null/null/null/null`}
+                  // to={`/category/${category.id}/${category.superTypeAlias}/${params.sorting}/${params.catValue}/${params.subValue}/${params.filterPrice}`}
                 >
                   <IconMenu
                     key={category.id}

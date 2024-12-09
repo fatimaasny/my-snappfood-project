@@ -68,16 +68,6 @@ export default function Main() {
     (titleSecond) => titleSecond.data.result[4]["title"]
   );
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await setListFirst(data.data.result[3]["data"]["restaurants"]);
-  //     await setTitleFirst(data.data.result[3]["title"]);
-  //     await setListSecond(data.data.result[4]["data"]["restaurants"]);
-  //     await setTitleSecond(data.data.result[4]["title"]);
-  //   };
-  //   fetchData();
-  // }, [data]);
-
   if (error) {
     return <Error title={error} />;
   }

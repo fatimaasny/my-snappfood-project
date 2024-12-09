@@ -10,7 +10,7 @@ import Error from "../../../../Error/Error";
 import { detailsDynamic1 } from "../../../../../CallApi/CallApi";
 
 // custom hook
-import { useMenuOfRes } from "../../../../../hooks/useFetch";
+import { useFetch2 } from "../../../../../hooks/useFetch";
 
 export default function MenuOfRes() {
   const params = useParams();
@@ -42,11 +42,25 @@ export default function MenuOfRes() {
   //   fetchData();
   // }, []);
 
-  const { isLoading, listTitles, error } = useMenuOfRes(
+  const { isLoading, data, error, fetchData, setData } = useFetch2(
     detailsDynamic1,
-    params
+    (data) => {
+      const oldArray = data.data.menus;
+      const finalArray = [];
+
+      for (let i = 0; i < oldArray.length; i++) {
+        finalArray.push(oldArray[i]["category"]);
+      }
+      return finalArray;
+    }
   );
 
+  useEffect(() => {
+    const process = async () => {
+      await fetchData(params.code);
+    };
+    process();
+  }, [params]);
   if (error) {
     return <Error title={error} />;
   }
@@ -55,7 +69,7 @@ export default function MenuOfRes() {
     <>
       {!isLoading && (
         <div className={styles["menu-of-res-components"]}>
-          {listTitles.map((title, index) => (
+          {data.map((title, index) => (
             <div key={index}>{title}</div>
           ))}
         </div>

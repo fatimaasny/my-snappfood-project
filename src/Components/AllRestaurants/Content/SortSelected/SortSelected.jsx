@@ -20,27 +20,6 @@ export default function SortSelected() {
   const [selectedSort, setSelectedSort] = useState("");
   const params = useParams();
 
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [list, setList] = useState([]);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   hideSortOverlay();
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await vendorList(params.alias, params.catId);
-  //       setList(res.data.extra_sections.filters.top.data);
-
-  //       setError();
-  //     } catch (error) {
-  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, [params]);
-
   const { isLoading, data, error, fetchData } = useFetch2(
     vendorList,
     (data) => data.data.extra_sections.filters.top.data
