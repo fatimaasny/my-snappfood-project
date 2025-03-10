@@ -2,6 +2,8 @@ import styles from "./Restaurant.module.css";
 import ShowMore from "../../ShowMore/ShowMore";
 import RestaurantItem from "../../../Components/RestaurantItem/RestaurantItem";
 import { Link } from "react-router-dom";
+import { useLongpress } from "../../../hooks/useLongpress";
+import { useRef } from "react";
 
 function Title(props) {
   return (
@@ -11,10 +13,17 @@ function Title(props) {
     </div>
   );
 }
-function Items(props) {
+function Items({ list, containerRef, handlers }) {
   return (
-    <div className={styles.Ritems}>
-      {props.list.map((i) => (
+    <div
+      className={styles.Ritems}
+      ref={containerRef}
+      style={{
+        overflowX: "scroll",
+      }}
+      {...handlers}
+    >
+      {list.map((i) => (
         <Link to={`/item/${i.vendorCode}`}>
           <RestaurantItem
             key={i.id}
@@ -35,10 +44,13 @@ function Items(props) {
 }
 
 export default function Restaurant({ title, list }) {
+  const containerRef = useRef(null);
+  const { handlers } = useLongpress(containerRef);
+
   return (
     <div className={styles.content}>
       <Title title={title} />
-      <Items list={list} />
+      <Items list={list} containerRef={containerRef} handlers={handlers} />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 .card {
   cursor: pointer;
   box-shadow: 0 1px 3px #eee;
-  width: 95%;
   height: 350px;
+  scroll-snap-align: start;
 }
 .card:hover {
   box-shadow: 0 10px 15px #eee;
@@ -122,3 +122,20 @@
     right: 40%;
   }
 }
+/* @media (min-width: 601px) and (max-width: 946px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media (min-width: 947px) and (max-width: 1288px) {
+  .card {
+    width: 33.33%;
+  }
+}
+
+@media (min-width: 1289px) {
+  .card {
+    width: 25%;
+  }
+} */

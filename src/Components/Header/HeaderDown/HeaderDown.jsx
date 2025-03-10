@@ -15,24 +15,42 @@ import { menuInHeaderDown } from "../../../CallApi/CallApi";
 
 // custom hooks
 import { useFetch } from "../../../hooks/useFetch";
-
-const itemWidth = 240;
+import { useLongpress } from "../../../hooks/useLongpress";
 
 export default function HeaderDown(props) {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const contentRef = useRef();
-  const params = useParams();
+  const contentRef = useRef(null);
+  const [canLeft, setCanLeft] = useState(true);
+  const [canRight, setCanRight] = useState(false);
 
   const { isLoading, data, error } = useFetch(
     menuInHeaderDown,
     (data) => data.data.items
   );
 
-  const handleScroll = (scrollAmount) => {
-    const newScrollPosition = scrollPosition + scrollAmount;
-    setScrollPosition(newScrollPosition);
-    contentRef.current.scrollLeft = newScrollPosition;
-  };
+  const { positionX, setPositionX, handlers } = useLongpress(contentRef);
+
+  const itemWidth = 110;
+  function handleScroll(direction) {
+    const newPosition =
+      direction === "left" ? positionX - itemWidth : positionX + itemWidth;
+
+    if (contentRef.current) {
+      contentRef.current.scrollLeft = newPosition;
+      setPositionX(newPosition);
+    }
+  }
+
+  useEffect(() => {
+    if (!isLoading && contentRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = contentRef.current;
+
+      setCanLeft(
+        Math.abs(scrollLeft) < scrollWidth - clientWidth &&
+          scrollWidth - clientWidth - Math.abs(scrollLeft) > 10
+      );
+      setCanRight(Math.abs(scrollLeft) > 0);
+    }
+  }, [isLoading, positionX]);
 
   if (error) {
     return <Error title={error} />;
@@ -41,36 +59,38 @@ export default function HeaderDown(props) {
     <>
       {!isLoading && (
         <header className={`${styles["header-down"]} ${styles[props.class]}`}>
-          <div ref={contentRef} className={styles.ref}>
-            <div className={styles.list}>
-              {data.map((category) => (
-                <Link
-                  to={`/category/${category.id}/${category.superTypeAlias}/null/null/null/null`}
-                  // to={`/category/${category.id}/${category.superTypeAlias}/${params.sorting}/${params.catValue}/${params.subValue}/${params.filterPrice}`}
-                >
-                  <IconMenu
-                    key={category.id}
-                    title={category.title}
-                    icon={category.icon}
-                  />
-                </Link>
-              ))}
-            </div>
+          {canRight && (
+            <button
+              className={styles["angel-right"]}
+              onClick={() => handleScroll("right")}
+            >
+              <FaAngleRight color="#ff00b3" fontSize="1.3rem" />
+            </button>
+          )}
+
+          <div className={styles.list} ref={contentRef} {...handlers}>
+            {data.map((category) => (
+              <Link
+                to={`/category/${category.id}/${category.superTypeAlias}/null/null/null/null`}
+                // to={`/category/${category.id}/${category.superTypeAlias}/${params.sorting}/${params.catValue}/${params.subValue}/${params.filterPrice}`}
+              >
+                <IconMenu
+                  key={category.id}
+                  title={category.title}
+                  icon={category.icon}
+                />
+              </Link>
+            ))}
           </div>
-          <button
-            className={styles["angel-right"]}
-            onClick={() => handleScroll(itemWidth)}
-            disabled={scrollPosition >= 0}
-          >
-            <FaAngleRight color="#ff00b3" fontSize="1.3rem" />
-          </button>
-          <button
-            className={styles["angel-left"]}
-            onClick={() => handleScroll(-itemWidth)}
-            disabled={scrollPosition <= -1400}
-          >
-            <FaAngleLeft color="#ff00b3" fontSize="1.3rem" />
-          </button>
+
+          {canLeft && (
+            <button
+              className={styles["angel-left"]}
+              onClick={() => handleScroll("left")}
+            >
+              <FaAngleLeft color="#ff00b3" fontSize="1.3rem" />
+            </button>
+          )}
         </header>
       )}
     </>

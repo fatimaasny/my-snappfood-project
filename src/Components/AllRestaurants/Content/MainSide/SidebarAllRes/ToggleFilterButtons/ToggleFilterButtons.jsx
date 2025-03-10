@@ -11,6 +11,7 @@ import { vendorList } from "../../../../../../CallApi/CallApi";
 import { useFetch2 } from "../../../../../../hooks/useFetch";
 
 export default function ToggleFilterButtons() {
+  const [filter, setFilter] = useState();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -36,36 +37,36 @@ export default function ToggleFilterButtons() {
     process();
   }, [params]);
 
-  // TODO
-  //  باید روی هر تاگل زد و سبز شد لینک بده به یک
-  // api
-  // میبینیم که رو هر تاگل میزنی نشون میده
-  // توی
-  //url
-  //  و میشه همزمان چند تاگل رو بزنیم و همه رو نشون میده
-  // توی
-  // url
-  // و روی هر کدوم زد و آف کرد دوباره برش گردونه و لینک بده به چیز دیگه ای
+  useEffect(() => {
+    navigate({
+      pathname: `/category/${params.catId}/${params.alias}/${params.sorting}/${params.catValue}/${params.subValue}/${params.filterPrice}`,
+      search: createSearchParams({ filter: JSON.stringify(filter) }).toString(),
+    });
+  }, [filter]);
 
-  const [filter, setFilter] = useState();
-  const HandleToggleChecked = (e, value, index) => {
-    if (e.target.checked) {
-      setFilter({ ...filter, value });
-    } else {
-      setFilter({});
-    }
-    if (data.length === index) {
-      navigate({
-        pathname: `/category/${params.catId}/${params.alias}/${params.sorting}/${params.catValue}/${params.subValue}/${params.filterPrice}`,
+  const HandleToggleChecked = (e, value) => {
+    setFilter((prevFilter) => {
+      const updatedFilter = { ...prevFilter };
+      if (e.currentTarget.checked) {
+        updatedFilter[value] = value;
+      } else {
+        delete updatedFilter[value];
+      }
+      return updatedFilter;
+    });
 
-        search: createSearchParams({ filter: filter }).toString(),
-      });
-    }
+    // if (e.currentTarget.checked) {
+    //   setFilter((filter) => ({ ...filter, [value]: value }));
+    // } else {
+    //   const nFilter = { ...filter };
+    //   delete nFilter[value];
+    //   setFilter(nFilter);
+    // }
   };
   if (error) {
     return <Error title={error} />;
   }
-  console.log("filter : ", filter);
+  console.log("filter in toggle : ", filter);
 
   return (
     <>
@@ -73,12 +74,9 @@ export default function ToggleFilterButtons() {
         <div className={styles["toogle-filter-buttons-component"]}>
           {data.map((item, index) => (
             <ToggleFilterButtonsItem
-              // ببین به چیا نیاز داری اینجا بفرستش که بعد بتونی به عنوان ورودی بدیش به تابع
-              // مثل ایندکس و آیتم واسه فیلترش  و لیست واسه طولش
               key={index}
               title={item.title}
               value={item.value} // has-discount
-              // list={data}
               HandleToggleChecked={HandleToggleChecked}
             />
           ))}

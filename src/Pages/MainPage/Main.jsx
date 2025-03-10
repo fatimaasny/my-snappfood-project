@@ -18,32 +18,6 @@ import Error from "../../Components/Error/Error";
 import Loading from "../../Components/Loading/Loading";
 
 export default function Main() {
-  // const [listFirst, setListFirst] = useState([]);
-  // const [titleFirst, setTitleFirst] = useState();
-  // const [listSecond, setListSecond] = useState([]);
-  // const [titleSecond, setTitleSecond] = useState();
-
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await titlesInMain();
-  //       setListFirst(res.data.result[3]["data"]["restaurants"]);
-  //       setTitleFirst(res.data.result[3]["title"]);
-  //       setListSecond(res.data.result[4]["data"]["restaurants"]);
-  //       setTitleSecond(res.data.result[4]["title"]);
-  //       setError();
-  //     } catch (error) {
-  //       setError("خطایی رخ داده است، لطفا مجددا تلاش کنید1.");
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, []);
-
   const {
     isLoading,
     data: listFirst,

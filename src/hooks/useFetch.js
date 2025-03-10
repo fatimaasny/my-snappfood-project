@@ -36,10 +36,10 @@ export function useFetch2(apiFn, parser, initial) {
   const [data, setData] = useState([] || initial);
   const [error, setError] = useState();
 
-  const fetchData = async (body) => {
+  const fetchData = async (body, extra) => {
     setIsLoading(true);
     try {
-      const response = await apiFn(body);
+      const response = await apiFn(body, extra);
 
       const parserData = await parser(response);
 

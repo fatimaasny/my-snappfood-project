@@ -14,12 +14,26 @@ import { vendorListInMainAllRes } from "../../../../../CallApi/CallApi";
 import { useFetch2 } from "../../../../../hooks/useFetch";
 
 export default function MainAllRes() {
+  const [searchFilter, setSearchFilter] = useState({});
   const params = useParams();
+
   const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const filterString = queryParams.get("filter");
+  // console.log("filterString: ", filterString);
 
   useEffect(() => {
-    console.log("location : ", location);
-  }, [location]);
+    if (filterString) {
+      try {
+        setSearchFilter(JSON.parse(filterString));
+      } catch (error) {
+        console.log("error ");
+        setSearchFilter({});
+      }
+    } else {
+      setSearchFilter({});
+    }
+  }, [location.search]);
 
   // TODO
   //  یک لیست کمکی داشته باشم که بیام 5 تا 5 تا از لیست اصلی بگیرم و بریزم توش تا نمایشش بده و هر
@@ -75,10 +89,13 @@ export default function MainAllRes() {
 
   useEffect(() => {
     const process = async () => {
-      await fetchData(params);
+      const formattedFilter = {
+        filter: Object.values(searchFilter),
+      };
+      await fetchData(params, formattedFilter);
     };
     process();
-  }, [params]);
+  }, [params, searchFilter]);
 
   if (error) {
     return <Error title={error} />;

@@ -1,5 +1,9 @@
 .header-down {
-  top: 88px;
+  width: 100%;
+  overflow-x: hidden;
+  /* top: 88px; */
+  top: 70px;
+  /* سایز زیر 600 پیکسل بین دو تا هدر فاصله بود و مشخص میشه هرچی زیرش رد میشد */
   padding: 20px 1rem;
   background: #fff;
   /* خواستیم زیر هدر هرچی اومد نشون داده نشه
@@ -17,17 +21,16 @@
   z-index: 200;
 }
 
-.header-down .ref {
-  width: 100vw;
-  scroll-behavior: smooth;
-  overflow-x: scroll;
-}
-
 .header-down .list {
-  width: 1750px;
+
+  direction: rtl;
   display: flex;
   gap: 1rem;
   padding: 0.5rem 0;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  /* overflow-x: auto; */
+  /* scroll-behavior: smooth; */
 }
 
 .angel-right,
@@ -47,7 +50,7 @@
   cursor: pointer;
 }
 .angel-left {
-  left: 2%;
+  left: 1%;
 }
 .angel-right {
   right: 1%;
@@ -59,4 +62,10 @@
 .header-down.allrestaurants .angel-left,
 .header-down.allrestaurants .angel-right {
   top: 17%;
+}
+
+@media (min-width: 580px) and (max-width: 600px) {
+  .header-down {
+    top: 55px;
+  }
 }
