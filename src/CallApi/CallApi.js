@@ -63,7 +63,9 @@ export async function vendorListInMainAllRes(params, searchFilter) {
 
   const encodedFilters = encodeURIComponent(JSON.stringify(filterObject));
 
-  const url = `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=${encodedFilters}&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`;
+  const url = `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:[%22${params.filterPrice}%22],%22sortings%22:[%22${params.sort}%22]%7D&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`;
+
+  // const url = `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=${encodedFilters}&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`;
 
   console.log("url: ", url);
   try {
