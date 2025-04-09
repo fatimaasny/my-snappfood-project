@@ -11,9 +11,9 @@ import { vendorList } from "../../../../../../CallApi/CallApi";
 import { useFetch2 } from "../../../../../../hooks/useFetch";
 
 export default function ToggleFilterButtons() {
-  const [filter, setFilter] = useState();
+  // const [filter, setFilter] = useState();
   const params = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { isLoading, data, error, fetchData, setData } = useFetch2(
     vendorList,
@@ -37,36 +37,40 @@ export default function ToggleFilterButtons() {
     process();
   }, [params]);
 
-  useEffect(() => {
-    navigate({
-      pathname: `/category/${params.catId}/${params.alias}/${params.sorting}/${params.catValue}/${params.subValue}/${params.filterPrice}`,
-      search: createSearchParams({ filter: JSON.stringify(filter) }).toString(),
-    });
-  }, [filter]);
+  // تاگل ها
+  // useEffect(() => {
+  //   navigate({
+  //     pathname: `/category/${params.catId}/${params.alias}/${params.sorting}/${params.catValue}/${params.subValue}/${params.filterPrice}`,
+  //     search: createSearchParams({ filter: JSON.stringify(filter) }).toString(),
+  //   });
+  // }, [filter]);
 
-  const HandleToggleChecked = (e, value) => {
-    setFilter((prevFilter) => {
-      const updatedFilter = { ...prevFilter };
-      if (e.currentTarget.checked) {
-        updatedFilter[value] = value;
-      } else {
-        delete updatedFilter[value];
-      }
-      return updatedFilter;
-    });
+  // // تاگل ها
+  // // روش اول
+  // const HandleToggleChecked = (e, value) => {
+  //   setFilter((prevFilter) => {
+  //     const updatedFilter = { ...prevFilter };
+  //     if (e.currentTarget.checked) {
+  //       updatedFilter[value] = value;
+  //     } else {
+  //       delete updatedFilter[value];
+  //     }
+  //     return updatedFilter;
+  //   });
 
-    // if (e.currentTarget.checked) {
-    //   setFilter((filter) => ({ ...filter, [value]: value }));
-    // } else {
-    //   const nFilter = { ...filter };
-    //   delete nFilter[value];
-    //   setFilter(nFilter);
-    // }
-  };
+  //   // روش دوم
+  //   // if (e.currentTarget.checked) {
+  //   //   setFilter((filter) => ({ ...filter, [value]: value }));
+  //   // } else {
+  //   //   const nFilter = { ...filter };
+  //   //   delete nFilter[value];
+  //   //   setFilter(nFilter);
+  //   // }
+  // };
   if (error) {
     return <Error title={error} />;
   }
-  console.log("filter in toggle : ", filter);
+  // console.log("filter in toggle : ", filter);
 
   return (
     <>
@@ -77,7 +81,7 @@ export default function ToggleFilterButtons() {
               key={index}
               title={item.title}
               value={item.value} // has-discount
-              HandleToggleChecked={HandleToggleChecked}
+              // HandleToggleChecked={HandleToggleChecked}
             />
           ))}
         </div>

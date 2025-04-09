@@ -53,54 +53,44 @@ export async function menuInHeaderDown() {
 
 // ******************************* vendorListInMainAllRes ********************
 
-export async function vendorListInMainAllRes(params, searchFilter) {
-  const filterValues = Object.values(searchFilter);
-
-  const filterObject = {
-    filters: filterValues,
-    sortings: [params.sort],
-  };
-
-  const encodedFilters = encodeURIComponent(JSON.stringify(filterObject));
-
+export async function vendorListInMainAllRes(params) {
   const url = `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:[%22${params.filterPrice}%22],%22sortings%22:[%22${params.sort}%22]%7D&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`;
 
-  // const url = `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=${encodedFilters}&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`;
-
-  console.log("url: ", url);
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("اطلاعات به درستی دریافت نشده است.");
-    }
-    const res = await response.json();
-    return res;
-  } catch (error) {
-    console.error("Error fetching data in vendorListInMainAllRes :", error);
-    throw error;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("اطلاعات به درستی دریافت نشده است.");
   }
+  const res = await response.json();
+  return res;
 }
 
+// تاگل
 // export async function vendorListInMainAllRes(params, searchFilter) {
-//   // const response = await fetch(
-//   //   `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:[%22${searchFilter},${params.filterPrice}%22],%22sortings%22:[%22${params.sort}%22]%7D&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`
-//   // );
+//   const filterValues = Object.values(searchFilter);
 
-//   let stringSearchFilter = "";
-//   for (const key in searchFilter) {
-//     stringSearchFilter += key + " ";
-//   }
+//   const filterObject = {
+//     filters: filterValues,
+//     sortings: [params.sort],
+//   };
 
-//   const url = `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:[%22${stringSearchFilter}%22],%22sortings%22:[%22${params.sort}%22]%7D&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`;
+//   const encodedFilters = encodeURIComponent(JSON.stringify(filterObject));
+
+//   const url = `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=%7B%22filters%22:[%22${params.filterPrice}%22],%22sortings%22:[%22${params.sort}%22]%7D&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`;
+
+//   // const url = `https://snappfood.ir/search/api/v1/desktop/vendors-list?lat=35.715&long=51.404&optionalClient=WEBSITE&client=WEBSITE&deviceType=WEBSITE&appVersion=8.1.1&UDID=062e72f3-53b7-45ef-a801-b7bfb5d0f6e0&page=0&page_size=20&filters=${encodedFilters}&category=%7B%22value%22:${params.catValue},%22sub%22:[${params.subValue}]%7D&query=&sp_alias=${params.alias}&city_name=tehran&superType=[${params.id}]&extra-filter=&vendor_title=&locale=fa`;
 
 //   console.log("url: ", url);
-//   const response = await fetch(url);
-//   if (!response.ok) {
-//     throw new Error("اطلاعات به درستی دریافت نشده است.");
+//   try {
+//     const response = await fetch(url);
+//     if (!response.ok) {
+//       throw new Error("اطلاعات به درستی دریافت نشده است.");
+//     }
+//     const res = await response.json();
+//     return res;
+//   } catch (error) {
+//     console.error("Error fetching data in vendorListInMainAllRes :", error);
+//     throw error;
 //   }
-//   const res = await response.json();
-//   // console.log("res : ", res);
-//   return res;
 // }
 
 // ************************************ vendorList api *******************************
@@ -115,14 +105,6 @@ export async function vendorList(alias, id) {
   const res = await response.json();
   return res;
 }
-
-//
-
-//
-
-//
-
-//
 
 //
 

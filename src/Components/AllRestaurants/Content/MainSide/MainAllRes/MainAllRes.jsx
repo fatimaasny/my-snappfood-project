@@ -14,26 +14,27 @@ import { vendorListInMainAllRes } from "../../../../../CallApi/CallApi";
 import { useFetch2 } from "../../../../../hooks/useFetch";
 
 export default function MainAllRes() {
-  const [searchFilter, setSearchFilter] = useState({});
   const params = useParams();
 
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const filterString = queryParams.get("filter");
+  // تاگل
+  // const [searchFilter, setSearchFilter] = useState({});
+  // const location = useLocation();
+  // const queryParams = new URLSearchParams(location.search);
+  // const filterString = queryParams.get("filter");
   // console.log("filterString: ", filterString);
 
-  useEffect(() => {
-    if (filterString) {
-      try {
-        setSearchFilter(JSON.parse(filterString));
-      } catch (error) {
-        console.log("error ");
-        setSearchFilter({});
-      }
-    } else {
-      setSearchFilter({});
-    }
-  }, [location.search]);
+  // useEffect(() => {
+  //   if (filterString) {
+  //     try {
+  //       setSearchFilter(JSON.parse(filterString));
+  //     } catch (error) {
+  //       console.log("error ");
+  //       setSearchFilter({});
+  //     }
+  //   } else {
+  //     setSearchFilter({});
+  //   }
+  // }, [location.search]);
 
   // TODO
   //  یک لیست کمکی داشته باشم که بیام 5 تا 5 تا از لیست اصلی بگیرم و بریزم توش تا نمایشش بده و هر
@@ -87,15 +88,22 @@ export default function MainAllRes() {
     }
   );
 
+  // useEffect(() => {
+  //   const process = async () => {
+  //     const formattedFilter = {
+  //       filter: Object.values(searchFilter),
+  //     };
+  //     await fetchData(params, formattedFilter);
+  //   };
+  //   process();
+  // }, [params, searchFilter]);
+
   useEffect(() => {
     const process = async () => {
-      const formattedFilter = {
-        filter: Object.values(searchFilter),
-      };
-      await fetchData(params, formattedFilter);
+      await fetchData(params);
     };
     process();
-  }, [params, searchFilter]);
+  }, [params]);
 
   if (error) {
     return <Error title={error} />;

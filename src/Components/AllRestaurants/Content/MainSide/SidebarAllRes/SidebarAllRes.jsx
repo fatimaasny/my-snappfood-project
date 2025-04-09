@@ -20,25 +20,6 @@ export default function SidebarAllRes() {
   const [titleBack, setTitleBack] = useState("");
   const params = useParams();
 
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [list, setList] = useState([]);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await vendorList(params.alias, params.catId);
-  //       setList(res.data.extra_sections.categories.data);
-  //       setError();
-  //     } catch (error) {
-  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, [params]);
-
   const { isLoading, data, error, fetchData } = useFetch2(
     vendorList,
     (data) => data.data.extra_sections.categories.data
