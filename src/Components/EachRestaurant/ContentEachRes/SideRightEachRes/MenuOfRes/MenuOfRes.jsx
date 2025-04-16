@@ -12,37 +12,14 @@ import { detailsDynamic1 } from "../../../../../CallApi/CallApi";
 // custom hook
 import { useFetch2 } from "../../../../../hooks/useFetch";
 
+// context
+import { useContext } from "react";
+import { ScrollContext } from "../../../../../store/ScrollTitlesContext";
+
 export default function MenuOfRes() {
   const params = useParams();
 
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [listTitles, setListTitles] = useState([]);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await detailsDynamic1(params.code);
-
-  //       const oldArray = res.data.menus;
-  //       const finalArray = [];
-
-  //       for (let i = 0; i < oldArray.length; i++) {
-  //         finalArray.push(oldArray[i]["category"]);
-  //       }
-  //       setListTitles(finalArray);
-
-  //       setError();
-  //     } catch (error) {
-  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  const { isLoading, data, error, fetchData, setData } = useFetch2(
+  const { isLoading, data, error, fetchData } = useFetch2(
     detailsDynamic1,
     (data) => {
       const oldArray = data.data.menus;
@@ -61,6 +38,9 @@ export default function MenuOfRes() {
     };
     process();
   }, [params]);
+
+  const { activeTitle, handleScrollTitles } = useContext(ScrollContext);
+
   if (error) {
     return <Error title={error} />;
   }
@@ -70,7 +50,15 @@ export default function MenuOfRes() {
       {!isLoading && (
         <div className={styles["menu-of-res-components"]}>
           {data.map((title, index) => (
-            <div key={index}>{title}</div>
+            <button
+              key={index}
+              className={`${styles.title} ${
+                activeTitle === title ? styles.activeTitle : ""
+              }`}
+              onClick={() => handleScrollTitles(title)}
+            >
+              {title}
+            </button>
           ))}
         </div>
       )}

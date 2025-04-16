@@ -1,10 +1,11 @@
 .item-addbtn-component {
-  padding: 5px 10px;
+  padding: 5px ;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
   height: 65px;
+
 }
 .item-addbtn-component:hover {
   background: #fafafa;
@@ -23,8 +24,9 @@
   margin-top: 0.5rem;
 }
 .item-addbtn-component .title {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #444;
+  font-family: Vazir-bold;
 }
 .item-addbtn-component .box-price {
   display: flex;
@@ -37,17 +39,17 @@
 }
 
 .item-addbtn-component #old-price {
-  font-size: 0.76rem;
+  font-size: 0.7rem;
   color: #999;
   text-decoration: line-through;
 }
 .item-addbtn-component #new-price {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #444;
   font-family: Vazir-medium;
 }
 .item-addbtn-component #new-price span {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #666;
   margin-right: 0.3rem;
 }
@@ -76,4 +78,36 @@
   padding: 5px 30px;
   border-radius: 20px;
   box-shadow: 1px 1px 1px #faedf5, -1px -1px 1px #faedf5;
+}
+
+
+
+
+
+
+.changebtns {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.changebtns button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 1px 1px 3px #eee, -1px -1px 3px #eee;
+  border:none;
+}
+.changebtns .btnplus{
+  background-color: #ff00b3;
+}
+.changebtns .btnplus:hover{
+  opacity: 0.6;
+}
+.changebtns .btntrash:hover {
+  background: #ddd;
 }

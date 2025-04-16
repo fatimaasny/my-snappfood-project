@@ -1,11 +1,13 @@
 .content-each-res-component {
   padding: 2rem 6rem;
   display: flex;
+  gap: 1.5rem;
   background: #fdfdfd;
   position: relative;
 }
 .bothRessponsive {
   display: flex;
+  gap: 1.5rem;
   justify-content: space-around;
   position: relative;
 }

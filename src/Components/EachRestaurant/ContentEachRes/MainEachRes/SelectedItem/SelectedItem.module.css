@@ -1,6 +1,7 @@
 .selected-item {
   display: flex;
   justify-content: space-between;
+  background-color: yellow;
 }
 /* .selected-item:hover {
   background: #eee;

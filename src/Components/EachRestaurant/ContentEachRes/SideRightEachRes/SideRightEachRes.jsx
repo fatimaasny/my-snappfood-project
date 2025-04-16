@@ -53,7 +53,7 @@ export default function SideRightEachRes({ scrollposition }) {
 
       <div
         className={`${styles["side-Right-each-res-component"]} ${
-          scrollposition && styles.fix
+          scrollposition ? styles.fix : ""
         }`}
       >
         <InfoOfRes />

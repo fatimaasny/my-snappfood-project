@@ -3,6 +3,14 @@ import styles from "./ItemAddbtn.module.css";
 
 import ModalAddItem from "../../../../Modal/ModalAddItem/ModalAddItem";
 import Discount from "../../../../Discount/Discount";
+
+import { useContext } from "react";
+import { CartContext } from "../../../../../store/ShoppingCartContext";
+
+import { TbTrash } from "react-icons/tb";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa6";
+
 function Content(props) {
   return (
     <div className={styles["content-right"]}>
@@ -37,14 +45,53 @@ function Content(props) {
     </div>
   );
 }
-function ButtonAdd(props) {
+function ButtonAdd({
+  id,
+  product,
+  items,
+  addItemToCart,
+  updateCartItemQuantity,
+}) {
+  const existingProduct = items.find((p) => p.id === id);
+
+  console.log("items: ", items);
+
   return (
-    <button className={styles["add-btn"]} onClick={props.showModalAddItem}>
-      افزودن
-    </button>
+    <div>
+      {existingProduct && existingProduct.quantity > 0 ? (
+        <div className={styles.changebtns}>
+          <button
+            className={styles.btntrash}
+            onClick={() => updateCartItemQuantity(id, -1)}
+          >
+            {existingProduct.quantity === 1 ? (
+              <TbTrash color="#aaa" fontSize="1rem" />
+            ) : (
+              <FaMinus color="#ff00b3" />
+            )}
+          </button>
+          <span> {existingProduct.quantity} </span>
+          <button
+            className={styles.btnplus}
+            onClick={() => updateCartItemQuantity(id, 1)}
+          >
+            <FaPlus color="#fff" />
+          </button>
+        </div>
+      ) : (
+        <button
+          onClick={() => addItemToCart(product)}
+          className={styles["add-btn"]}
+        >
+          افزودن
+        </button>
+      )}
+    </div>
   );
 }
 export default function ItemAddbtn({
+  id,
+  product,
   name,
   productVariationTitle,
   price,
@@ -64,6 +111,10 @@ export default function ItemAddbtn({
   useEffect(() => {
     setFinalPrice(price - discount);
   }, []);
+
+  const { items, addItemToCart, updateCartItemQuantity } =
+    useContext(CartContext);
+
   return (
     <>
       {isShowModalAddItem && (
@@ -79,7 +130,14 @@ export default function ItemAddbtn({
               discountRatio={discountRatio}
               finalPrice={finalPrice}
             />
-            <ButtonAdd showModalAddItem={showModalAddItem} />
+            <ButtonAdd
+              showModalAddItem={showModalAddItem}
+              id={id}
+              product={product}
+              items={items}
+              addItemToCart={addItemToCart}
+              updateCartItemQuantity={updateCartItemQuantity}
+            />
           </>
         ) : (
           <>

@@ -1,5 +1,6 @@
-import ExtraSelected from "../../MainEachRes/ExtraSelected/ExtraSelected";
-import SelectedItem from "../../MainEachRes/SelectedItem/SelectedItem";
+// import ExtraSelected from "../../MainEachRes/ExtraSelected/ExtraSelected";
+// import SelectedItem from "../../MainEachRes/SelectedItem/SelectedItem";
+import ItemAddbtn from "../../MainEachRes/ItemAddbtn/ItemAddbtn";
 import styles from "./BasketItem.module.css";
 
 function Title(props) {
@@ -9,13 +10,14 @@ function BasketItem(props) {
   return (
     <div className={styles["basket-item"]}>
       <Title name={props.name} />
-      <ExtraSelected name="قاشق چنگال" price="2,500" />
-      <ExtraSelected name="ظرف ماکروویو" price="8,000" />
-      <SelectedItem
-        oldPrice={props.oldPrice}
+      <ItemAddbtn
+        id={props.id}
+        product={props.product}
+        name={props.name}
         price={props.price}
-        count={props.count}
         discount={props.discount}
+        discountRatio={props.discountRatio}
+        disabledUntil={props.disabledUntil}
       />
     </div>
   );

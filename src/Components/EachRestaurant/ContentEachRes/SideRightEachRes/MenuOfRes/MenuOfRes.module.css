@@ -1,28 +1,34 @@
 .menu-of-res-components {
   text-align: left;
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  /* text-align: left; */
+  justify-content: start;
+  align-items: end;
+  
+
 }
-.menu-of-res-components div {
+.menu-of-res-components .title {
   margin-top: 15px;
   font-size: 0.92rem;
   font-weight: 500;
   color: #666;
   padding-left: 10px;
-}
-.menu-of-res-components .kopen {
-  display: flex;
-  justify-content: end;
-}
-.menu-of-res-components .kopen button {
   border: none;
-  background: none;
+  background:none;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.menu-of-res-components .activeTitle{
+  border-left:  2px solid gray;
+  color: red;
+  /* font-size: 1.1rem; */
 }
 
 @media (max-width: 600px) {
   .menu-of-res-components {
     text-align: right;
   }
-  .menu-of-res-components .kopen {
-    justify-content: start;
-  }
+
 }

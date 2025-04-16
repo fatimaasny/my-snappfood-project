@@ -1,13 +1,17 @@
 .side-Right-each-res-component {
-  width: 22%;
+  /* width: 22%; */
+  /* min-width: 22%; */
+  min-width: 25%;
+  background-color: aquamarine;
 }
-/* .side-Right-each-res-component.fix {
-  width: 18%;
-  background: yellow;
+.side-Right-each-res-component.fix {
+  /* width: 10vw; */
+  background: pink;
   position: fixed;
   right: 6rem;
   top: 90px;
-} */
+  z-index: 1000;
+}
 
 .side-Right-each-res-component .comments {
   display: flex;

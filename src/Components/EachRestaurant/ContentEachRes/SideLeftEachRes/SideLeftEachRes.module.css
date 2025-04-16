@@ -1,14 +1,18 @@
 .side-left-each-res-component {
-  width: 25%;
+  /* width: 25%; */
+  min-width: 20%;
   position: relative;
+  background-color: yellow;
 }
-/* .side-left-each-res-component.fix {
+.side-left-each-res-component.fix {
   position: fixed;
   left: 6rem;
   top: 90px;
   background-color: green;
-  width: 19%;
-} */
+  overflow-y: scroll;
+  z-index: 1000;
+  /* width: 19%; */
+}
 
 .basket {
   margin-top: 1rem;

@@ -25,6 +25,7 @@ function UpContent(props) {
 
 export default function Item({
   id,
+  product,
   productTitle,
   description,
   images,
@@ -59,7 +60,8 @@ export default function Item({
           hideModalSpecialItem={hideModalSpecialItem}
           image={listImages[0]}
           id={id}
-          title={productTitle}
+          product={product}
+          title={productTitle} // name in ItemAddBtn
           description={description}
           productVariationTitle={productVariationTitle}
           price={price}
@@ -76,6 +78,8 @@ export default function Item({
         />
 
         <ItemAddbtn
+          id={id}
+          product={product}
           name={productTitle}
           productVariationTitle={productVariationTitle}
           price={price}

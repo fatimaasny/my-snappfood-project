@@ -78,6 +78,8 @@ function LeftUpScroll(props) {
         ))} */}
 
         <ItemAddbtn
+          id={props.id}
+          product={props.product}
           name={props.title}
           productVariationTitle={props.productVariationTitle}
           price={props.price}
@@ -100,6 +102,8 @@ function UpScroll(props) {
       <LeftUpScroll
         title={props.title}
         // listAddBtn={props.listAddBtn}
+        id={props.id}
+        product={props.product}
         description={props.description}
         productVariationTitle={props.productVariationTitle}
         price={props.price}
@@ -144,6 +148,8 @@ function ContentScrolled(props) {
     <div className={styles["scrolled-content"]}>
       <UpScroll
         image={props.image}
+        id={props.id}
+        product={props.product}
         title={props.title}
         description={props.description}
         productVariationTitle={props.productVariationTitle}
@@ -164,6 +170,8 @@ function Overlay(props) {
       <Header hideModalSpecialItem={props.hideModalSpecialItem} />
       <ContentScrolled
         image={props.image}
+        id={props.id}
+        product={props.product}
         title={props.title}
         description={props.description}
         productVariationTitle={props.productVariationTitle}
@@ -182,8 +190,10 @@ function FinalModal(props) {
     <>
       <BackDrop hideModalSpecialItem={props.hideModalSpecialItem} />
       <Overlay
-        image={props.image}
         hideModalSpecialItem={props.hideModalSpecialItem}
+        image={props.image}
+        id={props.id}
+        product={props.product}
         title={props.title}
         description={props.description}
         productVariationTitle={props.productVariationTitle}
@@ -217,6 +227,8 @@ function ModalSpecialItem(props) {
         <FinalModal
           hideModalSpecialItem={props.hideModalSpecialItem}
           image={props.image}
+          id={props.id}
+          product={props.product}
           title={props.title}
           description={props.description}
           productVariationTitle={props.productVariationTitle}

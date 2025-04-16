@@ -1,15 +1,4 @@
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* ::-moz-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
 } */
 
-/* html {
-  overflow-x: scroll; 
-
-  -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
-  scrollbar-width: none;
-} */
