@@ -5,4 +5,5 @@
   padding: 10px 12px 6px;
   margin-left: 10px;
   box-shadow: 1px 1px 1px #eee, -1px -1px 1px #eee;
+  cursor: pointer;
 }

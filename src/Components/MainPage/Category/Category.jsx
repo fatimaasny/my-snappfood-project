@@ -28,37 +28,10 @@ function List({ listCategory }) {
 }
 
 export default function Category({ title }) {
-  // const [list, setList] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [listCategory, setListCategory] = useState([]);
-  // const [error, setError] = useState();
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await categoryInMain();
-  //       setListCategory(res.data.result[0]["data"]["cuisines"]);
-  //       setError();
-  //     } catch (error) {
-  //       setError("خطایی رخ داده است، مجددا تلاش کنید.");
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, []);
-
   const { isLoading, data, error } = useFetch(
     categoryInMain,
     (data) => data.data.result[0]["data"]["cuisines"]
   );
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await setData(data.data.result[0]["data"]["cuisines"]);
-  //   };
-  //   fetchData();
-  // }, [data]);
 
   if (error) {
     return <Error title={error} />;

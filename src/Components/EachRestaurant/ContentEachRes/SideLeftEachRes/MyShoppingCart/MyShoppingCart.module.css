@@ -1,4 +1,32 @@
 
+.actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.actions button{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-family: Vazir-bold;
+  border:none;
+  cursor: pointer;
+}
+.actions button:hover{
+  opacity: 0.5;
+}
+.actions .btnEmpty{
+  background: #ff00b3;
+  color: #fff;
+}
+.actions .btnCancle{
+  background: #ddd;
+  color: black;
+}
+
 .basket {
     margin-top: 1rem;
   }
@@ -51,11 +79,19 @@
     height: 30px;
     background: #fff;
     color: red;
+    cursor: pointer;
   }
   .title .btntrash:hover {
+    background: #fce2f2;
+  }
+  .title .btntrash:hover svg {
+    transform : scale(1.1);   
+  }
+
+  /* .title .btntrash:hover {
     background: #faedf5;
     color: red;
-  }
+  } */
   
   .full .prices {
     display: flex;

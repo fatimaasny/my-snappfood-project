@@ -15,7 +15,6 @@ export default function CartContextProvider({ children }) {
   }
 
   function handleAddItemToCart(product) {
-    console.log("add: ", product.id);
     setShoppingCart((prevShoppingCart) => {
       const updateShoppingCart = [...prevShoppingCart.items];
 
@@ -39,7 +38,6 @@ export default function CartContextProvider({ children }) {
     });
   }
   function handleUpdateCartItemQuantity(id, amount) {
-    console.log("updateQuantity: ", id, " and  ", amount);
     setShoppingCart((prevShoppingCart) => {
       const updateShoppingCart = [...prevShoppingCart.items];
 

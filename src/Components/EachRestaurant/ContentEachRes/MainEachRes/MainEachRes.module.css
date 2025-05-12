@@ -1,12 +1,16 @@
 .main-each-res-component {
   /* width: 48%; */
   /* width: 70%; */
-  min-width: 60%;
+  width: 40vw;
   background: #fff;
   border: 1px solid #ecebeb;
   border-radius: 10px;
 
 }
+
+/* 
+TODO
+سایزهارو با vw بزنم  */
 
 
 @media (max-width: 600px) {
@@ -22,5 +26,11 @@
 @media (min-width: 701px) and (max-width: 960px) {
   .main-each-res-component {
     width: 50%;
+  }
+}
+@media (min-width: 961px) and (max-width: 1200px) {
+  .main-each-res-component {
+    width: 68%;
+    margin-right: 0.5rem;
   }
 }

@@ -15,6 +15,7 @@ import { useFetch2 } from "../../../../../hooks/useFetch";
 // context
 import { useContext } from "react";
 import { ScrollContext } from "../../../../../store/ScrollTitlesContext";
+import Loading from "../../../../Loading/Loading";
 
 export default function MenuOfRes() {
   const params = useParams();
@@ -47,7 +48,7 @@ export default function MenuOfRes() {
 
   return (
     <>
-      {!isLoading && (
+      {!isLoading && data.length > 0 ? (
         <div className={styles["menu-of-res-components"]}>
           {data.map((title, index) => (
             <button
@@ -61,6 +62,8 @@ export default function MenuOfRes() {
             </button>
           ))}
         </div>
+      ) : (
+        <Loading />
       )}
     </>
   );

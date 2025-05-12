@@ -31,7 +31,6 @@ export default function ScrollContextProvider({ children }) {
         //     ['تخفیف' , HTMLDOMELEMENT]
         //   ]
 
-        console.log("sections: ", sections);
         let closestTitle = "";
         let minDistance = Infinity;
 

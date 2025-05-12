@@ -89,7 +89,6 @@ export default function InfoOfRes() {
     process();
   }, [params]);
 
-  // console.log("data in info :", data);
   if (error) {
     return <Error title={error} />;
   }

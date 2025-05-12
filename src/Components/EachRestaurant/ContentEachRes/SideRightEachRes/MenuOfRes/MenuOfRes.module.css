@@ -1,12 +1,9 @@
 .menu-of-res-components {
-  text-align: left;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  /* text-align: left; */
   justify-content: start;
-  align-items: end;
-  
+  align-items: end;  
 
 }
 .menu-of-res-components .title {
@@ -22,13 +19,22 @@
 }
 .menu-of-res-components .activeTitle{
   border-left:  2px solid gray;
-  color: red;
-  /* font-size: 1.1rem; */
 }
 
 @media (max-width: 600px) {
   .menu-of-res-components {
-    text-align: right;
+    align-items: start;
+    height: 60vh;
+    overflow-y: auto;
   }
 
+  .menu-of-res-components .title{
+    margin-right: 1rem;
+  }
+}
+@media (min-width:601px) {
+  .menu-of-res-components {
+    height: 40vh;
+    overflow-y: auto;
+  }
 }

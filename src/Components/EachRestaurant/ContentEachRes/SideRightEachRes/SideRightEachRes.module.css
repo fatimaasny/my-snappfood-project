@@ -1,16 +1,10 @@
 .side-Right-each-res-component {
-  /* width: 22%; */
-  /* min-width: 22%; */
-  min-width: 25%;
-  background-color: aquamarine;
+  width: 20vw;
 }
-.side-Right-each-res-component.fix {
-  /* width: 10vw; */
-  background: pink;
+.side-Right-each-res-component.sticky {
   position: fixed;
   right: 6rem;
   top: 90px;
-  z-index: 1000;
 }
 
 .side-Right-each-res-component .comments {
@@ -36,16 +30,37 @@
 
 @media (max-width: 600px) {
   .side-Right-each-res-component {
-    /* position: static; */
-    width: 90%;
+    width: 90vw;
     margin: 0 auto;
+    overflow-y: auto;
   }
-  .side-Right-each-res-component.fix {
+  .side-Right-each-res-component.sticky {
     position: static;
+    right: 0;
   }
+  
 }
 @media (min-width: 601px) and (max-width: 700px) {
   .side-Right-each-res-component .comments p {
     font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 959px) {
+
+  
+  .side-Right-each-res-component {
+    width: 40vw;
+  }
+  .side-Right-each-res-component.sticky {
+    right: 1rem;
+    top: 90px;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1350px) {
+
+  .side-Right-each-res-component.sticky {
+    right: 1rem;
   }
 }

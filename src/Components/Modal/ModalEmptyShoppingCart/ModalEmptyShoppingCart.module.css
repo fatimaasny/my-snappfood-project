@@ -1,0 +1,16 @@
+.dialog{
+    width: 35%;
+    height: 20vh;
+    margin: 20% auto;
+    border-radius: 10px;
+    background: #fff;
+    padding: 1rem;
+    border: none;
+}
+.dialog h2{
+font-size: 1.2rem;
+margin-bottom: 2rem;
+}
+.dialog form{
+
+}

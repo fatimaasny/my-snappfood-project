@@ -5,7 +5,9 @@ import { LuShoppingBag } from "react-icons/lu";
 import { TbTrash } from "react-icons/tb";
 
 import { CartContext } from "../../../../../store/ShoppingCartContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
+
+import ModalEmptyShoppingCart from "../../../../Modal/ModalEmptyShoppingCart/ModalEmptyShoppingCart";
 
 function EmptyBasket(props) {
   return (
@@ -22,15 +24,13 @@ function Title(props) {
         <span>سبد خرید</span>
         <span>( {props.productsQuantity} )</span>
       </p>
-      <span className={styles.btntrash}>
+      <buton className={styles.btntrash}>
         <TbTrash
           color="red"
           fontSize="1rem"
-          onClick={props.epmtyShoppingCart}
-          // onMouseOver={({ target }) => (target.style.color = "red")}
-          // onMouseOut={({ target }) => (target.style.color = "red")}
+          onClick={props.handleShowModalEmptyShoppingCart}
         />
-      </span>
+      </buton>
     </div>
   );
 }
@@ -98,7 +98,10 @@ function FullBasket(props) {
     <div className={styles.full}>
       <Title
         productsQuantity={props.productsQuantity}
-        epmtyShoppingCart={props.epmtyShoppingCart}
+        // epmtyShoppingCart={props.epmtyShoppingCart}
+        handleShowModalEmptyShoppingCart={
+          props.handleShowModalEmptyShoppingCart
+        }
       />
       <Content items={props.items} />
       <Price priceBeforeDiscount={props.priceBeforeDiscount} />
@@ -121,21 +124,44 @@ function MyShoppingCart() {
     (acc, item) => acc + item.quantity * (item.price - item.discount),
     0
   );
-  console.log("items: ", items);
-  return (
-    <div className={styles.basket}>
-      {items.length === 0 ? (
-        <EmptyBasket />
-      ) : (
-        <FullBasket
-          items={items}
-          productsQuantity={productsQuantity}
-          epmtyShoppingCart={epmtyShoppingCart}
-          priceBeforeDiscount={priceBeforeDiscount}
-          finalPrice={finalPrice}
-        />
-      )}
+
+  const dialogRef = useRef();
+  function handleShowModalEmptyShoppingCart() {
+    if (dialogRef) {
+      dialogRef.current.showModal();
+    }
+  }
+
+  let modaActions = (
+    <div className={styles.actions}>
+      <button onClick={epmtyShoppingCart} className={styles.btnEmpty}>
+        حذف سبد
+      </button>
+      <button className={styles.btnCancle}>انصراف</button>
     </div>
+  );
+  return (
+    <>
+      <ModalEmptyShoppingCart
+        title="آیا از حذف سبد خرید مطمئن هستید؟"
+        actions={modaActions}
+        dialogRef={dialogRef}
+      />
+      <div className={styles.basket}>
+        {items.length === 0 ? (
+          <EmptyBasket />
+        ) : (
+          <FullBasket
+            items={items}
+            productsQuantity={productsQuantity}
+            // epmtyShoppingCart={epmtyShoppingCart}
+            handleShowModalEmptyShoppingCart={handleShowModalEmptyShoppingCart}
+            priceBeforeDiscount={priceBeforeDiscount}
+            finalPrice={finalPrice}
+          />
+        )}
+      </div>
+    </>
   );
 }
 

@@ -9,7 +9,7 @@ import { AiOutlineFieldTime } from "react-icons/ai";
 import { FaAngleDown } from "react-icons/fa";
 import { GrUserWorker } from "react-icons/gr";
 
-export default function SideLeftEachRes({ scrollposition }) {
+export default function SideLeftEachRes({ isSticky }) {
   const [isShowMultiSendingWay, setIsShowMultiSendingWay] = useState(false);
 
   const showMultiSendingWayHandler = () => {
@@ -23,7 +23,7 @@ export default function SideLeftEachRes({ scrollposition }) {
     <>
       <div
         className={`${styles["side-left-each-res-component"]} ${
-          scrollposition ? styles.fix : ""
+          isSticky ? styles.sticky : ""
         }`}
       >
         <>

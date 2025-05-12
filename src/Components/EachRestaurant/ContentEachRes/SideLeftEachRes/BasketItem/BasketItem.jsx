@@ -1,5 +1,4 @@
-// import ExtraSelected from "../../MainEachRes/ExtraSelected/ExtraSelected";
-// import SelectedItem from "../../MainEachRes/SelectedItem/SelectedItem";
+
 import ItemAddbtn from "../../MainEachRes/ItemAddbtn/ItemAddbtn";
 import styles from "./BasketItem.module.css";
 

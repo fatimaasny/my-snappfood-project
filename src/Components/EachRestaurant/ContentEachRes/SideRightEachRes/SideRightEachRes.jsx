@@ -18,7 +18,7 @@ function CommentInfo(props) {
   );
 }
 
-export default function SideRightEachRes({ scrollposition }) {
+export default function SideRightEachRes({ isSticky }) {
   const [isShowModalComments, setIsShowModalComments] = useState();
   const [isShowModalSpecialMap, setIsShowModalSpecialMap] = useState();
 
@@ -53,7 +53,7 @@ export default function SideRightEachRes({ scrollposition }) {
 
       <div
         className={`${styles["side-Right-each-res-component"]} ${
-          scrollposition ? styles.fix : ""
+          isSticky ? styles.sticky : ""
         }`}
       >
         <InfoOfRes />

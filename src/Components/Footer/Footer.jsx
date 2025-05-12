@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
 
 import ShowList from "../ShowList/ShowList";
 import SocialIcon from "../SocialIcon/SocialIcon";
@@ -21,7 +22,10 @@ function Content(props) {
         <p>تجربه سفارش غذا، از زودفود تا اسنپ‌فود</p>
         <div className={styles.icons}>
           {props.ListSocialIcon.map((i, index) => (
-            <SocialIcon icon={i.icon} key={index} />
+            <a href={i.link} key={index} target="_blank">
+              <SocialIcon icon={i.icon} />
+            </a>
+            // <SocialIcon icon={i.icon} key={index} />
           ))}
         </div>
       </div>
@@ -62,11 +66,26 @@ export default function Footer() {
   ];
 
   const ListSocialIcon = [
-    { icon: <FaTwitter color="#666" fontSize="1.2rem" /> },
-    { icon: <FaTelegramPlane color="#666" fontSize="1.2rem" /> },
-    { icon: <FaLinkedin color="#666" fontSize="1.2rem" /> },
-    { icon: <FaInstagram color="#666" fontSize="1.2rem" /> },
-    { icon: <SiAparat color="#666" fontSize="1.2rem" /> },
+    {
+      icon: <FaTwitter color="#666" fontSize="1.2rem" />,
+      link: "https://twitter.com/snappfood",
+    },
+    {
+      icon: <FaTelegramPlane color="#666" fontSize="1.2rem" />,
+      link: "https://t.me/snappfood",
+    },
+    {
+      icon: <FaLinkedin color="#666" fontSize="1.2rem" />,
+      link: "https://www.linkedin.com/company/snappfood/",
+    },
+    {
+      icon: <FaInstagram color="#666" fontSize="1.2rem" />,
+      link: "https://instagram.com/snappfood_ir",
+    },
+    {
+      icon: <SiAparat color="#666" fontSize="1.2rem" />,
+      link: "https://www.aparat.com/snappfood",
+    },
   ];
 
   return (
