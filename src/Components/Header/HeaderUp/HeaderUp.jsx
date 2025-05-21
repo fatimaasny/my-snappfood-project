@@ -168,7 +168,7 @@ export default function HeaderUp() {
 
   return (
     <>
-      {isShowModal === 1 && (
+      {/* {isShowModal === 1 && (
         <ModalLogin
           // showModalHandler={showModalHandler}
           onConfirm={hideModalHandler}
@@ -179,8 +179,8 @@ export default function HeaderUp() {
           // setActive={setActive}
           showModalConfirmHandler={showModalConfirmHandler}
         />
-      )}
-      {isShowModalConfirm === 1 && (
+      )} */}
+      {/* {isShowModalConfirm === 1 && (
         <ModalConfirmLogin
           mobile={mobile}
           showModalHandler={showModalHandler}
@@ -188,18 +188,18 @@ export default function HeaderUp() {
           setMobile={setMobile}
           setActive={setActive}
         />
-      )}
-      {isShowModalSearch === 1 && (
+      )} */}
+      {/* {isShowModalSearch === 1 && (
         <ModalSearch hideModalSearchHandler={hideModalSearchHandler} />
-      )}
-      {isShowModalMap === 1 && (
+      )} */}
+      {/* {isShowModalMap === 1 && (
         <ModalMap
           hideModalMapHandler={hideModalMapHandler}
           inputCity={inputCity}
           inputCityHandler={inputCityHandler}
           liInputHandler={liInputHandler}
         />
-      )}
+      )} */}
       <header className={styles["header-up"]}>
         <RightContent
           showModalMapHandler={showModalMapHandler}
